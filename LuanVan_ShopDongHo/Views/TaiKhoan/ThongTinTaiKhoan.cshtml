@@ -1,0 +1,84 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    ViewBag.Title = "ThongTinTaiKhoan";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model TAIKHOAN
+
+<h2 style="color: brown; font-weight: 800">Thông tin tài khoản</h2>
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table table-borderless" style="font-size: 20px; border: 1px solid blue;">
+                <tr>
+                    <th style="text-align: right">Mã nhân viên</th>
+                    <td>@ViewBag.nv.MANV</td>
+                </tr>
+                <tr>
+                    <th style="text-align: right">Họ tên</th>
+                    <td>@ViewBag.nv.TENNV</td>
+                </tr>
+                <tr>
+                    <th style="text-align: right">Ngày sinh</th>
+                    <td>@string.Format("{0: dd/MM/yyyy}", ViewBag.nv.NGAYSINH)</td>
+                </tr>
+                <tr>
+                    <th style="text-align: right">Giới tính</th>
+                    <td>@ViewBag.nv.GIOITINH</td>
+                </tr>
+                <tr>
+                    <th style="text-align: right">Điện thoại</th>
+                    <td>@ViewBag.nv.DIENTHOAI</td>
+                </tr>
+                <tr>
+                    <th style="text-align: right">Địa chỉ</th>
+                    <td>@ViewBag.nv.DIACHI</td>
+                </tr>
+                <tr>
+                    <th style="text-align: right">Tên đăng nhập</th>
+                    <td>@ViewBag.nv.TENDN</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div>
+        <button class="btn btn-XanhLuc" id="btnDoiMatKhau" data-bs-toggle="modal" data-bs-target="#myModalDoiMatKhau"><i class="fas fa-lock"></i> Đổi mật khẩu</button>
+    </div>
+</div>
+
+
+<!-- Modal đổi mật khẩu-->
+<div class="modal fade" id="myModalDoiMatKhau" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Đổi mật khẩu</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mật khẩu cũ</label>
+                    <input type="password" id="matKhauCu" class="form-control" />
+                    <span id="matKhauCuVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Mật khẩu mới</label>
+                    <input type="password" id="matKhauMoi" class="form-control" />
+                    <span id="matKhauMoiVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Xác nhận mật khẩu</label>
+                    <input type="password" id="xacNhanMatKhau" class="form-control" />
+                    <span id="xacNhanMatKhauVL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnDoiMatKhauTaiKhoan">Đổi</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal đổi mật khẩu-->

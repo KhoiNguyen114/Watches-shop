@@ -1,0 +1,147 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    Layout = null;
+}
+@model KhachHang
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>XacThucTaikhoan</title>
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/signup.css" rel="stylesheet" />
+</head>
+<body>
+    @using (@Html.BeginForm("updateThongTin", "KhachHang", FormMethod.Post, new { enctype = "multipart/form-data", id = "form_edit", style = " background-image: url('../../Content/Images/Icon/dockImage_info.jpg');background-repeate:no-repeat;background-size: cover;" }))
+    {
+    <div class="container">
+        <h1>Kính chào quý khách</h1>
+        <p>Xin hãy nhập biểu mẫu bên dưới để tiến hành xác nhận thông tin của quý khách.</p>
+        <hr>
+        <div style="display:none">
+            <input type="text" name="username" value="@ViewBag.username"/>
+        </div>
+        <div>
+            <label for="fullname"><b>Họ và tên</b></label>
+            <br>
+            <input type="text" id="fullname" placeholder="Nhập họ tên của bạn" name="fullname" required/>
+            <hr />
+        </div>
+        <div>
+            <label for="gender"><b>Giới tính</b></label>
+            <br>
+            <input type="radio"  name="gender" id="gender" value="Nam" checked="checked"/>
+            <label for="Nam" style="color:black;">Nam</label>&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="gender" id="gender" value="Nữ"/>
+            <label for="Nữ" style="color:black;">Nữ</label>
+            <hr />
+        </div>
+        <div>
+            <label for="Ngày sinh"><b>Nhập vào ngày sinh</b></label>
+            <br>
+            <input type="date" id="ngaysinh" name="ngaysinh" required class="form-control"/>
+            <hr />
+        </div>
+        <div>
+            <label for="SDT"><b>Nhập vào số điện thoại</b></label>
+            <br>    
+            <input type="text" id="sdt" name="sdt" required/>
+            <hr />
+        </div>
+        <div>
+            <label for="address"><b>Nhập vào địa chỉ</b></label>
+            <br>
+            <input type="text" id="address" name="address" required/>
+            <hr />
+        </div>
+        <div>
+            <label for="CMND"><b>Nhập vào số CMND/Passport</b></label>
+            <br>
+            <input type="text" id="cmnd" name="cmnd" required/>
+            <hr />
+        </div>
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="clearfix">
+                    <button type="submit" class="signupbtn">Cập nhật</button>
+                </div>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+    }
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/notify.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+
+</body>
+</html>
+<script type="text/javascript">
+
+    function replaceUnicode(str) {
+        if (str === null || str === undefined) return str;
+        str = str.toLowerCase();
+        str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+        str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+        str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+        str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+        str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+        str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+        str = str.replace(/đ/g, "d");
+        return str;
+    }
+
+    $('button[type="submit"]').click(function (e) {
+        e.preventDefault();
+        var regNum = /^[0-9\-\+]{9,15}$/;
+        var regFullName = /^[a-zA-Z ]{2,}$/g;
+
+        
+        var fullname = $('input#fullname').val();
+        if ($.trim(fullname).length <=0 ) {
+            $.notify("Họ và tên không được để trống", "danger");
+            return false;
+        }
+        else if (!regFullName.test(replaceUnicode(fullname))) {
+            $.notify("Họ và tên không đúng định dạng", "danger");
+            return false;
+        }
+
+        var sdt = $('input#sdt').val();
+        var cmnd = $('input#cmnd').val();
+        var diachi = $('input#address').val();
+
+        if ($.trim(diachi).length <= 0) {
+            $.notify("Địa chỉ không được để trống", "danger");
+            return false;
+        }
+
+
+        if (!regNum.test($.trim(sdt))) {
+            $.notify("Số điện thoại không đúng định dạng", "danger");
+            return false;
+        }
+
+        if (!regNum.test($.trim(cmnd))) {
+            $.notify("Số cmnd không đúng định dạng", "danger");
+            return false;
+        }
+
+        $('#form_edit').trigger("submit");
+    })
+
+</script>
+<style>
+    .password-check {
+        color: black;
+    }
+
+    .pas-check-div {
+        border-radius: 10px;
+        padding: 20px;
+    }
+</style>

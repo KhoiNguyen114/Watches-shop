@@ -1,0 +1,174 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "QuanLyCheDoBaoHanh";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model NOIDUNGBH
+
+<h2 style="color: brown; font-weight: 800">Quản lý chế độ bảo hành</h2>
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <a class="btn btn-XanhLuc mt-4" data-bs-toggle="modal" data-bs-target="#myModalAddCheDoBaoHanh" style="text-transform: uppercase; font-weight: bold;">
+                <i class="fas fa-plus"></i>
+                Thêm chế độ bảo hành mới
+            </a>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Trạng thái</label>
+                @Html.DropDownListFor(model => model.TRANGTHAI, new SelectList(ViewBag.dsTrangThai, "Value", "Text", ViewBag.trangThai), new { @class = "form-control", @id = "trangThaiCheDoBaoHanhFilter", @style = "border-radius: 10px;" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-XanhLuc mt-4" style="text-transform: uppercase; font-weight: bold;" id="btnSearch">
+                <i class="fas fa-search"></i>
+                Tìm kiếm
+            </button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <table class="table table-bordered table-hover">
+            <tr class="tr-Title">
+                <th>STT</th>
+                <th>Mã chế độ bảo hành</th>
+                <th>Số năm bảo hành</th>
+                <th>Thao tác</th>
+            </tr>
+            @{
+                int dem = 0;
+                int pageNum = ViewBag.pageNum;
+                int pageSize = ViewBag.pageSize;
+                dem = (pageNum - 1) * pageSize;
+            }
+            @foreach (var item in ViewBag.dsNDBHLoad)
+            {
+                dem++;
+                <tr>
+                    <td>@dem</td>
+                    <td><a href="/BaoHanh/ChiTietCheDoBaoHanh/?maCDBH=@item.MANOIDUNG">@item.MANOIDUNG</a></td>
+                    <td>@item.SONAMBH</td>
+                    <td>
+                        @if (item.TRANGTHAI == false)
+                        {
+                            <button class="btn btn-success" id="@item.MANOIDUNG" onclick="GetCheDoBaoHanh(this)"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-danger" id="@item.MANOIDUNG" onclick="GetIDCheDoBaoHanhDelete(this)" data-bs-toggle="modal" data-bs-target="#myModalDeleteCheDoBaoHanh"><i class="fas fa-trash"></i></button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary" id="@item.MANOIDUNG" onclick="KhoiPhucCheDoBaoHanh(this)"><i class="fas fa-trash-restore"></i></button>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div class="spacer20">
+    <center>
+        <div class="pagination">
+            @Html.PagedListPager((PagedList.IPagedList)ViewBag.dsNDBHLoad, page => Url.Action("QuanLyCheDoBaoHanh", new { page, @class = "active", trangThai = ViewBag.trangThai }))
+        </div>
+    </center>
+</div>
+
+<!-- Modal thêm chế độ bảo hành-->
+<div class="modal fade" id="myModalAddCheDoBaoHanh" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Thêm chế độ bảo hành mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mã chế độ bảo hành</label>
+                    <input type="text" id="maCheDoBaoHanhThem" class="form-control" />
+                    <span id="maCheDoBaoHanhThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Nội dung chế độ bảo hành</label>
+                    <textarea id="noiDungCheDoBaoHanhThem"></textarea>
+                    <span id="noiDungCheDoBaoHanhThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Số năm bảo hành</label>
+                    <input type="number" id="SoNamBaoHanhThem" class="form-control" />
+                    <span id="SoNamBaoHanhThemVL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnThemCheDoBaoHanh">Thêm</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal thêm chế độ bảo hành-->
+<!-- Modal cập nhật chế độ bảo hành-->
+<div class="modal fade" id="myModalEditCheDoBaoHanh" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Cập nhật chế độ bảo hành</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mã chế độ bảo hành</label>
+                    <input type="text" id="maCheDoBaoHanhSua" class="form-control" disabled="disabled" />
+                    <span id="maCheDoBaoHanhSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Nội dung chế độ bảo hành</label>
+                    <textarea id="noiDungCheDoBaoHanhSua"></textarea>
+                    <span id="noiDungCheDoBaoHanhSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Số năm bảo hành</label>
+                    <input type="number" id="SoNamBaoHanhSua" class="form-control" />
+                    <span id="SoNamBaoHanhSuaVL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnCapNhatCheDoBaoHanh">Cập nhật</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal cập nhật chế độ bảo hành-->
+<!-- Modal xóa chế độ bảo hành-->
+<div class="modal fade" id="myModalDeleteCheDoBaoHanh" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Xóa chế độ bảo hành</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" hidden="hidden" id="idCheDoBaoHanhDelete" value="" />
+                    <p>Bạn có chắc chắn muốn xóa chế độ bảo hành này không</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-Do" id="btnXoaCheDoBaoHanh">Xóa</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal xóa chế độ bảo hành-->
+
+<script type="text/javascript">
+    $('#btnSearch').click(function (e) {
+        e.preventDefault();
+        var url = window.location.origin + "/BaoHanh/QuanLyCheDoBaohang?&trangThai=" + $('#trangThaiCheDoBaoHanhFilter').val();
+        window.location = url;
+    })
+</script>

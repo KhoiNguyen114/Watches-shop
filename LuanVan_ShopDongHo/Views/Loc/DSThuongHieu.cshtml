@@ -1,0 +1,130 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <link href="~/Content/_style.css" rel="stylesheet" />
+}
+@{ 
+    string query = "";
+}
+@model LocSanPham
+
+<div class="container">
+    <form action="/Loc/HienThiSPTheoThuongHieu" method="post">
+        <div class="filter_condition" id="filter_condition">
+
+        </div>
+        <br />
+        <label style="text-transform: uppercase; font-weight: bold">Thương Hiệu</label><br />
+        <hr />
+        <div style="overflow: scroll; height: 200px">
+            @foreach (HANG a in ViewBag.dsHang)
+            {
+                <input type="checkbox" value="@a.TENHANG" id="@a.MAHANG" name="MAHANG : @a.MAHANG" /><span>&nbsp; @a.TENHANG</span><br /><br />
+            }
+        </div>
+        <hr />
+
+        <br />
+        <label style="text-transform: uppercase; font-weight: bold">Giới tính</label><br />
+        <hr />
+        <div style="overflow: scroll; height: 150px">
+            @foreach (DANHMUCSP a in ViewBag.dsGT)
+            {
+                <input type="radio" value="@a.TENDM" id="@a.MADM" name="MADM : @a.MADM" /><span>&nbsp; @a.TENDM</span><br /><br />
+            }
+        </div>
+        <hr />
+
+        <br />
+        <label style="text-transform: uppercase; font-weight: bold">Lọc theo giá</label><br />
+        <hr />
+        <div style="overflow: scroll; height: 200px">
+            @foreach (string a in ViewBag.dsTien)
+            {
+                <input type="checkbox" value="@a" id="DONGIA_@a" name="DONGIA : @a" /><span>&nbsp; @a</span><br /><br />
+            }
+        </div>
+        <hr />
+        <br />
+        <label style="text-transform: uppercase; font-weight: bold">Lọc theo dòng sản phẩm</label><br />
+        <hr />
+        <div style="overflow: scroll; height: 200px">
+            @foreach (string a in ViewBag.dsDongSP)
+            {
+                <input type="checkbox" value="@a" id="DONGSP_@a" name="DONGSP : @a" /><span>&nbsp; @a</span><br /><br />
+            }
+        </div>
+        <hr />
+
+        <br />
+        <label style="text-transform: uppercase; font-weight: bold">Lọc theo loại dây</label><br />
+        <hr />
+        <div style="overflow: scroll; height: 200px">
+            @foreach (string a in ViewBag.dsLoaiDay)
+            {
+                <input type="checkbox" value="@a" id="LOAIDAY_@a" name="LOAIDAY : @a" /><span>&nbsp; @a</span><br /><br />
+            }
+        </div>
+        <hr />
+
+        <input type="submit" value="LỌC" class="btn btn-dark" />
+    </form>
+</div>
+<script type="text/javascript">
+    const createQueryCondition = function (val,id,name) {
+        //Khởi tạo các thẻ filter
+     
+        var span_filter = document.createElement("span");
+        var btn_close = document.createElement("BUTTON");
+        var label_condition = document.createElement("label");
+
+        //Khởi tạo attr cho các element
+        span_filter.setAttribute("class", "span_filter");
+        btn_close.setAttribute("class", "btn-filter");
+        btn_close.innerText = "x";
+        btn_close.style.margin = "0px";
+        label_condition.innerText = val;
+        label_condition.setAttribute("class", "label_condition");
+
+        //Add động các query condition
+        span_filter.appendChild(btn_close);
+        span_filter.appendChild(label_condition);
+
+        document.getElementById('filter_condition').appendChild(span_filter);
+        
+    }
+    $('input').on("click", function () {
+        var ele = $(this);
+        createQueryCondition(ele.val(), ele.attr("id"), ele.attr("name"));
+    })
+
+
+</script>
+<style>
+    .btn-filter {
+        text-align : center;
+        background-color: inherit;
+        cursor: pointer;
+        display: inline-block;
+        width : 20px;
+        height : 20px;
+        border: none;
+        filter : blur(0.9px);
+        border-right : 1px solid rgba(0, 0, 0, 0.1);
+    }
+        .btn-filter:hover {
+            background: #eee;
+        }
+    .label_condition{
+       text-align : center;
+       display:inline-block;
+       height : 25px;
+       margin-top :5px;
+    }
+    .span_filter {
+        display : inline-block;
+        background-color: #eee;
+        margin :0 5px;
+        height : 25px;
+    }
+</style>

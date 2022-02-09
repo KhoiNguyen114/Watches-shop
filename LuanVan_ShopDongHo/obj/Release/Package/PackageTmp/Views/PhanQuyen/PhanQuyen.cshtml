@@ -1,0 +1,97 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    ViewBag.Title = "PhanQuyen";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h2 style="color: brown; font-weight: 800">Phân quyền</h2>
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+        <table class="table table-bordered table-hover">
+            <tr class="tr-Title">
+                <th rowspan="2">Nhóm người dùng</th>
+                <th colspan="5">Quyền</th>
+            </tr>
+            <tr class="tr-Title">
+                <th>Bán hàng</th>
+                <th>Chỉnh sửa người dùng</th>
+                <th>Báo cáo</th>
+                <th>Quản lý kho</th>
+                <th>Quản lý khuyến mãi</th>
+            </tr>
+            @foreach (var item in ViewBag.dsPQLoad)
+            {
+                <tr class="checkphanquyen">
+                    <td>@item.tenNND</td>
+                    @if (item.quyenBanHang == true)
+                    {
+                        <td style="text-align: center">
+                            <input type="checkbox" value="Bán hàng" id="@item.idNND" checked="checked" />
+                        </td>
+                    }
+                    else
+                    {
+                        <td style="text-align: center">
+                            <input type="checkbox" value="Bán hàng" id="@item.idNND" />
+                        </td>
+                    }
+                    @if (item.quyenChinhSuaNguoiDung == true)
+                    {
+                        <td style="text-align: center">
+                            <input type="checkbox" value="Chỉnh sửa người dùng" id="@item.idNND" checked="checked" />
+                        </td>
+                    }
+                    else
+                    {
+                        <td style="text-align: center">
+                            <input type="checkbox" value="Chỉnh sửa người dùng" id="@item.idNND" />
+                        </td>
+                    }
+
+                    @if (item.quyenBaoCao == true)
+                    {
+                        <td style="text-align: center">
+                            <input type="checkbox" value="Báo cáo" id="@item.idNND" checked="checked" />
+                        </td>
+                    }
+                    else
+                    {
+                        <td style="text-align: center">
+                            <input type="checkbox" value="Báo cáo" id="@item.idNND" />
+                        </td>
+                    }
+                    @if (item.quyenQuanLyKho == true)
+                    {
+                        <td style="text-align: center">
+                            <input type="checkbox" value="Quản lý kho" id="@item.idNND" checked="checked" />
+                        </td>
+                    }
+                    else
+                    {
+                        <td style="text-align: center">
+                            <input type="checkbox" value="Quản lý kho" id="@item.idNND" />
+                        </td>
+                    }
+                    @if (item.quyenQuanLyKhuyenMai == true)
+                    {
+                        <td style="text-align: center">
+                            <input type="checkbox" value="Quản lý khuyến mãi" id="@item.idNND" checked="checked" />
+                        </td>
+                    }
+                    else
+                    {
+                        <td style="text-align: center">
+                            <input type="checkbox" value="Quản lý khuyến mãi" id="@item.idNND" />
+                        </td>
+                    }
+                </tr>
+            }
+        </table>
+    </div>
+    <div style="text-align: right">
+        <button class="btn btn-XanhLuc" id="btnLuuPhanQuyen" onclick=""><i class="fas fa-save"></i> Lưu</button>
+    </div>
+</div>

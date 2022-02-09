@@ -1,0 +1,16 @@
+﻿@using LuanVan_ShopDongHo.Models;
+
+@model List<string>
+
+<div class="container">
+    <br />
+    <label style="text-transform: uppercase; font-weight: bold">Lọc theo giá</label><br />
+    <hr />
+    <div style="overflow: scroll; height: 200px">
+        @foreach (string a in Model)
+        {
+            <input type="checkbox" value="@a" /><span>&nbsp; @a</span><br /><br />
+        }
+    </div>
+    <hr />
+</div>

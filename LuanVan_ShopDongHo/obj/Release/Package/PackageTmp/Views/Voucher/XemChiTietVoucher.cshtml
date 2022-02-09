@@ -1,0 +1,159 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "XemChiTietVoucher";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model CHUONGTRINHVOUCHER
+
+<style>
+    .select2-container--open {
+        z-index: 9999999
+    }
+
+    .select2 {
+        width: 100% !important;
+    }
+</style>
+
+<h2 style="color: brown; font-weight: 800">Xem thông tin chương trình voucher</h2>
+<br />
+
+<div class="container-fluid">
+    <input type="text" value="@Model.MACHUONGTRINH" hidden="hidden" id="maCTVoucher" />
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <tr>
+                    <th>Mã chương trình voucher</th>
+                    <td>@Model.MACHUONGTRINH</td>
+                </tr>
+                <tr>
+                    <th>Ngày bắt đầu</th>
+                    <td>@string.Format("{0:dd/MM/yyyy}", Model.NGAYTAO)</td>
+                </tr>
+                <tr>
+                    <th>Ngày kết thúc</th>
+                    <td>@string.Format("{0:dd/MM/yyyy}", Model.NGAYKETTHUC)</td>
+                </tr>
+                <tr>
+                    <th>Giảm giá (%)</th>
+                    <td>@Model.GIAMGIA</td>
+                </tr>
+                <tr>
+                    <th>Tình trạng</th>
+                    @{
+                        if (Model.TINHTRANG == 1)
+                        {
+                            <td>Sắp diễn ra</td>
+                        }
+                        else if (Model.TINHTRANG == 2)
+                        {
+                            <td>Đang diễn ra</td>
+                        }
+                        else
+                        {
+                            <td>Kết thúc</td>
+                        }
+                    }
+                </tr>
+                <tr>
+                    <th>Ghi chú</th>
+                    <td>@Model.GHICHU</td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="col-md-6">
+            <h4 style="font-weight: bold">Danh sách voucher của chương trình</h4>
+            <table class="table table-bordered table-hover">
+                <tr class="tr-Title" style="font-size: 18px">
+                    <th>STT</th>
+                    <th>Mã voucher</th>
+                    <th>Khách hàng</th>
+                    <th>Ngày sử dụng</th>
+                    <th>Trạng thái</th>
+                    <th>Gửi mail</th>
+                </tr>
+                @{
+                    int dem = 0;
+                    int pageNum = ViewBag.pageNum;
+                    int pageSize = ViewBag.pageSize;
+                    dem = (pageNum - 1) * pageSize;
+                }
+                @foreach (var item in ViewBag.dsVoucher)
+                {
+                    dem++;
+                    <tr>
+                        <td>@dem</td>
+                        <td>@item.maVoucher</td>
+                        <td>@item.tenKH</td>
+                        @if (item.ngaySuDung != null)
+                        {
+                            <td>@string.Format("{0:dd/MM/yyyy}", item.ngaySuDung)</td>
+                        }
+                        else
+                        {
+                            <td></td>
+                        }
+
+                        @if (item.trangThai == false)
+                        {
+                            <td>
+                                <span style="background: #b8c9ce; border: none; border-radius: 10px; padding: 5px">Chưa kích hoạt</span>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <span style="background: #58ffb1; border: none; border-radius: 10px; padding: 5px">Đã kích hoạt</span>
+                            </td>
+                        }
+                        @if (item.tenKH != null)
+                        {
+                            <td></td>
+                        }
+                        else
+                        {
+                            <td style="text-align: center">
+                                <button class="btn btn-XanhLuc" id="@item.maVoucher" onclick="GetIDVoucherSendMail(this)" data-bs-target="#myModalGuiMailVoucher" data-bs-toggle="modal"><i class="fas fa-envelope"></i></button>
+                            </td>
+                        }
+                    </tr>
+                }
+            </table>
+            <div class="spacer20">
+                <center>
+                    <div class="pagination">
+                        @Html.PagedListPager((PagedList.IPagedList)ViewBag.dsVoucher, page => Url.Action("XemChiTietVoucher", new { maCT = Model.MACHUONGTRINH, page, @class = "active" }))
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal gửi voucher cho khách hàng-->
+<div class="modal fade" id="myModalGuiMailVoucher" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Gửi voucher qua email khách hàng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" hidden="hidden" id="idCTVoucherSendMail" value="" />
+                    <label>Khách hàng</label>
+                    @Html.DropDownList("listKH", new SelectList(ViewBag.dsKH, "IDKhachHang", "TENKH"), new { @class = "form-control", @id = "idKHVoucher" })
+                    <span id="idKHVoucherVL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnGuiMailVoucher">Gửi</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal gửi voucher cho khách hàng-->

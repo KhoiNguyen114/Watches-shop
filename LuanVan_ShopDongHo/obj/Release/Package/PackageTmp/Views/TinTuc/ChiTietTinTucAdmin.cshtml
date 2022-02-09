@@ -1,0 +1,28 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    ViewBag.Title = "ChiTietTinTucAdmin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model TINTUC
+<h2 style="color: brown; font-weight: 800">Chi tiết tin tức</h2>
+<br />
+
+
+
+<div class="container-fluid pb-2">
+    <div class="row">
+        <p style="color: gray">@string.Format("{0: dd/MM/yyyy}", Model.NGAYDANG)</p>
+    </div>
+    <div class="row">
+        <h3 style="font-weight: bold; text-transform: uppercase">@Model.TIEUDE</h3>
+    </div>
+    <input type="text" value="@Model.NOIDUNG" hidden="hidden" id="textNoiDungTT"/>
+    <div id="txtChiTietTinTucSummernote">
+        
+    </div>
+</div>
+
+<script>
+    var htmlObject = document.getElementById('txtChiTietTinTucSummernote');
+    htmlObject.innerHTML = $('#textNoiDungTT').val();
+</script>

@@ -1,0 +1,81 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    ViewBag.Title = "SuaHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model HangSP
+
+<h1 style="text-align:center">Sửa thông tin hãng</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-6">
+            <form action="/QuanLy/ThemHangMoi" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <div class="form-group">
+                    <label>Mã hãng</label>
+                    @Html.EditorFor(model => model.maHang, new { htmlAttributes = new { @class = "form-control", @name = "maHang" } })
+                    @Html.ValidationMessageFor(model => model.maHang, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label>Tên hãng</label>
+                    @Html.EditorFor(model => model.tenHang, new { htmlAttributes = new { @class = "form-control", @name = "tenHang" } })
+                    @Html.ValidationMessageFor(model => model.tenHang, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label>Thông tin</label>
+                    @Html.EditorFor(model => model.thongTin, new { htmlAttributes = new { @class = "form-control", @name = "thongTin" } })
+                    @Html.ValidationMessageFor(model => model.thongTin, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label>URL</label>
+                    @Html.EditorFor(model => model.url, new { htmlAttributes = new { @class = "form-control", @name = "url" } })
+                    @Html.ValidationMessageFor(model => model.url, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label>Logo</label>
+                    <input type="file" name="fupload" onchange="LoadAnhFolderThemLogoHang(this)" />
+                    <img src="" width="150" height="100" id="Image_LogoHang" />
+                    @if (ViewBag.error != null)
+                    {
+                        <div>
+                            <p class="text-danger">@ViewBag.error</p>
+                        </div>
+                    }
+                </div>
+                <div class="form-group">
+                    <label>Banner</label>
+                    <input type="file" name="fupload1" onchange="LoadAnhFolderThemBannerHang(this)" />
+                    <img src="" width="300" height="100" id="Image_bannerHang" />
+                    @if (ViewBag.error1 != null)
+                    {
+                        <div>
+                            <p class="text-danger">@ViewBag.error1</p>
+                        </div>
+                    }
+                </div>
+                <div class="form-group">
+                    <label>Quốc gia</label>
+                    @Html.EditorFor(model => model.quocGia, new { htmlAttributes = new { @class = "form-control", @name = "quocGia" } })
+                    @Html.ValidationMessageFor(model => model.quocGia, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Thêm hãng mới</button>
+                </div>
+            </form>
+            @if (ViewBag.tontai != null)
+            {
+                <div>
+                    <p class="text-danger">@ViewBag.tontai</p>
+                </div>
+            }
+        </div>
+        <div class="col-md-4">
+
+        </div>
+    </div>
+</div>
+

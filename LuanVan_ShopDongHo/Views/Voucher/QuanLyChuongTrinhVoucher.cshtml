@@ -1,0 +1,248 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "QuanLyChuongTrinhVoucher";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model CHUONGTRINHVOUCHER
+
+<h2 style="color: brown; font-weight: 800">Quản lý chương trình voucher</h2>
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <a class="btn btn-XanhLuc mt-4" data-bs-toggle="modal" data-bs-target="#myModalAddCTVoucher" style="text-transform: uppercase; font-weight: bold;">
+                <i class="fas fa-plus"></i>
+                Thêm chương trình voucher mới
+            </a>
+        </div>
+        <div class="col-md-4 row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Ngày bắt đầu</label>
+                    <input type="date" id="ngayBD" class="form-control" value="@ViewBag.tgBD" style="border-radius: 10px" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Ngày kết thúc</label>
+                    <input type="date" id="ngayKT" class="form-control" value="@ViewBag.tgKT" style="border-radius: 10px" />
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Tình trạng</label>
+                    @Html.DropDownListFor(model => model.TINHTRANG, new SelectList(ViewBag.dsTinhTrang, "Value", "Text", ViewBag.tinhTrang), new { @class = "form-control", @id = "tinhTrang", @style = "border-radius: 10px;" })
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label>Trạng thái</label>
+                    @Html.DropDownListFor(model => model.TRANGTHAI, new SelectList(ViewBag.dsTT, "Value", "Text", ViewBag.trangThai), new { @class = "form-control", @id = "trangThai", @style = "border-radius: 10px;" })
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-XanhLuc mt-4" style="text-transform: uppercase; font-weight: bold;" id="btnSearch">
+                <i class="fas fa-search"></i>
+                Tìm kiếm
+            </button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <table class="table table-bordered table-hover">
+            <tr class="tr-Title">
+                <th>STT</th>
+                <th>Mã chương trình voucher</th>
+                <th>Số lượng voucher</th>
+                <th>Ngày bắt đầu</th>
+                <th>Ngày kết thúc</th>
+                <th>Tình trạng</th>
+                <th>Giảm giá (%)</th>
+                <th>Ghi chú</th>
+                <th style="width: 200px">Thao tác</th>
+            </tr>
+            @{
+                int dem = 0;
+                int pageNum = ViewBag.pageNum;
+                int pageSize = ViewBag.pageSize;
+                dem = (pageNum - 1) * pageSize;
+            }
+            @foreach (var item in ViewBag.dsCTVoucher)
+            {
+                dem++;
+                <tr>
+                    <td>@dem</td>
+                    <td><a href="/Voucher/XemChiTietVoucher/?maCT=@item.MACHUONGTRINH">@item.MACHUONGTRINH</a></td>
+                    <td>@item.SOLUONG</td>
+                    <td>@string.Format("{0: dd/MM/yyyy}", item.NGAYTAO) </td>
+                    <td>@string.Format("{0: dd/MM/yyyy}", item.NGAYKETTHUC)</td>
+                    @{
+                        if (item.TINHTRANG == 1)
+                        {
+                            <td>Sắp diễn ra</td>
+                        }
+                        else if (item.TINHTRANG == 2)
+                        {
+                            <td>Đang diễn ra</td>
+                        }
+                        else
+                        {
+                            <td>Kết thúc</td>
+                        }
+                    }
+                    <td>@item.GIAMGIA</td>
+                    <td>@item.GHICHU</td>
+                    <td>
+
+                        @if (item.TRANGTHAI == false)
+                        {
+                            <button class="btn btn-success" id="@item.MACHUONGTRINH" onclick="GetCTVoucher(this)"><i class="fas fa-edit"></i></button><span>&nbsp;</span>
+                            <button class="btn btn-danger" id="@item.MACHUONGTRINH" onclick="GetIDVoucherDelete(this)" data-bs-toggle="modal" data-bs-target="#myModalDeleteCTVoucher"><i class="fas fa-trash"></i></button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary" id="@item.MACHUONGTRINH" onclick="KhoiPhucCTVoucher(this)"><i class="fas fa-trash-restore"></i></button>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div class="spacer20">
+    <center>
+        <div class="pagination">
+            @Html.PagedListPager((PagedList.IPagedList)ViewBag.dsCTVoucher, page => Url.Action("QuanLyChuongTrinhVoucher", new { page, @class = "active", trangThai = ViewBag.trangThai }))
+        </div>
+    </center>
+</div>
+
+<!-- Modal thêm chương trình voucher-->
+<div class="modal fade" id="myModalAddCTVoucher" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Thêm chương trình voucher mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mã chương trình voucher</label>
+                    <input type="text" id="maCTVoucherThem" class="form-control" />
+                    <span id="maCTVoucherThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Số lượng</label>
+                    <input type="number" id="soLuongVoucherThem" class="form-control" />
+                    <span id="soLuongVoucherThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Ngày bắt đầu</label>
+                    <input type="date" id="ngayBDCTVoucherThem" class="form-control" />
+                    <span id="ngayBDCTVoucherThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Ngày kết thúc</label>
+                    <input type="date" id="ngayKTCTVoucherThem" class="form-control" />
+                    <span id="ngayKTCTVoucherThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Giảm giá (%)</label>
+                    <input type="number" id="giaCTVoucherThem" class="form-control" />
+                    <span id="giaCTVoucherThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Ghi chú</label>
+                    <input type="text" id="ghiChuCTVoucherThem" class="form-control" />
+                    <span id="ghiChuCTVoucherThemVL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnThemCTVoucher">Thêm</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal thêm chương trình voucher-->
+<!-- Modal cập nhật chương trình voucher-->
+<div class="modal fade" id="myModalEditCTVoucher" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Cập nhật chương trình voucher</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mã chương trình voucher</label>
+                    <input type="text" id="maCTVoucherSua" class="form-control" disabled="disabled"/>
+                    <span id="maCTVoucherSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Số lượng</label>
+                    <input type="number" id="soLuongVoucherSua" class="form-control" disabled="disabled"/>
+                    <span id="soLuongVoucherSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Ngày bắt đầu</label>
+                    <input type="date" id="ngayBDCTVoucherSua" class="form-control" />
+                    <span id="ngayBDCTVoucherSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Ngày kết thúc</label>
+                    <input type="date" id="ngayKTCTVoucherSua" class="form-control" />
+                    <span id="ngayKTCTVoucherSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Giảm giá (%)</label>
+                    <input type="number" id="giaCTVoucherSua" class="form-control" />
+                    <span id="giaCTVoucherSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Ghi chú</label>
+                    <input type="text" id="ghiChuCTVoucherSua" class="form-control" />
+                    <span id="ghiChuCTVoucherSuaVL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnCapNhatCTVoucher">Cập nhật</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal cập nhật chương trình voucher-->
+<!-- Modal xóa chương trình voucher-->
+<div class="modal fade" id="myModalDeleteCTVoucher" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Xóa chương trình voucher</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" hidden="hidden" id="idCTVoucherDelete" value="" />
+                    <p>Bạn có chắc chắn muốn xóa chương trình voucher này không</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-Do" id="btnXoaCTVoucher">Xóa</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal xóa chương trình voucher-->
+
+<script type="text/javascript">
+    $('#btnSearch').click(function (e) {
+        e.preventDefault();
+        var url = window.location.origin + "/CTVoucher/QuanLyCTVoucher?tgBD=" + $('#tgBD').val() + "&tgKT=" + $('#tgKT').val() + "&tinhTrang=" + $('#tinhTrang').val() + "&trangThai=" + $('#trangThai').val();
+        window.location = url;
+    })
+</script>

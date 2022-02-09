@@ -1,0 +1,65 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    Layout = null;
+}
+@model TaiKhoan
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>DangNhap</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/modernizr")
+    <script src="https://kit.fontawesome.com/2559e4b9c0.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <style>
+        #lbl_Error {
+            color: red;
+        }
+        * {
+            font-family: 'Times New Roman', Times, serif;
+        }
+        body {
+            background-image: url('../../Content/Images/Icon/backgroundDangNhap_1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <div class="container content">
+            <form method="post" action="/KhachHang/DangNhap">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Tên đăng nhập" name="tenDN" />
+                    @Html.ValidationMessageFor(model => model.TENDN, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <input type="password" class="form-control" placeholder="Mật khẩu" name="matKhau" />
+                    @Html.ValidationMessageFor(model => model.MATKHAU, "", new { @class = "text-danger" })
+                </div>
+                <input type="submit" value="Đăng nhập" class="form-control btn btn-primary" />
+            </form>
+            <div>
+
+                <p>Bạn chưa có tài khoản? <a class="" href="@Url.Action("DangKiTaiKhoan","KhachHang")" style="text-decoration: none">Đăng ký</a> để có thể đặt hàng ngay</p>
+                <a href="@Url.Action("KhoiPhucMatKhau/KhachHang")">Quên mật khẩu</a>
+            </div>
+            <div>
+                @if (ViewBag.error != null)
+                {
+                    <label id="lbl_Error">@ViewBag.error</label>
+                }
+            </div>
+        </div>
+    </center>
+
+    @Styles.Render("~/bundles/jquery")
+    @Styles.Render("~/bundles/bootstrap")
+
+</body>
+</html>

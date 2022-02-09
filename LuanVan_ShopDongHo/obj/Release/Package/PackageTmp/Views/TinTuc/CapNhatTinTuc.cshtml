@@ -1,0 +1,108 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    ViewBag.Title = "CapNhatTinTuc";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model TINTUC
+
+<h2 style="color: brown; font-weight: 800">Cập nhật tin tức</h2>
+<br />
+
+
+<div class="container-fluid pb-2">
+    <form method="post" action="/TinTuc/QuanLyTinTuc/">
+        <div class="row">
+            <div class="col-md-1">
+                <p style="font-size: 20px">Mã tin tức</p>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group">
+                    <input type="text" id="idTinTucSua" class="form-control" value="@Model.IDTINTUC" disabled="disabled" />
+                    <span id="idTinTucSuaVL" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-1">
+                <p style="font-size: 20px">Tiêu đề</p>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group">
+                    <input type="text" id="tieuDeTinTucSua" class="form-control" value="@Model.TIEUDE" />
+                    <span id="tieuDeTinTucSuaVL" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-1">
+                <p style="font-size: 20px">Tóm tắt</p>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group">
+                    <input type="text" id="tomTatTinTucSua" class="form-control" value="@Model.TOMTAT" />
+                    <span id="tomTatTinTucSuaVL" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-1">
+                <p style="font-size: 20px">Hình đại diện</p>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group">
+                    <input type="file" id="hinhDaiDienTinTucSua" class="form-control-sm" onchange="LoadAnhFolderHinhDaiDienTinTucSua(this)" />
+                    <img width="983" height="553" id="Image_DaiDienTinTucSua" src="~/Content/Images/TinTuc/HinhDaiDienTinTuc/@Model.HINHDAIDIEN" class="mt-2" />
+                    <span id="hinhDaiDienTinTucSuaVL" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-1">
+                <p style="font-size: 20px">Nội dung</p>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group">
+                    <input type="text" value="@Model.NOIDUNG" id="noiDungTinTucSua" hidden="hidden" />
+                    <textarea id="txtThongTinTinTucSua"></textarea>
+
+                    <span id="txtThongTinTinTucSuaVL" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-1">
+                <p style="font-size: 20px">Người đăng</p>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group">
+                    <input type="text" id="nguoiDangTTSua" class="form-control" value="@ViewBag.tenNV" disabled="disabled" />
+                    <span id="nguoiDangTTSuaVL" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-1">
+                <p style="font-size: 20px">Ngày đăng</p>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group">
+                    <input type="text" id="ngayDangTTSua" class="form-control" value="@string.Format("{0: dd/MM/yyyy}",Model.NGAYDANG)" disabled="disabled" />
+                    <span id="ngayDangTTSuaVL" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-11">
+                <button id="btnCapNhatTinTuc" class="btn btn-XanhLuc mt-2" type="submit"><i class="fas fa-edit"></i> Cập nhật tin tức</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+    var a = $('#noiDungTinTucSua').val();
+    $('#txtThongTinTinTucSua').html(a);
+</script>

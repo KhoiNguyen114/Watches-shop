@@ -1,0 +1,60 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    ViewBag.Title = "XuatFileBaoHanh";
+}
+@model  BaoHanhXuatFile
+
+
+<style>
+    .marginTH {
+        padding: 10px;
+    }
+</style>
+
+<div class="container">
+    <div class="row" style="font-size: 20px">
+        <p style="font-weight: bold; font-size: 40px">SHOP ĐỒNG HỒ NQN</p>
+        <p>Địa chỉ: 140 Lê Trọng Tấn, Phường Tây Thạnh, Quận Tân Phú, TP. Hồ Chí Minh</p>
+        <p>Email: nqn192025@gmail.com</p>
+        <p>Điện thoại: 0123456789</p>
+    </div>
+    <div class="row" style="font-size: 20px">
+        <div style="text-align: center">
+            <p style="text-transform: uppercase; font-size: 38px; font-weight: bold">Phiếu bảo hành</p>
+            <p>Ngày @DateTime.Now.Day tháng @DateTime.Now.Month năm @DateTime.Now.Year </p>
+        </div>
+    </div>
+    <div class="row" style="font-size: 20px">
+        <p>Mã hóa đơn: <span>@Model.maHoaDon</span></p>
+        <p>Tên khách hàng: <span>@Model.tenKH</span></p>
+        <p>Ngày mua hàng: <span>@string.Format("{0:dd/MM/yyyy}", Model.ngayLapHD)</span></p>
+    </div>
+    <div class="row">
+        <p style="text-transform: uppercase; font-size: 22px; font-weight: bold; text-align: center">Thông tin sản phẩm</p>
+        <p style="font-size: 18px">Tên sản phẩm: <span>@Model.tenSP</span></p>
+        <p style="font-size: 18px">Đơn giá: <span>@string.Format("{0:#,##}", Model.donGia) VNĐ</span></p>
+        <p style="font-size: 18px">Xuất sứ: <span>@Model.xuatSu</span></p>
+        <p style="font-size: 18px">Thời hạn bảo hành: <span>@Model.thoiHanBaoHanh năm</span></p>
+        <p style="font-size: 18px">
+            <b>Lưu ý: </b>Xin quý khách vui lòng giữ phiếu cẩn thận để bảo hành khi cần thiết.
+        </p>
+    </div>
+    <div style="height: 300px; margin-top: 10px">
+        <table style="margin-top: 50px; width: 100%; border: hidden">
+            <tr style="border: hidden">
+                <th style="text-align: center; font-weight: bold; font-size: 20px; margin-top: 50px; text-transform: uppercase; width: 50%; border: hidden">Shop đồng hồ NQN</th>
+                <th style="text-align: center; font-weight: bold; font-size: 20px; margin-top: 50px; text-transform: uppercase; width: 50%; border: hidden">Người mua hàng</th>
+            </tr>
+            <tr>
+                <td style="text-align: center; border: hidden"><i>(Kí và ghi rõ họ tên)</i></td>
+                <td style="text-align: center; border: hidden"><i>(Kí và ghi rõ họ tên)</i></td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+

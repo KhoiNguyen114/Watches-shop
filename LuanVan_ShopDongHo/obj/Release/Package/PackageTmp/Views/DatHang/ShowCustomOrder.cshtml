@@ -1,0 +1,70 @@
+﻿
+@{
+    ViewBag.Title = "ShowCustomOrder";
+    Layout = "~/Views/Shared/_LayoutOrder.cshtml";
+    <link href="~/Content/_style.css" rel="stylesheet" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}
+<div class="container-fluid" id="parent">
+    <ul class="nav nav-tabs" role="tablist" style="font-size:25px;font-family:'Times New Roman', Times, serif">
+        <li class="nav-item">
+            <a class="nav-link active" href="#tab1" role="tab" data-link="/DatHang/ShowOrders" data-toggle="tab">Hóa đơn của tôi</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#tab2" role="tab" data-link="/DatHang/ShowOrders?trangthai=1" data-toggle="tab">Đơn hàng đang chờ xử lý</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#tab3" role="tab" data-toggle="tab" data-link="/DatHang/ShowOrders?trangthai=2">Đơn hàng đang vận chuyển</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#tab4" role="tab" data-toggle="tab" data-link="/DatHang/ShowOrders?trangthai=3">Đơn hàng đã hoàn thành</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#tab5" role="tab" data-toggle="tab" data-link="/DatHang/ShowOrders?trangthai=4">Đơn hàng đã hủy</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane fade in active" id="tab1"></div>
+        <div role="tabpanel" class="tab-pane fade" id="tab2"></div>
+        <div role="tabpanel" class="tab-pane fade" id="tab3"></div>
+        <div role="tabpanel" class="tab-pane fade" id="tab4"></div>
+        <div role="tabpanel" class="tab-pane fade" id="tab5"></div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('.nav-link').click(function () {
+            $('.nav-link').removeClass('active');
+            $(this).tab("show");
+            $(this).addClass('active');
+            var id = $(this).attr('href');
+            window.location.hash = id;
+            var link = $(this).attr('data-link');
+            var html = $(id).html();
+            if (html == '') {
+                $(id).load(link);
+            }
+
+        })
+        var hash = location.hash;
+        if (hash != '') {
+            $('.nav-link [href="' + hash + '"]').trigger('click');
+        }
+        else {
+            $('.nav-link.active').trigger('click');
+        }
+    })
+</script>
+<style>
+    .nav-link {
+        color: black;
+    }
+    #parent{
+        width:100%;
+    }
+    @@media only screen and (max-width:1024){
+        #parent{
+            width:max-content;
+        }
+    }
+</style>

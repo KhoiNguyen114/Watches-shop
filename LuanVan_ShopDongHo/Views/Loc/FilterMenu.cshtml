@@ -1,0 +1,228 @@
+﻿@using LuanVan_ShopDongHo.Models;
+
+@{
+                <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+                            <link href="~/Content/_style.css" rel="stylesheet" />
+}
+@{ var query_dicts = Session["query_coditions"] as Dictionary<string, string>; }
+@model LocSanPham
+
+<div class="container">
+    <div action="/Loc/HienThiSPTheoThuongHieu" method="get">
+        <div class="filter_condition" id="filter_condition">
+            @{ if (query_dicts != null)
+                {
+                    foreach (var item in query_dicts)
+                    {
+    <span class="span_filter" id="span_@item.Key">
+        <button class="btn-filter" id="btn-@item.Key" style="margin:0px;" onclick="close_btn(this)">
+            x
+        </button>
+        <label class="label_condition">
+            @item.Value
+        </label>
+    </span> }
+
+} }
+        </div>
+
+        <br />
+        <label style="text-transform: uppercase; font-weight: bold">Thương Hiệu</label><br />
+        <hr />
+        <div style="overflow: scroll; height: 200px">
+            @foreach (HANG a in ViewBag.dsHang)
+            {
+<input type="checkbox" value="@a.TENHANG" id="@a.MAHANG" name="MAHANG:@a.MAHANG" class="span_@a.MAHANG" /><span>&nbsp; @a.TENHANG</span><br /><br />}
+        </div>
+        <hr />
+
+        <br />
+        <label style="text-transform: uppercase; font-weight: bold">Giới tính</label><br />
+        <hr />
+        <div style="overflow: scroll; height: 150px">
+            @foreach (DANHMUCSP a in ViewBag.dsGT)
+            {
+<input type="checkbox" value="@a.TENDM" id="@a.MADM" name="MADM:@a.MADM" class="span_@a.MADM" /><span>&nbsp; @a.TENDM</span><br /><br />}
+        </div>
+        <hr />
+
+        <br />
+        <label style="text-transform: uppercase; font-weight: bold">Lọc theo giá</label><br />
+        <hr />
+        <div style="overflow: scroll; height: 200px">
+            @foreach (var item in ViewBag.dsTien)
+            {
+                //Console.WriteLine(id_a);
+<input type="checkbox" value="@item.Value" id="@item.Key" name="DONGIA:@item.Value" class="span_@item.Key" /><span>&nbsp; @item.Value</span><br /><br />}
+        </div>
+        <hr />
+        <br />
+        <label style="text-transform: uppercase; font-weight: bold">Lọc theo dòng sản phẩm</label><br />
+        <hr />
+        <div style="overflow: scroll; height: 200px">
+            @foreach (var item in ViewBag.dsDongSP)
+            {
+
+<input type="checkbox" value="@item.Value" id="@item.Key" name="DONGSP:@item.Value" class="span_@item.Key" /><span>&nbsp; @item.Value</span><br /><br />}
+        </div>
+        <hr />
+
+        <br />
+        <label style="text-transform: uppercase; font-weight: bold">Lọc theo loại dây</label><br />
+        <hr />
+        <div style="overflow: scroll; height: 200px">
+            @foreach (var item in ViewBag.dsLoaiDay)
+            {
+<input type="checkbox" value="@item.Value" id="@item.Key" name="LOAIDAY:@item.Value" class="span_@item.Key" /><span>&nbsp; @item.Value</span><br /><br />}
+        </div>
+        <hr />
+        <br />
+        <label style="text-transform: uppercase; font-weight: bold">Khuyến mãi</label><br />
+        <div style="overflow: scroll; height: 200px">
+            <input type="checkbox" value="km" id="km" name="KHUYENMAI:km" class="span_km" /><span>&nbsp;Sản phẩn khuyến mãi </span><br /><br />
+        </div>
+
+        @*<input type="submit" value="LỌC" class="btn btn-dark" />*@
+    </div>
+</div>
+<script type="text/javascript">
+
+    function delParameter(parameterName) {
+        let parameters = new URLSearchParams(window.location.search);
+        parameters.delete(parameterName);
+    }
+
+    function close_btn(e) {
+        var btnID = $(e).attr('id');
+        var parentID = document.getElementById(`${btnID}`).parentElement.getAttribute('id');
+
+        var input = $(`input:checkbox.${parentID}`);
+        if (input.prop("checked") == true)
+            input.trigger("click");
+        $(`#${parentID}`).remove();
+        var id = $(`input:checkbox.${parentID}`).attr("id");
+        var val = $(`input:checkbox.${parentID}`).val();
+        var data = $(`input:checkbox.${parentID}`).attr('name').toString();
+    }
+
+    const createQueryCondition = function (val, i, name) {
+        //Khởi tạo các thẻ filter
+
+        var span_filter = document.createElement("span");
+        var btn_close = document.createElement("BUTTON");
+        var label_condition = document.createElement("label");
+
+        //Khởi tạo attr cho các element
+        span_filter.setAttribute("class", "span_filter");
+        span_filter.setAttribute("id", `span_${i}`);
+        alert(i);
+        //Nút đóng
+        btn_close.setAttribute("class", "btn-filter");
+        btn_close.setAttribute("id", `btn-${i}`);
+        btn_close.innerText = "x";
+        btn_close.style.margin = "0px";
+        btn_close.addEventListener("click", function () {
+            var btnID = $(this).attr('id');
+            var parentID = document.getElementById(`${btnID}`).parentElement.getAttribute('id');
+            $(`input:checkbox.${parentID}`).trigger("click");
+            $(`#${parentID}`).remove();
+            alert(parentID);
+        })
+        //Label tên
+        label_condition.innerText = val;
+        label_condition.setAttribute("class", "label_condition");
+
+        //Add động các query condition
+        span_filter.appendChild(btn_close);
+        span_filter.appendChild(label_condition);
+
+        document.getElementById('filter_condition').appendChild(span_filter);
+
+    }
+
+    $(document).ready(function () {
+        $('.btn-filter').each(function () {
+            var btnID = $(this).attr('id');
+            var parentID = document.getElementById(`${btnID}`).parentElement.getAttribute('id');
+            var input = $(`input:checkbox.${parentID}`);
+            input.prop("checked", "true");
+        })
+    })
+
+    $('input[type="checkbox"]').click(function (e) {
+
+        if ($(this).prop("checked") == true) {
+
+            var ele = $(this);
+            //createQueryCondition(ele.val(), ele.attr("id"), ele.attr("name"));
+            var data = $(this).attr('name').toString();
+            $.ajax({
+                url: "/Loc/Filter",
+                dataType: "Json",
+                type: "Get",
+                data: {
+                    condition: data,
+                    condition_element: ele.attr("id") + ":" + ele.val(),
+                },
+                success: function (res) {
+                    if (res.success == true) {
+                        window.location.reload();
+                    }
+                }
+            })
+        }
+        else if ($(this).prop("checked") == false) {
+            $(this).removeAttr("checked");
+            var ele = $(this);
+            var id = $(this).attr("id");
+            var data = $(this).attr('name').toString();
+            $(`#span_${id}`).remove();
+            $.ajax({
+                url: "/Loc/EraseCondition",
+                dataType: "Json",
+                type: "Get",
+                data: {
+                    condition: data,
+                    condition_element: ele.attr("id") + ":" + ele.val(),
+                },
+                success: function (res) {
+                    if (res.success == true) {
+                    }
+                }
+            })
+        }
+    })
+
+</script>
+<style>
+    .btn-filter {
+        text-align: center;
+        background-color: inherit;
+        cursor: pointer;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: none;
+        filter: blur(0.9px);
+        border-right: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+        .btn-filter:hover {
+            background: #eee;
+        }
+
+    .label_condition {
+        text-align: center;
+        display: inline-block;
+        height: 25px;
+        margin-top: 5px;
+    }
+
+    .span_filter {
+        display: inline-block;
+        background-color: #eee;
+        margin: 0 5px;
+        height: 25px;
+    }
+</style>
+

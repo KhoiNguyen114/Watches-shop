@@ -1,0 +1,142 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{ ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_MainLayout.cshtml"; }
+@model List<SANPHAM>
+<div class="container-fluid">
+
+</div>
+<div class="container-fluid">
+    <h4 class="indexer">
+        <span class="line_indexer"></span>
+        <span class="indexer_text">Sản phẩm cho bạn</span>
+        <span></span>
+    </h4>
+</div>
+@{
+    <div class="d-flex flex-row justify-content-sm-center flex-wrap align-content-center">
+        @foreach (var item in (IEnumerable<dynamic>)ViewBag.dsSP_Rec)
+        {
+            <div class="col-sm-3">
+                <div class="card" style="width: 18rem;margin : 5px;border:none;">
+                    <a href="/SanPham/ChiTietSanPham/?MASP=@item.MASP">
+                        <img class="card-image-top" src="~/Content/Images/SanPham/@item.HINHANH" alt="@item.MASP" style="width:300px;height:250px;" />
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align:center;font-weight:normal;">
+                            <a class="card_item_link" href="/SanPham/ChiTietSanPham/?MASP=@item.MASP">@item.TENSP - @item.DONGSP - @item.NANGLUONG - @item.KICHTHUOC - @item.LOAIDAY;</a>
+                        </h5>
+                        @{ List<HienThiKhuyenMai> ds = (List<HienThiKhuyenMai>)ViewBag.dsKM;
+                            if (ds != null)
+                            {
+                                HienThiKhuyenMai htkm = ds.Where(t => t.maSP == item.MASP).FirstOrDefault();
+                                if (htkm != null)
+                                {
+                                    <p class="card-text" style="text-align:center;color:black; text-decoration: line-through">@string.Format("{0:0,0}", item.DONGIA)&nbsp<span>VNĐ</span></p>
+                                    <p class="card-text" style="text-align:center;color:red;">@string.Format("{0:0,0}", htkm.donGiaKM)&nbsp<span>VNĐ</span></p>
+                                }
+
+                                else
+                                {
+                                    <p class="card-text" style="text-align:center;color:red;">@string.Format("{0:0,0}", item.DONGIA)&nbsp<span>VNĐ</span></p>
+                                }
+
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+<div class="container-fluid">
+
+    <h4 class="indexer">
+        <span></span>
+        <span style=" height: 1px; background: black;"></span>
+        <span class="indexer_text">Sản phẩm cho Nam</span>
+        <span></span>
+    </h4>
+</div>
+@{
+    <div class="d-flex flex-row justify-content-sm-center flex-wrap align-content-center">
+        @foreach (var item in (IEnumerable<dynamic>)ViewBag.dsSP_Nam)
+        {
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem;margin : 5px;border:none;">
+                    <a href="/SanPham/ChiTietSanPham/?MASP=@item.MASP">
+                        <img class="card-image-top" src="~/Content/Images/SanPham/@item.HINHANH" alt="@item.MASP" style="width:300px;height:250px;" />
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align:center;font-weight:normal;">
+                            <a class="card_item_link" href="/SanPham/ChiTietSanPham/?MASP=@item.MASP">@item.TENSP - @item.DONGSP - @item.NANGLUONG - @item.KICHTHUOC - @item.LOAIDAY;</a>
+                        </h5>
+                        @{ List<HienThiKhuyenMai> ds = (List<HienThiKhuyenMai>)ViewBag.dsKM;
+                            if (ds != null)
+                            {
+                                HienThiKhuyenMai htkm = ds.Where(t => t.maSP == item.MASP).FirstOrDefault();
+                                if (htkm != null)
+                                {
+                                    <p class="card-text" style="text-align:center;color:black; text-decoration: line-through">@string.Format("{0:0,0}", item.DONGIA)&nbsp<span>VNĐ</span></p>
+                                    <p class="card-text" style="text-align:center;color:red;">@string.Format("{0:0,0}", htkm.donGiaKM)&nbsp<span>VNĐ</span></p>
+                                }
+
+                                else
+                                {
+                                    <p class="card-text" style="text-align:center;color:red;">@string.Format("{0:0,0}", item.DONGIA)&nbsp<span>VNĐ</span></p>
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+<div class="container-fluid">
+    <h4 class="indexer">
+        <span style="text-decoration:line-through black 1px;"></span>
+        <span class="indexer_text">Sản phẩm cho Nữ</span>
+        <span></span>
+    </h4>
+</div>
+@{
+    <div class="d-flex flex-row justify-content-sm-center flex-wrap align-content-center">
+        @foreach (var item in (IEnumerable<dynamic>)ViewBag.dsSP_Nu)
+        {
+            <div class="col-md-3">
+                <div class="card" style="width: 18rem;margin : 5px;border:none;">
+                    <a href="/SanPham/ChiTietSanPham/?MASP=@item.MASP">
+                        <img class="card-image-top" src="~/Content/Images/SanPham/@item.HINHANH" alt="@item.MASP" style="width:300px;height:250px;" />
+                    </a>
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align:center;font-weight:normal;">
+                            <a class="card_item_link" href="/SanPham/ChiTietSanPham/?MASP=@item.MASP">@item.TENSP - @item.DONGSP - @item.NANGLUONG - @item.KICHTHUOC - @item.LOAIDAY;</a>
+                        </h5>
+                        @{ List<HienThiKhuyenMai> ds = (List<HienThiKhuyenMai>)ViewBag.dsKM;
+                            if (ds != null)
+                            {
+                                HienThiKhuyenMai htkm = ds.Where(t => t.maSP == item.MASP).FirstOrDefault();
+                                if (htkm != null)
+                                {
+                                    <p class="card-text" style="text-align:center;color:black; text-decoration: line-through">@string.Format("{0:0,0}", item.DONGIA)&nbsp<span>VNĐ</span></p>
+                                    <p class="card-text" style="text-align:center;color:red;">@string.Format("{0:0,0}", htkm.donGiaKM)&nbsp<span>VNĐ</span></p>
+                                }
+
+                                else
+                                {
+                                    <p class="card-text" style="text-align:center;color:red;">@string.Format("{0:0,0}", item.DONGIA)&nbsp<span>VNĐ</span></p>
+                                }
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+
+@{
+    Html.RenderAction("ShowKhuyenMaiModal", "KhuyenMai");
+}
+
+<script src="~/Scripts/notify.js"></script>

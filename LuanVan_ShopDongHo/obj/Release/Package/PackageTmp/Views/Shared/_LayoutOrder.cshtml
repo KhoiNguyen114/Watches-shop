@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+@using LuanVan_ShopDongHo.Models;
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/Content/_style.css" type="text/css" />
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <link href="~/Content/_ThongTinDN.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+</head>
+<body style="width:100%;font-size:20px;">
+    <header style="max-width:100%;" id="head">
+        <div class="container-fluid" id="header">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="@Url.Action("Home","Home")">
+                        @*Thay đổi hình logo*@
+                        <img src="~/Content/Images/Shop_Logo/Logo_NQN.png" alt="Logo" id="logo" /><br />
+                    </a>
+                </div>
+                <div class="col-md-4">
+                    <a id="shopName" href="@Url.Action("Home","Home")">
+                        <h3><b>SHOP ĐỒNG HỒ</b></h3>
+                        <h3><b>NQN</b></h3>
+                    </a>
+                </div>
+                <div class="col-md-5" id="formSearch">
+                    @{ Html.RenderAction("MenuKhachHang", "Home"); }
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container-fluid" style="width:100%;">
+        @RenderBody()
+    </div>
+    <div class="row ml-5">
+        <span class="mt-2">
+            Các trang liên quan:
+        </span>
+        <a role="button" href="#" class="btn btn-facebook ml-2">
+            <i class="fab fa-facebook"></i>
+        </a>
+        <a role="button" href="#" class="btn btn-twitter ml-2">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a role="button" href="#" class="btn btn-youtube ml-2">
+            <i class="fab fa-youtube"></i>
+        </a>
+    </div>
+
+    <hr />
+
+    <div class="container-fluid">
+        <div class="row bg-dark" id="footer">
+            <div class="col-md-6">
+                <p>Shop đồng hồ NQN - Chuyên cung cấp các dạng đồng hồ tuyệt vời</p>
+                <p>Địa chỉ: 140 Lê Trọng Tấn, Phường Tây Thạnh, Quận Tân Phú, TP. Hồ Chí Minh</p>
+            </div>
+            <div class="col-md-6">
+                <p>Email: nqn192025@gmail.com</p>
+                <p>Điện thoại: 0123456789</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        $('#btn_MenuKH').click(function () {
+            $('#menu_KH').toggleClass("show");
+        });
+    </script>
+    <script>
+    $(document).ready(function () {
+        $('a.card_item_link').css({ "color": "black", "text-decoration": "none" })
+        var msg = @Html.Raw(Json.Encode(ViewBag.msg));
+        if (msg.length > 0)
+            $.notify(msg, "success");
+    })
+    </script>
+    <!-- Messenger Plugin chat Code -->
+    <div id="fb-root"></div>
+
+    <!-- Your Plugin chat code -->
+    <div id="fb-customer-chat" class="fb-customerchat">
+    </div>
+
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "103068492245889");
+        chatbox.setAttribute("attribution", "biz_inbox");
+    </script>
+
+    <!-- Your SDK code -->
+    <script>
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v12.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script src="~/Scripts/SearchBar.js"></script>
+    <script src="https://kit.fontawesome.com/2559e4b9c0.js" crossorigin="anonymous"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="~/Content/js/bootstrap.min.js"></script>
+</body>
+</html>

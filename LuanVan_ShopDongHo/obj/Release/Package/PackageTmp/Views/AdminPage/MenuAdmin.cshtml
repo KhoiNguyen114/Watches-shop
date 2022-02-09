@@ -1,0 +1,98 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{ Layout = null;
+    TAIKHOAN tk = (TAIKHOAN)Session["Admin"];
+}
+<ul>
+    @{ if (ViewBag.kpq != null)
+        {
+            <li><a style="color: white">@ViewBag.kpq</a></li>
+            <li><a href="/Home/Home"><i class="fas fa-arrow-left"></i>Chuyển tới trang chủ</a></li>
+            <li><a href="/TaiKhoan/DangXuatAdmin"><i class="fas fa-power-off"></i>Đăng xuất</a></li>
+        }
+        else
+        {
+            <li><a href="/TaiKhoan/ThongTinTaiKhoan"><i class="fas fa-info-circle"></i>Thông tin tài khoản</a></li>
+            if (ViewBag.editUser == true)
+            {
+                <li>
+                    <a href="#" id="qlnd-btn">
+                        <i class="fas fa-user-circle"></i>
+                        Quản lý người dùng
+                        <span class="fas fa-caret-down qlnd"></span>
+                    </a>
+                    <ul id="qlnd-show">
+                        <li><a href="/TaiKhoan/QuanLyTaiKhoan"><i class="fas fa-user-edit"></i>Quản lý tài khoản</a></li>
+                        <li><a href="/PhanQuyen/QuanLyPhanQuyen"><i class="fas fa-user-cog"></i>Quản lý phân quyền</a></li>
+                    </ul>
+                </li>
+                <li><a href="/NhanVien/QuanLyNhanVien"><i class="fas fa-user"></i>Quản lý nhân viên</a></li>
+            }
+            <li><a href="/KhachHang/QuanLyKhachHang"><i class="fas fa-address-card"></i>Quản lý khách hàng</a></li>
+            if (ViewBag.sale == true)
+            {
+                <li>
+                    <a href="#" id="qldh-btn">
+                        <i class="fas fa-calendar-week"></i>
+                        Quản lý đơn hàng
+                        <span class="fas fa-caret-down qldh"></span>
+                    </a>
+                    <ul id="qldh-show">
+                        <li><a href="@Url.Action("Index","QuanLyDonHang", new {TENDN = tk.TENDN })"><i class="fas fa-check"></i>Đơn hàng</a></li>
+                    </ul>
+                </li>
+            }
+
+            if (ViewBag.report == true)
+            {
+                <li>
+                    <a href="#" id="qltk-btn">
+                        <i class="fas fa-pen-square"></i>
+                        Thống kê
+                        <span class="fas fa-caret-down qltk"></span>
+                    </a>
+                    <ul id="qltk-show">
+                        <li><a href="/ThongKe/DoanhSoCuaHang"><i class="fas fa-chart-pie"></i>Thống kê doanh số cửa hàng bằng biểu đồ</a></li>
+                        <li><a href="/ThongKe/DoanhSoHang"><i class="fas fa-table"></i>Thống kê doanh số cửa hàng bằng bảng</a></li>
+                    </ul>
+                </li>
+            }
+
+            <li>
+                <a href="#" id="qlbh-btn">
+                    <i class="fas fa-user-circle"></i>
+                    Quản lý bảo hành
+                    <span class="fas fa-caret-down qlbh"></span>
+                </a>
+                <ul id="qlbh-show">
+                    <li><a href="/BaoHanh/QuanLyCheDoBaoHanh"><i class="fas fa-wrench"></i>Quản lý chế độ bảo hành</a></li>
+                    <li><a href="/BaoHanh/QuanLyThongTinBaoHanh"><i class="fas fa-hammer"></i>Quản lý thông tin bảo hành</a></li>
+                </ul>
+            </li>
+            if (ViewBag.stockWare == true)
+            {
+                <li>
+                    <a href="#" id="qlk-btn">
+                        <i class="fas fa-box"></i>
+                        Quản lý kho
+                        <span class="fas fa-caret-down qlk"></span>
+                    </a>
+                    <ul id="qlk-show">
+                        <li><a href="/NhapHang/QuanLyPhieuNhap"><i class="fas fa-download"></i>Quản lý nhập hàng</a></li>
+                        <li><a href="/QuanLy/QuanLySanPham"><i class="fas fa-edit"></i>Quản lý sản phẩm</a></li>
+                        <li><a href="/QuanLy/QuanLyHang"><i class="fas fa-edit"></i>Quản lý hãng</a></li>
+                        <li><a href="/QuanLy/QuanLyDanhMuc"><i class="fas fa-edit"></i>Quản lý danh mục sản phẩm</a></li>
+                    </ul>
+                </li>
+            }
+
+            if (ViewBag.editSaleOff == true)
+            {
+                <li><a href="/KhuyenMai/QuanLyKhuyenMai"><i class="fas fa-dollar-sign"></i>Khuyến mãi</a></li>
+                <li><a href="/Voucher/QuanLyChuongTrinhVoucher"><i class="fas fa-gift"></i>Chương trình voucher</a></li>
+            }
+            <li><a href="/TinTuc/QuanLyTinTuc"><i class="fas fa-newspaper"></i>Tin tức</a></li>
+            <li><a href="/Home/Home"><i class="fas fa-arrow-left"></i>Chuyển tới trang chủ</a></li>
+            <li><a href="/TaiKhoan/DangXuatAdmin"><i class="fas fa-power-off"></i>Đăng xuất</a></li>
+        } }
+
+</ul>

@@ -1,0 +1,317 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    ViewBag.Title = "ChitietDH";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    int trangThai = ViewBag.TrangThaiDon;
+
+}
+@model customerLinkOrder
+<style>
+    .cancelOrder {
+        text-decoration: none;
+    }
+
+        .cancelOrder :hover {
+            text-decoration: none;
+        }
+</style>
+<form method="post" id="dhForm">
+    <div class="container-fluid" style="background-color:#F9F9F9;max-width:100%;">
+        <div>
+            @{
+                <div style="display:none">
+                    <input type="number" value="@Model.IDHoaDon" id="IDHoaDon" name="IDHoaDon" />
+                </div>
+                <div class="order" style="margin-left:5px;background-color:white;">
+                    <div class="row order-item">
+                        <div class="col-4">
+                            <p style="height:100%;padding-top:10px;padding-left:10px;font-size:20px; margin-left:5px;">Mã Hóa Đơn : @Model.MAHD</p>
+                        </div>
+                        <div class="col-5" style="text-align:left;">
+
+                            <span>
+
+                                @if (trangThai == 1)
+                                {
+                                    <label style="display:inline-block;font-size:20px;padding-top:10px;">Trạng thái đơn hàng</label>
+                                    @Html.DropDownList("tt", new SelectList(ViewBag.TrangThai, "value", "text", ViewBag.TrangThaiDon), new
+                                              {
+                                                  @class = "form-control trangthai",
+                                        @style = "width:60%;display:inline-block;",
+                                        @id = "tt"
+                                              })
+                                }
+                                @if (trangThai == 2)
+                                {
+                                    <label style="display:inline-block;font-size:20px;padding-top:10px;">Trạng thái đơn hàng</label>
+                                    @Html.DropDownList("tt", new SelectList(new List<Object> { new { value = 3, text = "Đơn hàng đã thanh toán" }, new { value = 4, text = "Đơn hàng đã hủy" } }, "value", "text", ViewBag.TrangThaiDon), new
+                               {
+                                   @class = "form-control trangthai",
+                                   @style = "width:60%;display:inline-block;",
+                                   @id = "tt"
+                               })
+                                }
+                            </span>
+                        </div>
+                        <div class="col-3">
+                            @if (trangThai != 3 && trangThai != 4)
+                            {
+                                <button type="submit" class="btn btn-XanhLuc ml-auto" style="text-transform: uppercase; font-weight: bold;margin-top:5px; " id="updateTT">
+                                    <i class="fas fa-pen-square"></i>
+                                    Cập nhật trạng thái
+                                </button>
+                            }
+
+                        </div>
+                    </div>
+                    @{
+                        int j = 0;
+                        foreach (var chitiet in Model.chitiets)
+                        {
+                            <div class="card" style="width:100%;border-left:none;border-right:none;border-bottom:none;">
+                                <div class="row order-item no-gutters">
+                                    <div class="col-5">
+                                        <div class="card-body">
+                                            <img class="card-img" src="~/Content/Images/SanPham/@chitiet.HINHANH" style="height:200px;width:200px;display:inline-block" alt="Suresh Dasari Card" />
+                                            <p class="card-text" style="padding-top:30px;display:inline-block">@chitiet.TENSP</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-1">
+                                        <div class="card-body">
+                                            <p class="card-text" style="padding-top:85px;height:200px;">QTY: @chitiet.SOLUONG</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-4" style="padding-top:77px;">
+                                        <div class="card-body">
+                                            <p class="card-text" style="display:inline-block;margin-right:10px;">Code</p>
+                                            @if (chitiet.QRCode.Length <= 0)
+                                            {
+                                                <select id="@chitiet.MASP" data-id="@j" class="form-control code" style="width:80%;display:inline-block">
+                                                </select>
+                                            }
+                                            else
+                                            {
+                                                <select id="@chitiet.MASP" data-id="@j" class="form-control code" style="width:80%;display:inline-block" disabled="disabled">
+                                                    <option selected="selected">@chitiet.QRCode</option>
+                                                </select>
+                                            }
+                                            <input type="text" style="display:none" class="form-control code" id="@j" />
+                                        </div>
+                                    </div>
+                                    <div class="col-2" style="padding-top:77px;">
+                                        <div class="card-body">
+                                            @{
+
+                                                <button id="@j" data-id="@chitiet.MASP" class="acceptProduct" style="display:none;">Xác nhận</button>
+                                            }
+                                            @if (trangThai == 3)
+                                            {
+                                        <a class="btn btn-primary" href="@Url.Action("XuatFilePdfBaoHanh","BaoHanh",new { idCTHD = chitiet.IDChiTiet })" style="display:inline-block" id="printFile"><i class="fas fa-gavel"></i></a>}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            j++;
+                        }
+                    }
+                </div>
+            }
+
+        </div>
+        <br />
+        <div class="row" style="font-size:20px;">
+            <div class="col-6">
+                <div class="row">
+                    <span style="margin-left:10px;">Thông tin khách hàng</span>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="row" style="background-color: white;padding-top:10px;">
+                            <span style="margin-left:10px;">Tên KH :</span>
+                        </div>
+                        <div class="row" style="background-color: white">
+                            <span style="margin-left:10px;">Địa chỉ :</span>
+                        </div>
+                        <div class="row" style="background-color: white">
+                            <span style="margin-left:10px;">Số Điện thoại :</span>
+                        </div>
+                        <div class="row" style="background-color: white">
+                            <span style="margin-left:10px;">Giới tính :</span>
+                        </div>
+                        <div class="row" style="background-color: white">
+                            <span style="margin-left:10px;">Số CMND :</span>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="row" style="background-color: white; padding-top: 10px;display:none;">
+                            <input readonly="readonly" style="border:none;" type="text" id="id" name="idKH" value="@ViewBag.kh.IDKhachHang" />
+                        </div>
+                        <div class="row" style="background-color: white;padding-top:10px">
+                            <input readonly="readonly" style="border:none;" type="text" id="fullname" name="TENKH" value="@ViewBag.kh.TENKH" />
+                        </div>
+                        <div class="row" style="background-color: white">
+                            <input readonly="readonly" style="border:none;" type="text" id="destAddress" name="DIACHI" value="@ViewBag.kh.DIACHI" />
+                        </div>
+                        <div class="row" style="background-color: white">
+                            <input readonly="readonly" style="border:none;" type="text" id="cusphone" name="SDT" value="@ViewBag.kh.SDT" />
+                        </div>
+                        <div class="row" style="background-color: white">
+                            <input readonly="readonly" style="border:none;" type="text" id="cusGender" name="gender" value="@ViewBag.kh.GIOITINH" />
+                        </div>
+                        <div class="row" style="background-color: white">
+                            <input readonly="readonly" style="border:none;" type="text" id="cusPassport" name="cusPassport" value="@ViewBag.kh.SOCMND" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                <div class="row">
+                    <span style="margin-left:10px;">Thông tin thanh toán</span>
+                </div>
+                <table class="table" style="background-color:white;">
+                    <thead>
+                        <tr>
+                            <th>Hạng Mục</th>
+                            <th>Giá</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Thành Tiền</td>
+                            <td><span><input type="text" readonly="readonly" style="border:none" value="@string.Format("{0:#,##}",ViewBag.thanhTien )" id="cost" name="cost" /> VNĐ</span></td>
+                        </tr>
+                        <tr>
+                            <td>Giảm Giá</td>
+                            <td><span><input type="text" readonly="readonly" style="border:none" value="@string.Format("{0:#,##}", ViewBag.km)" name="discount" id="discount" /></span> VNĐ</td>
+                        </tr>
+                        <tr>
+                            <td>Tổng Tiền</td>
+                            <td><span><input type="text" readonly="readonly" style="border:none" value="@string.Format("{0:#,##}",ViewBag.tongTien)" id="total" name="total" /></span> VNĐ</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</form>
+
+<script type="text/javascript">
+    var click = 1;
+    var type = 0;
+    $(document).ready(function (e) {
+        $('select[class="form-control code"]').each(function (e1) {
+            $(this).on("click", function (e2) {
+                e2.preventDefault();
+                var maSP = $(this).attr('id');
+                var element = $(this);
+                var current = $('option:selected', this).val();
+
+                if (current == undefined)
+                    current = "Chọn sản phẩm muốn bán";
+                if (click == 1) {
+                    $.ajax({
+                        url: '/QuanLyDonHang/getCode',
+                        data: {
+                            maSP: maSP,
+                        },
+                        dataType: 'Json',
+                        type: 'Get',
+                        success: function (res) {
+                            if (res.success == true) {
+                                if (res.data.length > 0) {
+                                    var s = '<option value="-1">' + current + '</option> ';
+                                    for (var i = 0; i < res.data.length; i++) {
+                                        if (res.data[i] != current)
+                                            s += '<option value="' + res.data[i] + '">' + res.data[i] + '</option>';
+                                    }
+                                    element.html(s);
+                                    type = 1;
+                                }
+                                else {
+                                    $.notify('Sản phẩm hiện đang hết hàng', 'error');
+                                }
+                            }
+                            else {
+                                $.notify('Sản phẩm không còn trong kho', 'error');
+                            }
+                        }
+                    })
+
+                    click++;
+                }
+                else {
+                    var idButton = $(this).data("id");
+                    click = 1;
+                }
+
+            })
+        })
+    })
+
+    $('select[class="form-control code"]').on("change", function (e) {
+        var id = $(this).data("id");
+        console.log(id);
+        $(`input[id="${id}"]`).val($('option:selected', this).val());
+    })
+
+    $('button.acceptProduct').each(function (e) {
+        $(this).on('click', function (e) {
+            e.preventDefault();     
+            var buttonID = $(this).attr('id');
+            var idHoaDon = $('#IDHoaDon').val();
+            var maSP = $(this).data('id');
+            var code = $(`input[id="${buttonID}"]`).val();
+            $.ajax({
+                url: '/QuanLyDonHang/updateCT_Stock',
+                data: {
+                    IDHoaDon: idHoaDon,
+                    MASP: maSP,
+                    code: code,
+                },
+                dataType: 'Json',
+                type: 'Post',
+                success: function (res) {
+                }
+            })
+        })
+    })
+    var trangthai = @Html.Raw(Json.Encode(ViewBag.TrangThaiDon));
+    $('#updateTT').on('click', function (e) {
+        console.log(trangthai);
+        if (trangthai == 1 && type == 1) {
+            e.preventDefault();
+            var getCodes = $('input[class="form-control code"]').map(function () { return $(this).val(); }).get();
+            var checkNull = false;
+            $('input[class="form-control code"]').each(function (e) {
+                if ($(this).val().length <= 0) {
+                    checkNull = true;
+                }
+            })
+
+            if (checkNull == true) {
+                $.notify('Có sản phẩm chưa có code, vui lòng kiểm tra lại', 'error');
+                return false;
+            }
+
+            let findDuplicates = arr => arr.filter((item, index) => arr.indexOf(item) != index);
+            var checkDup = findDuplicates(getCodes);
+            if (checkDup.length > 0) {
+                $.notify('Trung san pham, vui long kiem tra lai', 'error');
+                return false;
+            }
+            var currentTT = $('#tt').val();
+            if (currentTT != trangthai) {
+                $('button[class="acceptProduct"]').map(function () {
+                    $(this).trigger('click');
+                })
+                $('#dhForm').trigger('submit');
+            }
+            else {
+                $.notify('Vui long chon trang thai khac', 'error');
+            }
+        }
+        else {
+            $('#dhForm').trigger('submit');
+        }
+    })
+</script>

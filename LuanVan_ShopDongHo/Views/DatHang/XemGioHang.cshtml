@@ -1,0 +1,103 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    ViewBag.Title = "XemGioHang";
+    Layout = "~/Views/Shared/_LayoutGioHang.cshtml";
+}
+@model GioHang
+<style>
+    .quantity {
+        border-style: solid;
+        border-width: 1px;
+        border-color: #caccd3;
+        border-radius: 7px;
+        display: inline-flex;
+        padding: 0.2rem 0.8rem;
+    }
+
+        .quantity button,
+        .quantity input {
+            border: none;
+            border-radius: 0;
+            background: transparent;
+            padding: 0;
+        }
+
+        .quantity input {
+            width: 40px;
+            text-align: center;
+            color: #f15e42;
+            font-size: 1.25rem;
+        }
+
+        .quantity button {
+            color: #414961;
+        }
+
+            .quantity button svg {
+                width: 20px;
+                height: 20px;
+            }
+
+            .quantity button:hover {
+                color: #f15e42;
+            }
+</style>
+
+
+<h2 style="color: black; font-weight: 800; text-align: center; text-transform: uppercase" class="mt-2 pb-2">Thông tin giỏ hàng</h2>
+
+<div class="container">
+    <div id="tblGioHang">
+        @*<table class="table table-bordered">
+            <tr style="text-align: center; color: white; background: #04a4b2; text-transform: uppercase; font-size: 18px">
+                <th>STT</th>
+                <th>Mã sản phẩm</th>
+                <th>Tên sản phẩm</th>
+                <th>Hình</th>
+                <th>Đơn giá (VNĐ)</th>
+                <th>Số lượng</th>
+                <th>Thành tiền (VNĐ)</th>
+                <th>Thao tác</th>
+            </tr>
+            @{
+                int dem = 1;
+            }
+
+            @foreach (CartItem a in Model.dsSP)
+            {
+
+                <tr style="font-size: 18px">
+                    <td style="text-align: right">@dem</td>
+                    <td>@a.maSP</td>
+                    <td>Đồng hồ @a.tenSP - @a.kichThuoc - @a.loaiDay</td>
+                    <td>
+                        <img src="~/Content/Images/SanPham/@a.hinh" width="50" height="50" />
+                    </td>
+                    <td style="text-align: right">@string.Format("{0: #,##}", @a.donGia)</td>
+                    <td style="text-align: right">
+                        <input type="number" value="@a.soLuong" id="@a.maSP" min="1" max="@a.soLuongHienCo" onchange="ReloadTongTien('@a.maSP')" style="transition: 0.4s ease; border: none; text-align: right; font-size: 18px" class="form-control-sm" />
+                    </td>
+
+                    <td style="text-align: right" id="tt_@a.maSP">@string.Format("{0: #,##}", @a.thanhTien)</td>
+                    <td style="text-align: center">
+                        <a class="btn btn-danger" href="/DatHang/XoaMatHang/?maSP=@a.maSP"><i class="fas fa-trash mr-2"></i>Xóa</a>
+                    </td>
+                </tr>
+                dem++;
+            }
+
+            <tr style="font-size: 18px">
+                <td colspan="6" style="text-align: right; font-weight: bold; text-transform: uppercase">Tổng cộng</td>
+                <td style="text-align: right; font-weight: 800" id="TongThanhTien">@string.Format("{0: #,##}", Model.tongThanhTien())</td>
+                <td></td>
+            </tr>
+        </table>*@
+    </div>
+    <div>
+        <br /><br />
+        <center>
+            <a href="@Url.Action("Order","DatHang")" style="text-align: center; text-transform: uppercase; background: #50bb9c; color: white" class="btn"><i class="fas fa-edit mr-2"></i>Đặt hàng</a>
+        </center>
+    </div>
+</div>
+

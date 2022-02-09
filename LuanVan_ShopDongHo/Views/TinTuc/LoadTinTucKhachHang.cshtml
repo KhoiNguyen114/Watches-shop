@@ -1,0 +1,67 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@using PagedList.Mvc;
+@{ ViewBag.Title = "LoadTinTucKhachHang";
+    Layout = "~/Views/Shared/_LayoutChiTiet.cshtml";
+<link href="~/Content/_style.css" rel="stylesheet" />
+}
+
+<style>
+    .tieuDeLink {
+        font-size: 20px;
+    }
+
+        .tieuDeLink:hover {
+            color: red;
+            text-decoration: none;
+        }
+</style>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            @foreach (var item in ViewBag.dsTTLoad)
+            {
+<hr />
+                <div class="row mt-3">
+                    <div class="col-md-12">
+                        <img src="~/Content/Images/TinTuc/HinhDaiDienTinTuc/@item.hinhDaiDien" style="width: 100%; height: 500px" />
+                    </div>
+                    <div class="col-md-12">
+                        <p class="mt-3"><a href="/TinTuc/ChiTietTinTucKhachHang/?idTinTuc=@item.maTinTuc" class="tieuDeLink">@item.tieuDe</a></p>
+                        <p class="mt-2">@item.tomTat</p>
+                        <p>Ngày đăng: @string.Format("{0: dd/MM/yyyy}", item.ngayDang)</p>
+                        <br />
+                    </div>
+                </div>}
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-12 mt-5 pb-2">
+                    <p style="text-transform: uppercase; font-weight: bold; font-size: 20px">Tin mới nhất </p>
+                    @foreach (var item in ViewBag.dsTTMoiNhat)
+                    {
+        <hr />
+                        <div class="row mt-3">
+                            <div class="col-md-6">
+                                <img src="~/Content/Images/TinTuc/HinhDaiDienTinTuc/@item.hinhDaiDien" style="width: 100%; height: 150px" />
+                            </div>
+                            <div class="col-md-6">
+                                <p><a href="/TinTuc/ChiTietTinTucKhachHang/?idTinTuc=@item.maTinTuc" class="tieuDeLink">@item.tieuDe</a></p>
+                                <p>Ngày đăng: @string.Format("{0: dd/MM/yyyy}", item.ngayDang)</p>
+                                <br />
+                            </div>
+                        </div>}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="spacer20">
+    <center>
+        <div class="pagination">
+            @Html.PagedListPager((PagedList.IPagedList)ViewBag.dsTTLoad, page => Url.Action("LoadTinTucKhachHang", new { page, @class = "active" }))
+        </div>
+    </center>
+</div>
+

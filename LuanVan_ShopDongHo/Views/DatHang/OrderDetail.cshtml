@@ -1,0 +1,180 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{ ViewBag.Title = "OrderDetail";
+                Layout = "~/Views/Shared/_LayoutOrder.cshtml";
+                Dictionary<int, string> trangThai = ViewBag.TrangThai; }
+@model customerLinkOrder
+<style>
+    .cancelOrder {
+        text-decoration: none;
+    }
+
+        .cancelOrder :hover {
+            text-decoration: none;
+        }
+</style>
+<h2>Đơn hàng của tôi</h2>
+
+<div class="container-fluid" id="parent" style="background-color:#F9F9F9;width:100%;">
+    <div class="row">
+        @{
+                        <div style="display:none">
+                            <input type="number" value="@Model.IDHoaDon" id="IDHoaDon" />
+                        </div>
+                                    <div class="order" style="margin-left:5px;background-color:white;width:100%">
+                                        <div class="row order-item">
+                                            <div class="col-4">
+                                                <p style="height:100%;padding-top:10px;padding-left:10px;font-size:20px; margin-left:5px;">Mã Hóa Đơn  @Model.MAHD</p>
+                                            </div>
+                                            <div class="col-4" style="text-align:left;">
+                                                <p style="padding-top: 10px; height: 100%; font-size: 20px;">Tình Trạng <span style="border: none; display: inline-block; background-color: #b8c9ce;border-radius:10px;padding:5px;">@trangThai[Model.TINHTRANG]</span></p>
+                                            </div>
+                                            @if (ViewBag.TrangThaiDon == 1)
+                                            {
+
+                                <div class="col-4" style="">
+                                    <button class="btn cancelOrder" style="color:black;height:100%;font-size:20px;text-decoration:none;border:none;" onclick="cancelOrder(event)">Hủy Đơn <i class="fa fa-trash"></i></button>
+                                </div>}
+
+                                        </div>
+                                        @{ foreach (var chitiet in Model.chitiets)
+                                            {
+                                <div class="card" style="width:100%;border-left:none;border-right:none;border-bottom:none;">
+                                    <div class="row order-item no-gutters">
+                                        <div class="col-5">
+                                            <div class="card-body">
+                                                <img class="card-img" src="~/Content/Images/SanPham/@chitiet.HINHANH" style="height:200px;width:200px;display:inline" alt="Suresh Dasari Card" />
+                                                <p class="card-text" style="padding-top:30px;display:inline">@chitiet.TENSP</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <div class="card-body">
+                                                <p class="card-text" style="padding-top:85px;height:200px;">QTY : @chitiet.SOLUONG</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                                <br /> } }
+                                    </div> }
+
+    </div>
+    <br />
+    <br />
+    <br />
+    <div class="row" style="font-size:20px;" id="information">
+        <div class="col-6">
+            <div class="row">
+                <span style="margin-left:10px;">Thông tin khách hàng</span>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="row" style="background-color: white;padding-top:10px;">
+                        <span style="margin-left:10px;">Tên KH :</span>
+                    </div>
+                    <div class="row" style="background-color: white">
+                        <span style="margin-left:10px;">Địa chỉ :</span>
+                    </div>
+                    <div class="row" style="background-color: white">
+                        <span style="margin-left:10px;">Số Điện thoại :</span>
+                    </div>
+                    <div class="row" style="background-color: white">
+                        <span style="margin-left:10px;">Giới tính :</span>
+                    </div>
+                    <div class="row" style="background-color: white">
+                        <span style="margin-left:10px;">Số CMND :</span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="row" style="background-color: white; padding-top: 10px;display:none;">
+                        <input readonly="readonly" style="border:none;" type="text" id="id" name="idKH" value="@ViewBag.kh.IDKhachHang" />
+                    </div>
+                    <div class="row" style="background-color: white;padding-top:10px">
+                        <input readonly="readonly" style="border:none;" type="text" id="fullname" name="TENKH" value="@ViewBag.kh.TENKH" />
+                    </div>
+                    <div class="row" style="background-color: white">
+                        <input readonly="readonly" style="border:none;" type="text" id="destAddress" name="DIACHI" value="@ViewBag.kh.DIACHI" />
+                    </div>
+                    <div class="row" style="background-color: white">
+                        <input readonly="readonly" style="border:none;" type="text" id="cusphone" name="SDT" value="@ViewBag.kh.SDT" />
+                    </div>
+                    <div class="row" style="background-color: white">
+                        <input readonly="readonly" style="border:none;" type="text" id="cusGender" name="gender" value="@ViewBag.kh.GIOITINH" />
+                    </div>
+                    <div class="row" style="background-color: white">
+                        <input readonly="readonly" style="border:none;" type="text" id="cusPassport" name="cusPassport" value="@ViewBag.kh.SOCMND" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <span style="margin-left:10px;">Thông tin thanh toán</span>
+            </div>
+            <table class="table" style="background-color:white;">
+                <thead>
+                    <tr>
+                        <th>Hạng Mục</th>
+                        <th>Giá</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Thành Tiền</td>
+                        <td><span><input type="text" readonly="readonly" style="border:none" value="@string.Format("{0:#,##}",ViewBag.thanhTien )" id="cost" name="cost" /> VNĐ</span></td>
+                    </tr>
+                    <tr>
+                        <td>Giảm Giá</td>
+                        <td><span><input type="text" readonly="readonly" style="border:none" value="@string.Format("{0:#,##}", ViewBag.km)" name="discount" id="discount" /></span>VND</td>
+                    </tr>
+                    <tr>
+                        <td>Tổng Tiền</td>
+                        <td><span><input type="text" readonly="readonly" style="border:none" value="@string.Format("{0:#,##}",ViewBag.tongTien)" id="total" name="total" /></span> VNĐ</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    function cancelOrder(event) {
+        event.preventDefault();
+        var idHoadon = $('#IDHoaDon').val();
+        $.ajax({
+            url: "/DatHang/cancelOrder",
+            data: {
+                idHoadon: idHoadon,
+            },
+            type: "Post",
+            dataType: "Json",
+            success: function (res) {
+                if (res.success == true) {
+                    $.notify(res.msg, 'success');
+                    var timeout = window.setTimeout(function () {
+                        location.href = "/DatHang/OrderDetail?IDHoaDon=" + idHoadon;
+                    }, 1000);
+                }
+                else {
+                    $.notify(res.msg, 'error');
+                }
+            }
+        });
+    }
+</script>
+<style>
+    #parent {
+        width: 100%;
+    }
+
+    #information {
+        width: 100%;
+    }
+
+    @@media only screen and (max-width : 800px) {
+        #parent {
+            width: max-content;
+        }
+
+        #information {
+            width: max-content;
+        }
+    }
+</style>

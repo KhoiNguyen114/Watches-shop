@@ -1,0 +1,57 @@
+﻿@using LuanVan_ShopDongHo.Models;
+   
+@model GioHang
+<style>   
+
+    .end-0 {
+        right: 0 !important;
+    }
+    .translate-middle {
+        transform: translate(-50%,-50%) !important;
+    }
+    .rounded-pill {
+        border-radius: 50rem !important;
+    }
+    .btn .badge {
+        position: relative;
+        top: -1px;
+    }
+    .start-100 {
+        left: 100% !important;
+    }
+
+    .top-0 {
+        top: 0 !important;
+    }
+
+    .position-absolute {
+        position: absolute !important;
+    }
+
+    .badge {
+        display: inline-block;
+        padding: 0.35em 0.65em;
+        font-size: .75em;
+        font-weight: 700;
+        line-height: 1;
+        color: #fff;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: baseline;
+        border-radius: 0.25rem;
+    }
+</style>
+<a href="@Url.Action("XemGioHang", "DatHang")" class="position-relative">
+    <i class="fa-2x mr-2 fas fa-cart-plus"></i>
+    @if (Model == null)
+    {
+
+        <span class="position-absolute top-0 start-100 badge translate-middle rounded-circle bg-danger">0</span>
+    }
+    else
+    {
+        <label class="position-absolute top-0 start-100 badge translate-middle rounded-circle bg-danger">@Model.tongSoLuongHangTrongGio()</label>
+
+    }
+</a>
+

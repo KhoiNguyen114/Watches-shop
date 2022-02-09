@@ -1,0 +1,394 @@
+﻿
+@{
+    ViewBag.Title = "ThemDH";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/signup.css" rel="stylesheet" />
+}
+<style>
+    * {
+        font-size: 20px;
+        font-family: 'Times New Roman', Times, serif
+    }
+
+    .password-check {
+        color: black;
+    }
+
+    .pas-check-div {
+        border-radius: 10px;
+        padding: 20px;
+    }
+
+    label {
+        padding: 10px;
+        margin-top: 10px;
+    }
+</style>
+<div style="display:none">
+    <input type="text" id="TENDN" value="@ViewBag.TENDN" />
+</div>
+<div style="display:none">
+    <input type="number" id="no" value="0" />
+</div>
+<div class="container-fluid" style="background-color:#F9F9F9;position:relative;">
+    <div class="row">
+        <div class="col-5" style="background-color:white;border:1px solid rgba(0,0,0,0.1);border-radius:10px;padding:10px;margin:10px;" id="formationKH">
+            <div class="row">
+                <div style="display:none">
+                    <input name="idKH" id="idKH" type="text" />
+                </div>
+                <div class="col-4">
+                    <label><b>Tên khách hàng</b></label>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="fullname" placeholder="Nhập họ tên của bạn" name="fullname" required />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-4">
+                    <label><b>Giới tính</b></label>
+                </div>
+                <div class="col-8">
+                    <input type="radio" name="gender" id="gender" value="Nam" checked="checked" />
+                    <label for="Nam" style="color:black;">Nam</label>&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="gender" id="gender" value="Nữ" />
+                    <label for="Nữ" style="color:black;">Nữ</label>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-4">
+                    <label for="Ngày sinh"><b>Ngày sinh</b></label>
+                </div>
+                <div class="col-8">
+                    <input type="date" id="ngaysinh" name="ngaysinh" required class="form-control" style="width:70%" />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-4">
+                    <label for="SDT"><b>Số điện thoại</b></label>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="sdt" name="sdt" required />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-4">
+                    <label for="address"><b>Địa chỉ</b></label>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="address" name="address" required />
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-4">
+                    <label for="CMND"><b>CMND/Passport</b></label>
+                </div>
+                <div class="col-8">
+                    <input type="text" id="cmnd" name="cmnd" required />
+                </div>
+            </div>
+        </div>
+        <div class="col-6" style="width:100%;background-color:white;border:1px solid rgba(0,0,0,0.1);border-radius:10px;margin:10px 10px;" id="GioHang">
+            <div class="row">
+                <div class="col-3" style="margin-top:10px;">
+                    Chọn sản phẩm
+                </div>
+                <div class="col-5" style="margin-top:10px">
+                    @Html.DropDownList("sp", new SelectList(ViewBag.SanPhams, "value", "text"), new { @id = "sanpham", @name = "sanpham", @class = "form-control", @style = "margin-top:10px;" })
+                </div>
+                <div class="col-4">
+                    <button type="button" class="btn btn-XanhLuc" style="text-transform: uppercase; font-weight: bold; text-align: center; width: 100%;" id="addSP">Thêm Sản phẩm</button>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-12">
+                    <table class="table table-bordered" id="spchoose">
+                        <thead>
+                            <tr>
+                                <th>Tên sản phẩm</th>
+                                <th>Số lượng</th>
+                                <th>Tùy chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody id="bodyTable">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Hạng mục</th>
+                            <th>Giá</th>
+                        </tr>
+                    </thead>
+                    <tbody id="moneyBody">
+                        <tr>
+                            <td>Thành tiền</td>
+                            <td><span><input type="text" readonly="readonly" style="border: none; width: 60%; margin-right: 5px;" value="@string.Format("{0:#.##}",0 )" id="cost" name="cost" />&nbsp; VNĐ</span></td>
+                        </tr>
+                        <tr>
+                            <td>Giảm giá</td>
+                            <td><span><input type="text" readonly="readonly" style="border: none; width: 60%; margin-right: 5px;" value="@string.Format("{0:#.##}", 0)" name="discount" id="discount" />&nbsp;VND</span></td>
+                        </tr>
+                        <tr>
+                            <td>Tổng tiền</td>
+                            <td><span><input type="text" readonly="readonly" style="border:none;width:60%;margin-right:5px;" value="@string.Format("{0:#.##}",0)" id="total" name="total" />&nbsp;VNĐ</span> </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-5" style="padding: 10px;text-align:center;">
+            <button type="button" class="btn btn-XanhLuc" style="text-transform: uppercase; font-weight: bold; text-align: center; width: 50%;" id="addCustom">Thêm Khách Hàng</button>
+        </div>
+        <div class="col-7" style="padding: 10px;text-align:center;">
+            <button type="button" class="btn btn-XanhLuc" style="text-transform: uppercase; font-weight: bold; text-align: center; width: 50%;" id="addHD">Tạo đơn hàng</button>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/notify.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js" type="text/javascript"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var countsp = 0;
+    $(document).ready(function () {
+        $('#sanpham').select2();
+    })
+    function replaceUnicode(str) {
+        if (str === null || str === undefined) return str;
+        str = str.toLowerCase();
+        str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");
+        str = str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g, "e");
+        str = str.replace(/ì|í|ị|ỉ|ĩ/g, "i");
+        str = str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g, "o");
+        str = str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g, "u");
+        str = str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g, "y");
+        str = str.replace(/đ/g, "d");
+        return str;
+    }
+    var regNum = /^[0-9\-\+]{9,15}$/;
+    var regFullName = /^[a-zA-Z ]{2,}$/g;
+
+
+
+    $('#addCustom').click(function (e) {
+        e.preventDefault();
+        var fullname = $('input#fullname').val();
+
+        var gt = $('input[type="radio"]:checked').val();
+        var ngaysinh = $('input[type="date"]').val();
+
+
+        if ($.trim(fullname).length <= 0) {
+            $.notify("Họ và tên không được để trống", "danger");
+            return false;
+        }
+        else if (!regFullName.test(replaceUnicode(fullname))) {
+            $.notify("Họ và tên không đúng định dạng", "danger");
+            return false;
+        }
+
+        var sdt = $('input#sdt').val();
+        var diachi = $('input#address').val();
+        var cmnd = $('input#cmnd').val();
+
+        if ($.trim(diachi).length <= 0) {
+            $.notify("Địa chỉ không được để trống", "danger");
+            return false;
+        }
+
+        if (!regNum.test($.trim(sdt))) {
+            $.notify("Số điện thoại không đúng định dạng", "danger");
+            return false;
+        }
+
+        if (!regNum.test($.trim(cmnd))) {
+            $.notify("Số cmnd không đúng định dạng", "danger");
+            return false;
+        }
+
+        $.ajax({
+            url: '/QuanLyDonhang/AddKH',
+            data: {
+                FullName: fullname,
+                GioiTinh: gt,
+                NgaySinh: ngaysinh,
+                SDT: sdt,
+                DiaChi: diachi,
+                CMND: cmnd,
+            },
+            dataType: 'Json',
+            type: 'POST',
+            success: function (res) {
+                if (res.success == true) {
+                    $.notify(res.msg, 'success');
+                    $('#idKH').val(res.idKH);
+                    console.log(res.idKH)
+                    $('#formationKH').find(':input').prop("readonly", true);
+                    $('#formationKH').css("background-color", "#F9F9F9")
+                }
+                else {
+                    $.notify(res.msg, 'danger');
+                }
+            }
+        })
+    })
+
+    var no = $('#no').val();
+    $('#addSP').click(function (e) {
+        e.preventDefault();
+        countsp = $('#no').val();
+        var idSP = $('#sanpham').val();
+        if (idSP == "0") {
+            $.notify('Vui lòng chọn sản phẩm', 'danger');
+            return false;
+        }
+        $.ajax({
+            url: '/QuanLyDonHang/addSP',
+            data: {
+                maSP: idSP,
+                countSP: countsp,
+            },
+            dataType: 'Json',
+            type: 'Post',
+            success: function (res) {
+                if (res.success == true) {
+                    var the = '';
+                    the += '<tr id ="sp' + countsp + '">';
+                    the += '<td>' + res.tenSP + '</td>';
+                    the += '<td>' + '<input type = "number" value = "' + res.soluong + '" id = "' + res.maSP + '" min = "1" max = "' + res.soluonghienco + '" onchange = "ReloadTongTien(\'' + res.maSP + '\')" style = "transition: 0.4s ease; border: none; text-align: right; font-size: 18px" class="form-control-sm" />' + '</td>';
+                    the += '<td style = "text-align: center">';
+                    the += '<button class="btn btn-danger" class="xoaGioHang"  onclick="XoaGioHang(\'' + res.maSP + '\',\'' + countsp + '\')" > <i class="fas fa - trash mr - 2"></i>Xóa</button>';
+                    the += '</td>';
+                    the += '</tr>';
+                    $('#bodyTable').append(the);
+
+                    $('#moneyBody').find(':input').prop('readonly', false);
+                    $('#cost').val(res.thanhTien);
+                    $('#discount').val(res.tongKM);
+                    $('#total').val(res.tongTien);
+                    $('#moneyBody').find(':input').prop('readonly', true);
+                    $('#no').val(res.countSP);
+                }
+                else {
+                    $.notify(res.msg, 'danger');
+                }
+            }
+        })
+    })
+
+    function ReloadTongTien(masp) {
+        var a = parseInt($('#' + masp).val());
+        var b = parseInt($('#' + masp).attr('max'));
+
+        if (a > b) {
+            a = b;
+            $('#' + masp).val(a);
+        }
+        var para = {
+            maSP: masp,
+            soLuong: a,
+        };
+        $.ajax({
+            url: "/QuanLyDonHang/ReloadTongTien",
+            type: "POST",
+            data: JSON.stringify(para),
+            contentType: "application/json; charset = utf-8",
+            dataType: "json",
+            cache: false,
+            success: function (result) {
+                if (result.success == true) {
+                    $('#moneyBody').find(':input').prop('readonly', false);
+                    $('#cost').val(result.thanhTien);
+                    $('#discount').val(result.tongKM);
+                    $('#total').val(result.tongTien);
+                    $('#moneyBody').find(':input').prop('readonly', true);
+                }
+                else {
+                    $('#' + masp).val(1);
+                }
+            },
+            error: function (e) {
+                alert(e.responseText);
+            }
+        })
+    }
+
+    function XoaGioHang(maSP, countsp) {
+        countSP = $('#no').val();
+        $.ajax({
+            url: "/QuanLyDonHang/XoaMatHang",
+            data: {
+                masp: maSP,
+                countSP: countSP,
+            },
+            type: "POST",
+            dataType: "Json",
+            success: function (result) {
+                if (result.success == true) {
+                    $('#moneyBody').find(':input').prop('readonly', false);
+                    $('#cost').val(result.thanhTien);
+                    $('#discount').val(result.tongKM);
+                    $('#total').val(result.tongTien);
+                    $('#moneyBody').find(':input').prop('readonly', true);
+
+                    var idRow = 'sp' + countsp;
+                    $(`#${idRow}`).remove();
+                    $('#no').val(result.countSP);
+                }
+            },
+            error: function (e) {
+                alert(e.responseText);
+            },
+        });
+    }
+
+    $('#addHD').click(function (e) {
+        e.preventDefault();
+        if ($('#idKH').val().length <= 0) {
+            $.notify('Vui lòng điền thông tin khách hàng', 'danger');
+            return false;
+        }
+
+        if ($('#total').val().length <= 0) {
+            $.notify('Vui lòng chọn sản phẩm', 'danger');
+            return false;
+        }
+        $.ajax({
+            url: '/QuanLyDonHang/AddDH',
+            data: {
+                idKH: $('#idKH').val(),
+                total: $('#total').val(),
+                TENDN: $('#TENDN').val(),
+            },
+            dataType: 'Json',
+            type: 'Post',
+            success: function (res) {
+                if (res.success) {
+                    $.notify(res.msg, 'success');
+                    var timeout = window.setTimeout(function () {
+                        location.href = "/AdminPage/Index";
+                    }, 1000);
+                }
+                else {
+                    $.notify(res.msg, 'danger');
+                }
+            }
+        })
+    })
+
+
+
+</script>

@@ -1,0 +1,77 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "XemChiTietKhuyenMai";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model KhuyenMaiModel
+
+<h2 style="color: brown; font-weight: 800">Xem thông tin khuyến mãi</h2>
+<br />
+
+<div class="container-fluid">
+    <input type="text" value="@Model.km.maKM" hidden="hidden" id="maKMTinhTrang" />
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <tr>
+                    <th>Mã khuyến mãi</th>
+                    <td>@Model.km.maKM</td>
+                </tr>
+                <tr>
+                    <th>Thời gian bắt đầu</th>
+                    <td>@string.Format("{0: dd/MM/yyyy}", Model.km.thoiGianBatDau)</td>
+                </tr>
+                <tr>
+                    <th>Thời gian kết thúc</th>
+                    <td>@string.Format("{0: dd/MM/yyyy}", Model.km.thoiGianKetThuc)</td>
+                </tr>
+                <tr>
+                    <th>Mức khuyến mãi (%)</th>
+                    <td>@Model.km.km</td>
+                </tr>
+                <tr>
+                    <th>Tình trạng</th>
+                    <td>@Model.km.tinhTrang</td>
+                </tr>
+            </table>
+
+        </div>
+        <div class="col-md-6">
+            <h4 style="font-weight: bold">Danh sách sản phẩm khuyến mãi</h4>
+            <table class="table table-bordered table-hover">
+                <tr class="tr-Title" style="font-size: 18px">
+                    <th>STT</th>
+                    <th>Mã sản phẩm</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá (VNĐ)</th>
+                </tr>
+                @{
+                    int dem = 0;
+                    int pageNum = ViewBag.pageNum;
+                    int pageSize = ViewBag.pageSize;
+                    dem = (pageNum - 1) * pageSize;
+                }
+                @foreach (var item in ViewBag.dsSP)
+                {
+                    dem++;
+                    <tr>
+                        <td>@dem</td>
+                        <td>@item.MASP</td>
+                        <td>@item.TENSP</td>
+                        <td>@item.SOLUONG</td>
+                        <td>@string.Format("{0:#,##}", item.DONGIA)</td>
+                    </tr>
+                }
+            </table>
+            <div class="spacer20">
+                <center>
+                    <div class="pagination">
+                        @Html.PagedListPager((PagedList.IPagedList)ViewBag.dsSP, page => Url.Action("XemChiTietKhuyenMai", new { maKM = Model.km.maKM, page, @class = "active" }))
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>

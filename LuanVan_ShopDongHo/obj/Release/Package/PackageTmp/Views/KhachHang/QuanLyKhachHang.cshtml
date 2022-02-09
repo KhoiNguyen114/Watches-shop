@@ -1,0 +1,258 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "QuanLyKhachHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model KHACHHANG
+
+<h2 style="color: brown; font-weight: 800">Quản lý khách hàng</h2>
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="row">
+                @*<div class="col-md-6">
+                        <a class="btn btn-secondary mt-4" data-bs-toggle="modal" data-bs-target="#myModalAddKhachHang" style="text-transform: uppercase; font-weight: bold;">
+                            <i class="fas fa-plus"></i>
+                            Thêm khách hàng mới
+                        </a>
+                    </div>*@
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Tên khách hàng</label>
+                                <input type="text" id="filterTenKH" class="form-control" value="@ViewBag.tenKH" style="border-radius: 10px;" />
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+                                @Html.DropDownListFor(model => model.TRANGTHAI, new SelectList(ViewBag.dsTT, "Value", "Text", ViewBag.trangThai), new { @class = "form-control", @id = "filterTrangThai", @style = "border-radius: 10px;" })
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Giới tính</label>
+                                @Html.DropDownListFor(model => model.GIOITINH, new SelectList(ViewBag.dsGT, "Value", "Text", ViewBag.GioiTinh), new { @class = "form-control", @id = "filterGT", @style = "border-radius: 10px;" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <button class="btn btn-XanhLuc mt-4" style="text-transform: uppercase; font-weight: bold;" id="btnFilterKH">
+                <i class="fas fa-search"></i>
+                Tìm kiếm
+            </button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <table class="table table-bordered table-hover">
+            <tr class="tr-Title">
+                <th>STT</th>
+                <th>Mã khách hàng</th>
+                <th>Tên khách hàng</th>
+                <th>Giới tính</th>
+                <th>Ngày sinh</th>
+                <th>Điện thoại</th>
+                <th>Số CMND</th>
+                <th>Địa chỉ</th>
+                <th>Tên đăng nhập</th>
+                <th>Thao tác</th>
+            </tr>
+            @{
+                int dem = 0;
+                int pageNum = ViewBag.pageNum;
+                int pageSize = ViewBag.pageSize;
+                dem = (pageNum - 1) * pageSize;
+            }
+            @foreach (var item in ViewBag.dsKHLoad)
+            {
+                dem++;
+                <tr>
+                    <td>@dem</td>
+                    <td>@item.MAKH</td>
+                    <td>@item.TENKH</td>
+                    <td>@item.GIOITINH</td>
+                    <td>@string.Format("{0: dd/MM/yyyy}", item.NGAYSINH)</td>
+                    <td>@item.SDT</td>
+                    <td>@item.SOCMND</td>
+                    <td>@item.DIACHI</td>
+                    <td>@item.TENDN</td>
+                    <td>
+                        @if (item.TRANGTHAI == false)
+                        {
+                            <button class="btn btn-success" id="@item.MAKH" onclick="GetKhachHang(this)"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-danger" id="@item.MAKH" onclick="GetIDKhachHangDelete(this)" data-bs-toggle="modal" data-bs-target="#myModalDeleteKhachHang"><i class="fas fa-trash"></i></button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary" id="@item.MAKH" onclick="KhoiPhucKhachHang(this)"><i class="fas fa-trash-restore"></i></button>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div class="spacer20">
+    <center>
+        <div class="pagination">
+            @Html.PagedListPager((PagedList.IPagedList)ViewBag.dsKHLoad, page => Url.Action("QuanLyKhachHang", new { page, @class = "active", tenKH = ViewBag.tenKH, trangThai= ViewBag.trangThai, gioitinh= ViewBag.GioiTinh }))
+        </div>
+    </center>
+</div>
+
+<!-- Modal thêm khách hàng-->
+@*<div class="modal fade" id="myModalAddKhachHang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Thêm khách hàng mới</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Mã khách hàng</label>
+                        <input type="text" id="maKHThem" class="form-control" />
+                        <span id="maKHThemVL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên khách hàng</label>
+                        <input type="text" id="tenKHThem" class="form-control" />
+                        <span id="tenKHThemVL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Giới tính</label>&nbsp;&nbsp;&nbsp;
+                        <input type="radio" id="gioiTinhKHThemNam" name="gioiTinhKHThem" value="Nam" />&nbsp;<label for="gioiTinhKHThemNam">Nam</label>&nbsp;&nbsp;
+                        <input type="radio" id="gioiTinhKHThemNu" name="gioiTinhKHThem" value="Nữ" />&nbsp;<label for="gioiTinhKHThemNu">Nữ</label><br />
+                        <span id="gioiTinhKHThemVL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Ngày sinh</label>
+                        <input type="date" id="ngaySinhKHThem" class="form-control" />
+                        <span id="ngaySinhKHThemVL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Điện thoại</label>
+                        <input type="number" id="sdtKHThem" class="form-control" />
+                        <span id="sdtKHThemVL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Địa chỉ</label>
+                        <input type="text" id="diaChiKHThem" class="form-control" />
+                        <span id="diaChiKHThemVL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Số CMND</label>
+                        <input type="number" id="soCMNDKHThem" class="form-control" />
+                        <span id="soCMNDKHThemVL" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Tên đăng nhập</label>
+                        @Html.DropDownListFor(model => model.TENDN, new SelectList(ViewBag.dsTK, "TENDN", "TENDN"), new { @class = "form-control", @id = "tenDNKHThem" })
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="btnThemKhachHang">Thêm</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>*@
+<!--End modal thêm khách hàng-->
+<!-- Modal cập nhật khách hàng-->
+<div class="modal fade" id="myModalEditKhachHang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Cập nhật khách hàng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mã khách hàng</label>
+                    <input type="text" id="maKHSua" class="form-control" disabled="disabled" />
+                    <span id="maKHSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Tên khách hàng</label>
+                    <input type="text" id="tenKHSua" class="form-control" />
+                    <span id="tenKHSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Giới tính</label>&nbsp;&nbsp;&nbsp;
+                    <input type="radio" id="gioiTinhKHSuaNam" name="gioiTinhKHThem" value="Nam" />&nbsp;<label for="trangThaiTKSua">Nam</label>&nbsp;&nbsp;
+                    <input type="radio" id="gioiTinhKHSuaNu" name="gioiTinhKHThem" value="Nữ" />&nbsp;<label for="trangThaiTKSua">Nữ</label><br />
+                    <span id="gioiTinhKHSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Ngày sinh</label>
+                    <input type="date" id="ngaySinhKHSua" class="form-control" />
+                    <span id="ngaySinhKHSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Điện thoại</label>
+                    <input type="number" id="sdtKHSua" class="form-control" />
+                    <span id="sdtKHSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Địa chỉ</label>
+                    <input type="text" id="diaChiKHSua" class="form-control" />
+                    <span id="diaChiKHSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Số CMND</label>
+                    <input type="number" id="soCMNDKHSua" class="form-control" />
+                    <span id="soCMNDKHSuaVL" class="text-danger"></span>
+                </div>
+                @*<div class="form-group">
+                        <label>Tên đăng nhập</label>
+                        @Html.DropDownListFor(model => model.TENDN, new SelectList(ViewBag.dsTK, "TENDN", "TENDN"), new { @class = "form-control", @id = "tenDNKHSua" })
+                    </div>*@
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnCapNhatKhachHang">Cập nhật</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal cập nhật khách hàng-->
+<!-- Modal xóa khách hàng-->
+<div class="modal fade" id="myModalDeleteKhachHang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Xóa khách hàng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" hidden="hidden" id="idKhachHangDelete" value="" />
+                    <p>Bạn có chắc chắn muốn xóa khách hàng này không</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-Do" id="btnXoaKhachHang">Xóa</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal xóa khách hàng-->
+
+
+<script type="text/javascript">
+    $('#btnFilterKH').click(function (e) {
+        e.preventDefault();
+        var url = window.location.origin + "/KhachHang/QuanLyKhachHang?&tenKH=" + $('#filterTenKH').val() + "&trangThai=" + $('#filterTrangThai').val() + "&gioitinh=" + $('#filterGT').val();
+        window.location = url;
+    })
+
+</script>

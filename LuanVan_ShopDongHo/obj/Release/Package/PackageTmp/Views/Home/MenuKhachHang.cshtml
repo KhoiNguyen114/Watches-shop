@@ -1,0 +1,78 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    Layout = null;
+    KHACHHANG kh = Session["KH"] as KHACHHANG;
+    TAIKHOAN tk = Session["User"] as TAIKHOAN;
+}
+<div class="row">
+    <div id="wrapper">
+        <form method="post" action="/Loc/TimKiemSanPham">
+            <div id="searchbar">
+                <input type="text" placeholder="Nhập từ khóa..." onkeyup="loadSP()" id="inputSearch" name="tuKhoa" />
+                <div id="autocom-box">
+                    <!--Load ajax hiển thị gợi ý sản phẩm tìm kiếm-->
+                </div>
+                <button id="iconSearch" type="submit" style="border: none; background: none;"><i class="fas fa-search"></i></button>
+            </div>
+        </form>
+    </div>
+    <div>
+        <a @*href="@Url.Action("DangNhap", "KhachHang")"*@ id="btn_MenuKH" role="button">
+            <em class="fa-2x mr-2 fas fa-user-circle"></em>
+        </a>
+        <div>
+            <nav class="dropdown_DangNhap">
+                <ul id="menu_KH">
+                    @if (tk != null)
+                    {
+                        TAIKHOAN taikhoan = Session["User"] as TAIKHOAN;
+                        <li>
+                            <a>
+                                <em class="fas fa-user-check"></em>
+                                <span style="color: white">Xin chào, <span style="font-weight: 600; color: white">@taikhoan.TENDN</span></span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/KhachHang/ThongTinTaiKhoanKH">
+                                <em class="fas fa-info-circle"></em>
+                                <span>Tài khoản của tôi</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("ShowCustomOrder","DatHang")">
+                                <em class="fas fa-history"></em>
+                                <span>Lịch sử mua hàng</span>
+                            </a>
+                        </li>
+                        if (taikhoan.MALOAI == "LTK002")
+                        {
+                            <li>
+                                <a href="/AdminPage/Index">
+                                    <em class="fas fa-arrow-right"></em>
+                                    <span>Chuyển tới trang quản lý</span>
+                                </a>
+                            </li>
+                        }
+                        <li>
+                            <a href="/KhachHang/DangXuat">
+                                <em class="fas fa-power-off"></em>
+                                <span>Đăng xuất</span>
+                            </a>
+                        </li>
+                    }
+                    else
+                    {
+                        <li>
+                            <a href="/KhachHang/DangNhap">
+                                <em class="fas fa-user-check"></em>
+                                <span>Đăng nhập</span>
+                            </a>
+                        </li>
+                    }
+                </ul>
+            </nav>
+        </div>
+    </div>
+    @Html.Action("HienThiSLMH", "DatHang", new { @class = "" })
+
+</div>

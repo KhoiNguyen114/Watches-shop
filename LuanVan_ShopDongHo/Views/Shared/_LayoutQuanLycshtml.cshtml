@@ -1,0 +1,237 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/_style.css" type="text/css" />    
+</head>
+<body>
+    <div id="main" class="enlarged">
+        <div class="headerbar">
+            <div class="headerbar-left">
+                <a href="/Home/Home" class="logo">
+                    <img src="~/Content/Images/Shop_Logo/Logo_NQN.png" alt="Logo" width="128" height="128" />
+                    <span>SHOP ĐỒNG HỒ NQN</span>
+                </a>
+            </div>
+
+            <nav class="navbar-custom">
+                <ul class="list-inline float-right mb-0">
+
+                    <li class="list-inline-item dropdown notif">
+                        <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" aria-haspopup="false" aria-expanded="false">
+                            <i class="far fa-envelope"></i>
+                            <span class="notif-bullet"></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-arrow-success dropdown-lg">
+                            <div class="dropdown-item noti-title">
+                                <h5>
+                                    <small>
+                                        <span class="label label-danger pull-xs-right">12</span>Mailbox
+                                    </small>
+                                </h5>
+                            </div>
+
+                            <a href="mail-all.html" class="dropdown-item notify-item">
+                                <p class="notify-details ml-0">
+                                    <b>John Doe</b>
+                                    <span>New message received</span>
+                                    <small class="text-muted">3 minutes ago</small>
+                                </p>
+                            </a>
+
+                            <a href="mail-all.html" class="dropdown-item notify-item">
+                                <p class="notify-details ml-0">
+                                    <b>Michael Smith</b>
+                                    <span>New message received</span>
+                                    <small class="text-muted">18 minutes ago</small>
+                                </p>
+                            </a>
+
+                            <a href="mail-all.html" class="dropdown-item notify-item">
+                                <p class="notify-details ml-0">
+                                    <b>John Lenons</b>
+                                    <span>New message received</span>
+                                    <small class="text-muted">Yesterday, 18:27</small>
+                                </p>
+                            </a>
+
+
+                            <a href="mail-all.html" class="dropdown-item notify-item notify-all">
+                                View All Messages
+                            </a>
+
+                        </div>
+
+                    </li>
+
+                    <li class="list-inline-item dropdown notif">
+                        <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" aria-haspopup="false" aria-expanded="false">
+                            <i class="far fa-bell"></i>
+                            <span class="notif-bullet"></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-arrow-success dropdown-lg">
+
+                            <div class="dropdown-item noti-title">
+                                <h5>
+                                    <small>
+                                        <span class="label label-danger pull-xs-right">5</span>Allerts
+                                    </small>
+                                </h5>
+                            </div>
+
+
+                            <a href="#" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-faded">
+                                    <img src="assets/images/avatars/avatar2.png" alt="img" class="rounded-circle img-fluid">
+                                </div>
+                                <p class="notify-details">
+                                    <b>John Doe</b>
+                                    <span>User registration</span>
+                                    <small class="text-muted">3 minutes ago</small>
+                                </p>
+                            </a>
+
+
+                            <a href="#" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-faded">
+                                    <img src="assets/images/avatars/avatar3.png" alt="img" class="rounded-circle img-fluid">
+                                </div>
+                                <p class="notify-details">
+                                    <b>Michael Cox</b>
+                                    <span>Task 2 completed</span>
+                                    <small class="text-muted">12 minutes ago</small>
+                                </p>
+                            </a>
+
+
+                            <a href="#" class="dropdown-item notify-item">
+                                <div class="notify-icon bg-faded">
+                                    <img src="assets/images/avatars/avatar4.png" alt="img" class="rounded-circle img-fluid">
+                                </div>
+                                <p class="notify-details">
+                                    <b>Michelle Dolores</b>
+                                    <span>New job completed</span>
+                                    <small class="text-muted">35 minutes ago</small>
+                                </p>
+                            </a>
+
+
+                            <a href="#" class="dropdown-item notify-item notify-all">
+                                View All Allerts
+                            </a>
+
+                        </div>
+                    </li>
+
+
+                    <li class="list-inline-item dropdown notif">
+                        <a class="nav-link dropdown-toggle arrow-none" data-toggle="dropdown" href="#" aria-haspopup="false" aria-expanded="false">
+                            <i class="fas fa-cog"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right dropdown-arrow dropdown-arrow-success dropdown-sm">
+
+                            <div class="dropdown-item noti-title">
+                                <h5>
+                                    <small>Settings</small>
+                                </h5>
+                            </div>
+
+
+                            <a href="#" class="dropdown-item notify-item">
+                                <p class="notify-details ml-0">
+                                    <i class="fas fa-cog"></i>
+                                    <b>Settings 1</b>
+                                </p>
+                            </a>
+
+
+                            <a href="#" class="dropdown-item notify-item">
+                                <p class="notify-details ml-0">
+                                    <i class="fas fa-cog"></i>
+                                    <b>Settings 2</b>
+                                </p>
+                            </a>
+
+
+                            <a href="#" class="dropdown-item notify-item">
+                                <p class="notify-details ml-0">
+                                    <i class="fas fa-cog"></i>
+                                    <b>Settings 3</b>
+                                </p>
+                            </a>
+                        </div>
+                    </li>
+
+
+                    <li class="list-inline-item dropdown notif">
+                        <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" aria-haspopup="false" aria-expanded="false">
+                            <img src="~/Content/Images/Icon/Avatar.jpg" alt="Profile image" class="avatar-rounded">
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
+
+                            <div class="dropdown-item noti-title">
+                                <h5 class="text-overflow">
+                                    <small>Hello, admin</small>
+                                </h5>
+                            </div>
+
+
+                            <a href="#" class="dropdown-item notify-item">
+                                <i class="fas fa-user"></i>
+                                <span>Profile</span>
+                            </a>
+
+
+                            <a href="#" class="dropdown-item notify-item">
+                                <i class="fas fa-power-off"></i>
+                                <span>Logout</span>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+
+                <ul class="list-inline menu-left mb-0">
+                    <li class="float-left">
+                        <button class="button-menu-mobile open-left">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="content-page">
+            @RenderBody()
+        </div>
+        <div class="container-fluid">
+            <div class="row bg-dark" id="footer">
+                <div class="col-md-6">
+                    <p>Shop đồng hồ NQN - Chuyên cung cấp các dạng đồng hồ tuyệt vời</p>
+                    <p>Địa chỉ: 140 Lê Trọng Tấn, Phường Tây Thạnh, Quận Tân Phú, TP. Hồ Chí Minh</p>
+                </div>
+                <div class="col-md-6">
+                    <p>Email: nqn192025@gmail.com</p>
+                    <p>Điện thoại: 0123456789</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/2559e4b9c0.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    @Styles.Render("~/bundles/jquery")
+    @Styles.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

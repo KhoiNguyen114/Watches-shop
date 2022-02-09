@@ -1,0 +1,117 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "XemChiTietPhieuNhap";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model NhapHangModel
+
+<h2 style="color: brown; font-weight: 800">Xem thông tin phiếu nhập</h2>
+<br />
+
+<div class="container-fluid">
+    <input type="text" value="@Model.pn.IDPhieuNhap" hidden="hidden" id="maPNTrinhTrang" />
+    <div class="row">
+        <div class="col-md-6">
+            <table class="table">
+                <tr>
+                    <th>Mã phiếu nhập</th>
+                    <td>@Model.pn.maPN</td>
+                </tr>
+                <tr>
+                    <th>Nhân viên thực hiện</th>
+                    <td>@Model.pn.tenNV</td>
+                </tr>
+                <tr>
+                    <th>Hãng</th>
+                    <td>@Model.pn.tenHang</td>
+                </tr>
+                <tr>
+                    <th>Tổng tiền</th>
+                    <td>@string.Format("{0:#,##}", Model.pn.tongTien)</td>
+                </tr>
+                <tr>
+                    <th>Tình trạng</th>
+                    @{
+                        if (Model.pn.tinhTrang == true)
+                        {
+                            <td>Đã xử lý</td>
+                        }
+                        else
+                        {
+                            <td>Chưa xử lý</td>
+                        }
+                    }
+                </tr>
+            </table>
+            <div>
+                <button class="btn btn-XanhLuc" data-bs-toggle="modal" data-bs-target="#myModalTinhTrang" style="text-transform: uppercase; font-weight: bold;">
+                    <i class="fas fa-edit"></i>
+                    Cập nhật tình trạng
+                </button>
+            </div>
+            <div class="mt-2">
+                <a class="btn btn-secondary" id="btnXuatFilePN" href="/NhapHang/XuatFilePdfPhieuNhap/?idPN=@Model.pn.IDPhieuNhap"><i class="fas fa-print"></i></a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <table class="table table-bordered table-hover">
+                <tr class="tr-Title" style="font-size: 18px">
+                    <th>STT</th>
+                    <th>Sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá</th>
+                    <th>Thành tiền</th>
+                </tr>
+                @{
+                    int dem = 0;
+                    int pageNum = ViewBag.pageNum;
+                    int pageSize = ViewBag.pageSize;
+                    dem = (pageNum - 1) * pageSize;
+                }
+                @foreach (var item in ViewBag.dsPN)
+                {
+                    dem++;
+                    <tr>
+                        <td>@dem</td>
+                        <td>@item.tenSP</td>
+                        <td>@item.soLuong</td>
+                        <td>@string.Format("{0:#,##}", item.donGia)</td>
+                        <td>@string.Format("{0:#,##}", item.thanhTien)</td>
+                    </tr>
+                }
+            </table>
+            <div class="spacer20">
+                <center>
+                    <div class="pagination">
+                        @Html.PagedListPager((PagedList.IPagedList)ViewBag.dsPN, page => Url.Action("XemChiTietPhieuNhap", new { idPN = Model.pn.IDPhieuNhap, page, @class = "active" }))
+                    </div>
+                </center>
+            </div>
+        </div>
+    </div>
+   
+</div>
+
+<!-- Modal cập nhật tình trạng-->
+<div class="modal fade" id="myModalTinhTrang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Cập nhật tình trạng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Tình trạng</label>
+                    @Html.DropDownListFor(model => model.pn.tinhTrang, new SelectList(ViewBag.dsTinhTrang, "Value", "Text"), new { @class = "form-control", @id = "tinhTrangPN" })
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnCapNhatTinhTrang">Cập nhật</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal cập nhật tình trạng-->

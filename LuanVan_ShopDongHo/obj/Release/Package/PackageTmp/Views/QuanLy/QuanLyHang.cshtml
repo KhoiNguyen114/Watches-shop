@@ -1,0 +1,248 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "QuanLyHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model HANG
+
+<h2 style="color: brown; font-weight: 800">Quản lý hãng</h2>
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3">
+            <a class="btn btn-XanhLuc mt-4" data-bs-toggle="modal" data-bs-target="#myModalAddHang" style="text-transform: uppercase; font-weight: bold;">
+                <i class="fas fa-plus"></i>
+                Thêm hãng mới
+            </a>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Xuất sứ</label>
+                        @Html.DropDownListFor(model => model.QUOCGIA, new SelectList(ViewBag.dsQuocGia, "Value", "Text", ViewBag.quocGia), new { @class = "form-control", @id = "quocGia", @style = "border-radius: 10px;" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        @Html.DropDownListFor(model => model.TRANGTHAI, new SelectList(ViewBag.dsTT, "Value", "Text", ViewBag.trangThai), new { @class = "form-control", @id = "trangThai", @style = "border-radius: 10px;", quocGia = ViewBag.quocGia, trangThai = ViewBag.trangThai, })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-XanhLuc mt-4" style="text-transform: uppercase; font-weight: bold;" id="btnFilterHang">
+                <i class="fas fa-search"></i>
+                Tìm kiếm
+            </button>
+        </div>
+    </div>
+
+
+    <div class="row mt-3">
+        <table class="table table-bordered table-hover">
+            <tr class="tr-Title">
+                <th>STT</th>
+                <th>Mã hãng</th>
+                <th>Tên hãng</th>
+                <th style="width: 300px">Thông tin hãng</th>
+                <th style="width: 70px">URL</th>
+                <th>Logo</th>
+                <th>Banner</th>
+                <th>Quốc gia</th>
+                <th style="width: 70px">Thao tác</th>
+            </tr>
+            @{
+                int dem = 0;
+                int pageNum = ViewBag.pageNum;
+                int pageSize = ViewBag.pageSize;
+                dem = (pageNum - 1) * pageSize;
+            }
+            @foreach (var item in ViewBag.dsHang)
+            {
+                dem++;
+                <tr>
+                    <td>@dem</td>
+                    <td>@item.MAHANG</td>
+                    <td>@item.TENHANG</td>
+                    <td>@item.THONGTIN</td>
+                    <td>@item.URL</td>
+                    <td>
+                        <img src="~/Content/Images/Brand_Logo/@item.LOGO" width="75" height="75" />
+                    </td>
+                    <td>
+                        <img src="~/Content/Images/BannerHang/@item.BANNER" style="width: 100%; height: 100%" />
+                    </td>
+                    <td>@item.QUOCGIA</td>
+                    <td>
+                        @if (item.TRANGTHAI == false)
+                        {
+                            <button class="btn btn-success" id="@item.MAHANG" onclick="GetHang(this)"><i class="fas fa-edit"></i></button><br /><br />
+                            <button class="btn btn-danger" id="@item.MAHANG" onclick="GetIDHangDelete(this)" data-bs-toggle="modal" data-bs-target="#myModalDeleteHang"><i class="fas fa-trash"></i></button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary" id="@item.MAHANG" onclick="KhoiPhucHang(this)"><i class="fas fa-trash-restore"></i></button>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div class="spacer20">
+    <center>
+        <div class="pagination">
+            @Html.PagedListPager((PagedList.IPagedList)ViewBag.dsHang, page => Url.Action("QuanLyHang", new { page, @class = "active" }))
+        </div>
+    </center>
+</div>
+
+<!-- Modal thêm hãng-->
+<div class="modal fade" id="myModalAddHang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Thêm hãng mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mã hãng</label>
+                    <input type="text" id="maHangThem" class="form-control" />
+                    <span id="maHangThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Tên hãng</label>
+                    <input type="text" id="tenHangThem" class="form-control" />
+                    <span id="tenHangThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Thông tin hãng</label>
+                    <input type="text" id="thongTinHangThem" class="form-control" />
+                    <span id="thongTinHangThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Logo</label>
+                    <input type="file" id="LogoHangThem" onchange="LoadAnhFolderThemLogoHang(this)" /><br /><br />
+                    <img src="" width="200" height="150" id="Image_LogoHang" />
+                    <span id="LogoHangThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>URL</label>
+                    <input type="text" id="urlHangThem" class="form-control" />
+                    <span id="urlHangThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Banner</label>
+                    <input type="file" id="BannerHangThem" onchange="LoadAnhFolderThemBannerHang(this)" /><br /><br />
+                    <img src="" width="200" height="150" id="Image_bannerHang" />
+                    <span id="BannerHangThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Xuất sứ</label>
+                    @Html.DropDownListFor(model => model.QUOCGIA, new SelectList(ViewBag.dsQuocGia, "Value", "Text"), new { @class = "form-control", @id = "quocGiaHangThem" })
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnThemHang">Thêm</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal thêm hãng-->
+<!-- Modal cập nhật hãng-->
+<div class="modal fade" id="myModalEditHang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Cập nhật hãng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mã hãng</label>
+                    <input type="text" id="maHangSua" class="form-control" disabled="disabled" />
+                    <span id="maHangSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Tên hãng</label>
+                    <input type="text" id="tenHangSua" class="form-control" />
+                    <span id="tenHangSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Thông tin hãng</label>
+                    <input type="text" id="thongTinHangSua" class="form-control" />
+                    <span id="thongTinHangSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Logo</label>
+                    <input type="file" id="LogoHangSua" onchange="LoadAnhFolderThemLogoHangSua(this)" /><br /><br />
+                    <img src="" width="200" height="150" id="Image_LogoHangSua" />
+                    <span id="LogoHangSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>URL</label>
+                    <input type="text" id="urlHangSua" class="form-control" />
+                    <span id="urlHangSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Banner</label>
+                    <input type="file" id="BannerHangSua" onchange="LoadAnhFolderThemBannerHangSua(this)" /><br /><br />
+                    <img src="" width="200" height="150" id="Image_bannerHangSua" />
+                    <span id="BannerHangSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Xuất sứ</label>
+                    @Html.DropDownListFor(model => model.QUOCGIA, new SelectList(ViewBag.dsQuocGia, "Value", "Text"), new { @class = "form-control", @id = "quocGiaHangSua" })
+                </div>
+                <div class="form-group">
+                    <label>Trạng thái</label>
+                    @Html.DropDownListFor(model => model.TRANGTHAI, new SelectList(ViewBag.dsTT, "Value", "Text"), new { @class = "form-control", @id = "trangThaiHangSua" })
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnCapNhatHang">Cập nhật</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal cập nhật hãng-->
+<!-- Modal xóa hãng-->
+<div class="modal fade" id="myModalDeleteHang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Xóa hãng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" hidden="hidden" id="idHangDelete" value="" />
+                    <p>Bạn có chắc chắn muốn xóa hãng này không</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-Do" id="btnXoaHang">Xóa</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal xóa hãng-->
+
+
+<script type="text/javascript">
+    $('#btnFilterHang').click(function (e) {
+        e.preventDefault();
+        var url = window.location.origin + "/QuanLy/QuanLyHang?&trangThai=" + $('#trangThai').val() + "&quocGia=" + $('#quocGia').val();
+        window.location = url;
+    })
+</script>

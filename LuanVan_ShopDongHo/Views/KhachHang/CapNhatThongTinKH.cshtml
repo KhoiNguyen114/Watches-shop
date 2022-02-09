@@ -1,0 +1,192 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    ViewBag.Title = "CapNhatThongTinKH";
+    Layout = "~/Views/Shared/_LayoutChiTiet.cshtml";
+}
+@model KHACHHANG
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <input type="text" value="@Model.IDKhachHang" hidden="hidden" id="idKHCapNhat" />
+            <h2 style=" font-weight: 800">Cập nhật thông tin</h2>
+            <br />
+            <div class="row">
+                <div class="col-md-2">
+                    <p style="font-size: 20px; font-weight: bold; text-align: right">Họ tên</p>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" value="@Model.TENKH" id="tenKHCapNhat" class="form-control" />
+                    <span id="tenKHCapNhatVL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <p style="font-size: 20px; font-weight: bold; text-align: right">Ngày sinh</p>
+                </div>
+                <div class="col-md-10">
+                    <input type="date" value="@string.Format("{0:yyyy-MM-dd}",Model.NGAYSINH)" id="ngaySinhKHCapNhat" class="form-control" />
+                    <span id="ngaySinhKHCapNhatVL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <p style="font-size: 20px; font-weight: bold; text-align: right">Giới tính</p>
+                </div>
+                <div class="col-md-10">
+                    @Html.DropDownListFor(model => model.GIOITINH, new SelectList(ViewBag.dsGT, "Value", "Text"), new { @class = "form-control", @id = "gioiTinhKHCapNhat" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <p style="font-size: 20px; font-weight: bold; text-align: right">Điện thoại</p>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" value="@Model.SDT" id="SDTKHCapNhat" class="form-control" />
+                    <span id="SDTKHCapNhatVL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <p style="font-size: 20px; font-weight: bold; text-align: right">Số CMND</p>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" value="@Model.SOCMND" id="soCMNDKHCapNhat" class="form-control" />
+                    <span id="soCMNDKHCapNhatVL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <p style="font-size: 20px; font-weight: bold; text-align: right">Địa chỉ</p>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" value="@Model.DIACHI" id="diaChiKHCapNhat" class="form-control" />
+                    <span id="diaChiKHCapNhatVL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+                    <p style="font-size: 20px; font-weight: bold; text-align: right">Tên đăng nhập</p>
+                </div>
+                <div class="col-md-10">
+                    <input type="text" value="@Model.TENDN" id="tenDNKHCapNhat" disabled="disabled" class="form-control" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2">
+
+                </div>
+                <div class="col-md-10">
+                    <button class="btn btn-success" id="btnCapNhatThongTinKH" style="text-transform: uppercase" onclick="aa()"><i class="fas fa-edit mr-2"></i>Cập nhật</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $('#btnCapNhatThongTinKH').on('click', function (e) {
+        var idKH = $('#idKHCapNhat').val();
+        var tenKH = $('#tenKHCapNhat').val();
+        var gioiTinh = $('#gioiTinhKHCapNhat').val();
+        var ngaySinh = $('#ngaySinhKHCapNhat').val();
+        var SDT = $('#SDTKHCapNhat').val();
+        var DiaChi = $('#diaChiKHCapNhat').val();
+        var soCMND = $('#soCMNDKHCapNhat').val();
+
+        var dieuKien1 = true;
+        var dieuKien2 = true;
+        var dieuKien3 = true;
+        var dieuKien4 = true;
+        var dieuKien5 = true;
+
+        if (tenKH == '') {
+            document.getElementById('tenKHCapNhatVL').innerHTML = "Tên khách hàng không được bỏ trống";
+            $('#tenKHCapNhat').css('border-color', 'red');
+            dieuKien1 = false;
+            e.preventDefault();
+        }
+        else {
+            document.getElementById('tenKHCapNhatVL').innerHTML = "";
+            $('#tenKHCapNhat').css('border-color', '');
+            dieuKien1 = true;
+        }
+
+        if (ngaySinh == '') {
+            document.getElementById('ngaySinhKHCapNhatVL').innerHTML = "Ngày sinh không được bỏ trống";
+            $('#ngaySinhKHCapNhat').css('border-color', 'red');
+            dieuKien2 = false;
+            e.preventDefault();
+        }
+        else {
+            document.getElementById('ngaySinhKHCapNhatVL').innerHTML = "";
+            $('#ngaySinhKHCapNhat').css('border-color', '');
+            dieuKien2 = true;
+        }
+
+        if (SDT == '') {
+            document.getElementById('SDTKHCapNhatVL').innerHTML = "Số điện thoại không được bỏ trống";
+            $('#SDTKHCapNhat').css('border-color', 'red');
+            dieuKien3 = false;
+            e.preventDefault();
+        }
+        else {
+            document.getElementById('SDTKHCapNhatVL').innerHTML = "";
+            $('#SDTKHCapNhat').css('border-color', '');
+            dieuKien3 = true;            
+        }
+
+        if (DiaChi == '') {
+            document.getElementById('diaChiKHCapNhatVL').innerHTML = "Địa chỉ không được bỏ trống";
+            $('#diaChiKHCapNhat').css('border-color', 'red');
+            dieuKien4 = false;
+            e.preventDefault();
+        }
+        else {
+            document.getElementById('diaChiKHCapNhatVL').innerHTML = "";
+            $('#diaChiKHCapNhat').css('border-color', '');
+            dieuKien4 = true;
+        }
+        if (soCMND == '') {
+            document.getElementById('soCMNDKHCapNhatVL').innerHTML = "Số CMND không được bỏ trống";
+            $('#soCMNDKHCapNhat').css('border-color', 'red');
+            dieuKien5 = false;
+            e.preventDefault();
+        }
+        else {
+            document.getElementById('soCMNDKHCapNhatVL').innerHTML = "";
+            $('#soCMNDKHCapNhat').css('border-color', '');
+            dieuKien5 = true;
+        }
+
+        if (dieuKien1 && dieuKien2 && dieuKien3 && dieuKien4) {
+            $.ajax({
+                url: "/KhachHang/CapNhatThongTinKhachHang",
+                type: "POST",
+                data: JSON.stringify({
+                    IDKhachHang: idKH,
+                    GIOITINH: gioiTinh,
+                    SDT: SDT,
+                    DIACHI: DiaChi,
+                    TENKH: tenKH,
+                    NGAYSINH: ngaySinh,
+                    SOCMND: soCMND,
+                }),
+                dataType: "Json",
+                contentType: "application/json; charset = utf-8",
+                success: function (res) {
+                    if (res.kq) {
+                        alert(res.message);
+                        var path = "/KhachHang/ThongTinTaiKhoanKH";
+                        window.location = window.location.origin + path;
+                    }
+                    else {
+                        alert(res.message);
+                    }
+                },
+                error: function (e) {
+                    alert(e.responseText);
+                }
+            });
+        }
+    })
+</script>

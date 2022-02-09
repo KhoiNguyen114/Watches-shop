@@ -1,0 +1,67 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    ViewBag.Title = "ThemTinTuc";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model TINTUC
+
+<h2 style="color: brown; font-weight: 800">Thêm tin tức mới</h2>
+<br />
+
+<div class="container-fluid pb-2">
+    <form method="post" action="/TinTuc/QuanLyTinTuc/">
+        <div class="row">
+            <div class="col-md-1">
+                <p style="font-size: 20px">Tiêu đề</p>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group">
+                    <input type="text" id="tieuDeTinTuc" class="form-control" />
+                    <span id="tieuDeTinTucVL" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-1">
+                <p style="font-size: 20px">Tóm tắt</p>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group">
+                    <input type="text" id="tomTatTinTuc" class="form-control" />
+                    <span id="tomTatTinTucVL" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-1">
+                <p style="font-size: 20px">Hình đại diện</p>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group">
+                    <input type="file" id="hinhDaiDienTinTuc" class="form-control-sm" onchange="LoadAnhFolderHinhDaiDienTinTucThem(this)" />
+                    <img width="983" height="553" id="Image_DaiDienTinTuc" src="" class="mt-2" />
+                    <span id="hinhDaiDienTinTucVL" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-1">
+                <p style="font-size: 20px">Nội dung</p>
+            </div>
+            <div class="col-md-11">
+                <div class="form-group">
+                    <textarea id="txtThongTinTinTuc"></textarea>
+                    <span id="txtThongTinTinTucVL" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-1">
+
+            </div>
+            <div class="col-md-11">
+                <button id="btnThemTinTuc" class="btn btn-XanhLuc mt-2" type="submit"><i class="fas fa-plus"></i> Thêm tin tức</button>
+            </div>
+        </div>
+    </form>
+</div>

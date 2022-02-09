@@ -1,0 +1,207 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    ViewBag.Title = "ChiTietSanPham";
+    Layout = "~/Views/Shared/_LayoutChiTiet.cshtml";
+    <link href="~/Content/_style.css" rel="stylesheet" />
+}
+<style>
+    .text18 {
+        font-size: 18px;
+    }
+</style>
+@model SANPHAM
+<div class="span12 a-center">
+    <h2 class="title product_title text-center"><span style="background-color:#ffffff; ">@Model.TENSP - @Model.NANGLUONG - @Model.LOAIDAY - @Model.KICHTHUOC</span></h2>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-4 mt-4">
+            <img src="~/Content/Images/SanPham/@Model.HINHANH" class="w-100 border" style="border-radius:10px" />
+        </div>
+        <div class="col-md-4">
+            <h3 class="text-center" style="font-weight: bold">Thông tin sản phẩm</h3>
+            <div class="border ml-2" style="border-radius: 10px;">
+                <p style="padding-left: 10px">
+                    <strong>Mã sản phẩm:</strong> <span>@Model.MASP</span>
+                </p>
+                <p class="text-center" style="font-size: 30px; font-weight: bold">@Model.TENSP</p>
+                <p style="padding-left: 10px;">
+                    <strong>Chi tiết sản phẩm:</strong> <span>@Model.CHITIETSP</span>
+                </p>
+                @if (Model.SOLUONG == 0)
+                {
+
+                    <p class="ml-2">
+                        <b style="color: red">Hết hàng</b>
+                    </p>
+                }
+
+                @{
+                    List<HienThiKhuyenMai> ds = (List<HienThiKhuyenMai>)ViewBag.dsKM;
+                    HienThiKhuyenMai htkm = ds.Where(t => t.maSP == Model.MASP).FirstOrDefault();
+                    if (htkm != null)
+                    {
+                        <p class="ml-2">
+                            Đơn giá: <span style="color: black; text-decoration: line-through; font-weight: bold; font-size: 18px">@string.Format("{0: #,##}", Model.DONGIA)&nbsp;VNĐ</span>
+                            <span style="color: red; font-weight: bold; color: red; font-size: 20px">@string.Format("{0: #,##}", htkm.donGiaKM)&nbsp;VNĐ</span>
+                        </p>
+                    }
+
+                    else
+                    {
+                        <p class="ml-2">
+                            Đơn giá: <span style="font-weight: bold; color: red; font-size: 20px">@string.Format("{0: #,##}", Model.DONGIA) VNĐ</span>
+                        </p>
+                    }
+                }
+                <a class="ml-2" href="https://youtu.be/twbg1E7oXIk" rel="wp-video-lightbox nofollow external" data-wpel-link="external"><img class="alignnone wp-image-14205 size-full perfmatters-lazy loaded" src="https://donghohaitrieu.com/wp-content/uploads/hai-trieu/icon/broll.gif" width="85" height="106" data-src="https://donghohaitrieu.com/wp-content/uploads/hai-trieu/icon/broll.gif" data-was-processed="true"><noscript><img class="alignnone wp-image-14205 size-full" src="https://donghohaitrieu.com/wp-content/uploads/hai-trieu/icon/broll.gif" width="85" height="106" /></noscript></a>
+                <a href="https://www.youtube.com/channel/UCxKzc1W5ELFScwQHXoV5Y7w/search?query=EFR-S567D-1AV&amp;sub_confirmation=1" data-wpel-link="external" rel="nofollow external"><img class="alignnone wp-image-14205 size-full perfmatters-lazy loaded" src="https://donghohaitrieu.com/wp-content/uploads/hai-trieu/icon/hdsd.gif" width="85" height="106" data-src="https://donghohaitrieu.com/wp-content/uploads/hai-trieu/icon/hdsd.gif" data-was-processed="true"><noscript><img class="alignnone wp-image-14205 size-full" src="https://donghohaitrieu.com/wp-content/uploads/hai-trieu/icon/hdsd.gif" width="85" height="106" /></noscript></a>
+            </div>
+            @if (Model.SOLUONG > 0)
+            {
+                <center>
+                    <a id="addSPGioHang" class="btn btn-danger w-50 mt-4" onclick="ThemVaoGio('@Model.MASP')">Thêm vào giỏ</a>
+                    <h4 class="ml-2 mt-4">
+                        Gọi đặt mua:
+                        <span style="color: #c40dae;">
+                            <a style="color: #c40d2e;" href="tel:0932055472" data-wpel-link="internal">
+                                0932055472
+                            </a>
+                        </span> (8:00-1:30)
+                    </h4>
+                </center>
+            }
+            else
+            {
+
+            }
+        </div>
+        <div class="col-md-2">
+            <div class="span3 sidebar sidebar-right pull-right mobile-sidebar-bottom single-product-sidebar">
+                <div class="product-brands">
+                    <h4 class="title text-center" style="font-weight: bold"><span>Thương hiệu</span></h4>
+                    <div style="text-align: center; border-radius: 10px" class="mt-3 border">
+                        <a href="#">
+                            <img class="img-fluid" src="~/Content/Images/Brand_Logo/@ViewBag.logo" />
+                        </a>
+                    </div>
+                </div>
+                <div id="custom" class="text-center">
+                    <hr />
+                    <h4 class="widget-title">Tại sao nên chọn chúng tôi?</h4>
+                    <hr />
+                </div>
+                <div class="chung-nhan">
+                    <p>
+                        <img width="60" height="40" class="alignnone size-full wp-image-575 perfmatters-lazy loaded" style="float: left;" src="~/Content/Images/Icon/chungnhan.png" />
+                        <span style="line-height: 1.6em;">Hoàn lại tiền gấp 10 lần nếu phát hiện hàng giả - Hàng nhái.</span>
+                    </p>
+                </div>
+                <div class="bao-hanh-5-nam">
+                    <p>
+                        <img width="60" height="40" class="alignnone size-full wp-image-576 perfmatters-lazy loaded" style="float: left;" src="~/Content/Images/Icon/bao-hanh-5-nam1.png">
+                        Tăng thêm thời gian bảo hành lên đến 5 năm
+                    </p>
+                </div>
+                <div class="doi-hang-7-ngay">
+                    <p>
+                        <img width="60" height="40" style="float: left;" src="~/Content/Images/Icon/1-doi-12.png" />
+                        Sai kích cỡ? Không ưng ý? Đổi hàng trong 7 ngày
+                    </p>
+                </div>
+                <div class="thay-pin-mien-phi">
+                    <p>
+                        <img width="60" height="40" style="float: left;" src="~/Content/Images/Icon/thay-pin-mien-phi1.png" />
+                        Thay Pin Miễn Phí Suốt Đời - Không Còn Lo Hết Pin Nữa.
+                    </p>
+                </div>
+                <div class="giao-hang-sieu-toc">
+                    <p>
+                        <img width="60" height="40" style="float: left;" src="~/Content/Images/Icon/giao-hang-2h.png" />
+                        Giao hàng SIÊU TỐC trong 2h - SHIP COD miễn phí
+                    </p>
+                </div>
+                <div class="kinh-nghiem-30-nam">
+                    <p>
+                        <img width="60" height="40" style="float: left;" src="~/Content/Images/Icon/30-nam-kinh-nghiem1.png" />
+                        Đến & cảm nhận kinh nghiệm hơn 30 năm của chúng tôi.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1">
+
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-1"></div>
+        <div class="col-md-10 border pt-2 pb-2" style="border-radius: 10px">
+            <div class="mytab">
+                <input id="tabChiTiet" type="radio" checked="checked" name="mytab" />
+                <label for="tabChiTiet">Mô tả sản phẩm</label>
+                <div class="tab">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h2>Mô tả sản phẩm</h2>
+                            <p class="text18"><strong>Thương Hiệu:&nbsp;</strong>@ViewBag.hang</p>
+                            <p class="text18"><strong>Số hiệu sản phẩm: </strong><a>@Model.MASP</a></p>
+                            <p class="text18"><strong>Xuất xứ: </strong>@Model.XUATSU</p>
+                            <p class="text18"><strong>Phiên bản: </strong><a>@Model.DONGSP</a></p>
+                            <p class="text18"><strong>Máy: </strong><a>@Model.NANGLUONG</a></p>
+                            <p class="text18"><strong>Bảo hành quốc tế: </strong>@Model.ThoiHanBH</p>
+                            <p class="text18"><strong>Bảo hành tại NQN: </strong>Thay pin trọn đời</p>
+                            <p class="text18"><strong>Đường kính mặt số: </strong>@Model.KICHTHUOC</p>
+                            <p class="text18"><strong>Dây đeo: </strong>@Model.LOAIDAY</p>
+                        </div>
+
+                        <div class="col-md-8">
+                            <input type="text" value="@Model.MOTASP" hidden="hidden" id="txtMoTaSPInput" />
+                            <div id="txtMoTaSPChiTietSanPham">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <input id="tabBaoHanh" type="radio" name="mytab" />
+                <label for="tabBaoHanh">Chế độ bảo hành</label>
+                <div class="tab">
+                    <h2>Chế độ bảo hành</h2>
+                    @*@{
+                            string[] a = ViewBag.bh.NOIDUNG.Split(';');
+                        }
+                        @for (int i = 0; i < @a.Length - 1; i++)
+                        {
+                            string temp = a[i].Substring(0, 3);
+                            if (temp == "\r\n_")
+                            {
+                                string k = @a[i].Substring(3);
+                                <li>@k</li>
+                            }
+                            else
+                            {
+                                <p style="font-weight: bold">@a[i]</p>
+                            }
+                        }*@
+                    <input type="text" value="@ViewBag.bh.NOIDUNG" hidden="hidden" id="txtCheDoBaoHanhInput" />
+                    <div id="txtCheDoBaoHanhCTSP">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+    <input type="text" value="@Model.MASP" id="maSPBinhLuan" hidden="hidden" />
+    @{
+        Html.RenderAction("LoadBinhLuan", "BinhLuan");
+    }
+</div>
+
+
+
+<script>
+    var htmlObject = document.getElementById('txtMoTaSPChiTietSanPham');
+    htmlObject.innerHTML = $('#txtMoTaSPInput').val();
+    var cheDoBaoHanh = document.getElementById('txtCheDoBaoHanhCTSP');
+    cheDoBaoHanh.innerHTML = $('#txtCheDoBaoHanhInput').val();
+</script>

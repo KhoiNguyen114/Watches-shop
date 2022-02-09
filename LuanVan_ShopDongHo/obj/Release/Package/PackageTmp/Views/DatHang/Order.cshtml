@@ -1,0 +1,462 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    ViewBag.Title = "Order";
+    Layout = "~/Views/Shared/_LayoutOrder.cshtml";
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyAd4lUXoid1IKSL5y0pkXWt_D8swrRvrpk" type="text/javascript"></script>
+
+}
+
+@model GioHang
+<h2>Order</h2>
+@using (Html.BeginForm("Order", "DatHang", FormMethod.Post, new { enctype = "multipart/form-data", id = "form_edit", style = "background: #fff;width:max-content" }))
+{
+<div class="container-fluid">
+    <div class="col-12" style="display:none;">
+        <input type="text" id="originAddress" name="originAddress" value="@System.Configuration.ConfigurationManager.AppSettings["ShopAddress"]" />
+        <input type="text" id="origin" name="origin" />
+        <input type="text" id="destination" name="destination" />
+    </div>
+</div>
+    <div class="container-fluid" style="background-color:#F9F9F9;width:100%;">
+        <div class="row" style="background-color: #F9f9f9;width:100%">
+            <br />
+            <div class="col-12" style="margin-left:10px;margin-top:20px;">
+                <div class="row" style="width:100%;font-size:20px">
+                    <div class="col-4">
+                        <div class="row" style="background-color: #E8E8E8">
+                            <span style="margin-left: 10px; height: calc(1.5em + 0.75rem + 2px);">Thông tin khách hàng</span>
+                        </div>
+                        <div class="row" style="background-color: white;padding-top:10px;">
+                            <span style="margin-left: 10px; height: calc(1.5em + 0.75rem + 2px);">Tên KH :</span>
+                        </div>
+                        <div class="row" style="background-color: white">
+                            <span style="margin-left: 10px; height: calc(1.5em + 0.75rem + 2px);">Địa chỉ :</span>
+                        </div>
+                        <div class="row" style="background-color: white">
+                            <span style="margin-left: 10px; height: calc(1.5em + 0.75rem + 2px);">Số Điện thoại :</span>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <div class="row" style="background-color: #E8E8E8;">
+                            <div style="margin-left: 10px; width: 100%; height: calc(1.5em + 0.75rem + 2px) "><a href="/KhachHang/ThongTinTaiKhoanKH">Edit</a></div>
+                        </div>
+                        <div class="row" style="background-color: white; padding-top: 10px;display:none;">
+                            <input readonly="readonly" class="form-control" style="border: none; background-color: white;font-size:20px" type="text" id="id" name="idKH" value="@ViewBag.kh.IDKhachHang" />
+                        </div>
+                        <div class="row" style="background-color: white; padding-top: 10px;">
+                            <input readonly="readonly" class="form-control" style="border: none; background-color: white; font-size: 20px " type="text" id="fullname" name="TENKH" value="@ViewBag.kh.TENKH" />
+                        </div>
+                        <div class="row" style="background-color: white">
+                            <input readonly="readonly" class="form-control" style="border: none; background-color: white; font-size: 20px " type="text" id="destAddress" name="DIACHI" value="@ViewBag.kh.DIACHI" />
+                        </div>
+                        <div class="row" style="background-color: white">
+                            <input readonly="readonly" class="form-control" style="border: none; background-color: white; font-size: 20px" type="text" id="cusphone" name="SDT" value="@ViewBag.kh.SDT" />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row" >
+                    <div class="col-12">
+                        <div id="tblGioHang" style="max-width:100%;margin-left:-15px" class="col-12">
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row" style="background-color: #F9F9F9;width:100%;font-size:20px ">
+                    <div class="col-6">
+                        <div class="row" >
+                            <p style="margin-left:10px;">Chọn hình thức thanh toán</p>
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-8">
+                        <div class="row">
+                            @Html.DropDownList("hinhthuc", new SelectList(ViewBag.hinhThucTT, "value", "text", null), new { @id = "hinhthucDropdown", @class = "form-control", @name = "hinhthuc", @style = "width: 50%" })
+                        </div>
+
+                    </div>
+                </div>
+                <br />
+                <div class="row infor" id="transfer" style="background-color:white;display:none;">
+                    <div class="col-6">
+                        <p>Phí vận chuyển</p>
+                    </div>
+                    <div class="col-6">
+                        <input readonly="readonly" style="border:none;" type="text" id="transfee" name="transfee" />
+                    </div>
+                </div>
+                <br />
+                <div class="row" style="background-color:white;font-size:20px">
+                    <div class="col-12" style="width:100%">
+                        <p>Ghi chú</p>
+                        <div style="width: 100%;">
+                            <p id="result"></p>
+                            <input type="text" readonly="readonly" style="display:none;width:100%;background-color:white;font-size:15px" name="noteDH" id="note" />
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <div class="row infor" style="background-color:white;">
+                    <div class="col-12">
+                        <p>Chi phí</p>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Hạng Mục</th>
+                                    <th>Giá</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Thành Tiền</td>
+                                    <td><span><input type="text" readonly="readonly" style="border:none" value="@string.Format("{0:#,##}",ViewBag.thanhTien )" id="cost" name="cost" /> VNĐ</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Giảm Giá</td>
+                                    <td><span><input type="text" readonly="readonly" style="border:none" value="@string.Format("{0:#,##}", ViewBag.km)" name="discount" id="discount" /></span>VNĐ</td>
+                                </tr>
+                                <tr>
+                                    <td>Tổng Tiền</td>
+                                    <td><span><input type="text" readonly="readonly" style="border:none" value="@string.Format("{0:#,##}",ViewBag.tongTien)" id="total" name="total" /></span> VNĐ</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <br />
+                    <button type="submit" class="form-control w-25"  style="background-color:orange;color:white" id="order">Thanh Toán</button>
+                    <br />
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+<style>
+    * {
+        font-family: 'Times New Roman';
+    }
+
+    .infor {
+        font-size: 20px;
+    }
+    input {
+        margin-left:10px;
+    }
+</style>
+<script type="text/javascript">
+
+    function parseMoney(value)
+    {
+        var str = value;
+        var money = "";
+        var money_arr = str.split(",")
+        if (money_arr.lenght < 0)
+            money_arr = str.split(".");
+        for (var item of money_arr) {
+            money += item;
+        }
+        return money;
+    
+    }
+
+    function reloadTien() {
+        var cost = $('#cost').val();
+        cost = parseMoney(cost);
+        var total = $('#total').val();
+        total = parseMoney(total);
+        var discount = $('#discount').val();
+        discount = parseMoney(discount);
+        total = cost - discount;
+        var a = Intl.NumberFormat('en-US');
+        $('#discount').val(a.format(discount));
+        $('#cost').val(a.format(cost));
+        $('#total').val(a.format(total));
+        var s = `Đơn hàng quý khách có giá tiền là ${cost} \r\n- Đơn hàng được giảm giá ${discount} \r\n- Tổng thành tiền là ${total}`;
+        $('#note').prop('readonly', 'false');
+        $('#note').val(s);
+        $('#note').prop('readonly', 'readonly');
+       
+        $('#result').html(s);
+    }
+
+    google.maps.event.addDomListener(window, 'load', function () {
+        console.log($('#originAddress').val());
+        console.log($('#destAddress').val());
+        var from_place = new google.maps.places.Autocomplete($('#originAddress').val());
+        var desti_place = new google.maps.places.Autocomplete($('#destAddress').val());
+        console.log(from_place);
+        console.log(desti_place);
+        google.maps.event.addListener(from_place, 'place_changed', function () {
+            var from_place = from_place.getPlace();
+            var from_address = from_place.formatted_address;
+            $('#origin').val(from_address);
+        });
+        google.maps.event.addListener(desti_place, 'place_changed', function () {
+            var desti_place = desti_place.getPlace();
+            var desti_address = desti_place.formatted_address;
+            $('#destination').val(desti_address);
+        });
+    });
+
+    function calculate() {
+        var origin = $('#originAddress').val();
+        console.log(origin);
+        var des = $('#destAddress').val();
+        console.log(des);
+        var service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix(
+            {
+                origins: [origin],
+                destinations: [des],
+                travelMode: google.maps.TravelMode.DRIVING,
+                unitSystem: google.maps.UnitSystem.METRIC,
+                avoidHighways: false,
+                avoidTolls: false,
+            }, callback);
+    }
+
+    function callback(response, status) {
+        if (status != google.maps.DistanceMatrixStatus.OK) {
+            $('#result').html("FAIL");
+            console.log("FAIL");
+            var total = $('#total').val();
+            total = parseMoney(total);
+            $.ajax({
+                url: "/DatHang/GetPhiVanChuyen",
+                type: 'Post',
+                data: {
+                    param1: 0,
+                    param2: total,
+                    param3: $('#fullname').val(),
+                },
+                dataType: 'Json',
+                success: function (res) {
+                    if (res.success == true) {
+                        var fee = res.data;
+                        console.log(fee);
+                        $('#transfee').val(fee);
+                        console.log(res.msg);
+                        $('#note').prop('readonly', false);
+                        $('#note').val(res.msg);
+                        $('#note').prop('readonly', 'readonly');
+                        $('#result').empty();
+                        $('#result').html(res.msg);
+                        total = parseMoney(total);
+                        console.log(total);
+                        $('#total').prop('readonly', false);
+                        var money = parseInt(total);
+                        money = money + parseInt(fee);
+                        var a = Intl.NumberFormat('en-US');
+                        $('#total').val(a.format(total));
+                        $('#total').prop('readonly', 'readonly');
+                    }
+                    else {
+                        $('#note').prop('readonly', false);
+                        $('#note').val(res.msg);
+                        $('#note').prop('readonly', 'readonly');
+                        $('#note').css('display', 'inline-block');
+                    }
+                }
+            })
+        } else {
+            console.log("OK");
+            if (response.rows[0].elements[0].status === "ZERO_RESULTS") {
+                $('#result').html('CANNT FIND THE WAY');
+            }
+            else {
+                var distance = response.rows[0].elements[0].distance;
+                var distance_kilos = distance.value / 1000;
+                var total = $('#total').val();
+                total = parseMoney(total);
+                $.ajax({
+                    url: "/DatHang/GetPhiVanChuyen",
+                    type: 'Post',
+                    data: {
+                        param1: distance_kilos,
+                        param2: total,
+                        param3: $('#fullname').val(),
+                    },
+                    dataType: 'Json',
+                    success: function (res) {
+                        if (res.success == true) {
+                            var fee = res.data;
+                            console.log(fee);
+                            $('#transfee').val(fee);
+                            console.log(res.msg);
+                            $('#note').prop('readonly', false);
+                            $('#note').val(res.msg);
+                            $('#note').prop('readonly', 'readonly');
+                            $('#result').empty();
+                            $('#result').html(res.msg);
+                            total = parseMoney(total);
+                            console.log(total);
+                            $('#total').prop('readonly', false);
+                            var money = parseInt(total);
+                            money = money + parseInt(fee);
+                            console.log(money);
+                            var a = Intl.NumberFormat('en-US');
+                            $('#total').val(a.format(money));
+                            $('#total').prop('readonly', 'readonly');
+                        }
+                        else {
+                            $('#note').prop('readonly', false);
+                            $('#note').val(res.msg);
+                            $('#note').prop('readonly', 'readonly');
+                            $('#note').css('display', 'inline-block');
+                        }
+                    }
+                })
+            }
+        }
+    }
+
+    $('#hinhthucDropdown').change(function (e) {
+        var selectoption = $('#hinhthucDropdown :selected').val();
+        if (selectoption == 2) {
+            calculate();
+        }
+        else if (selectoption == 1) {
+            $('#transfer').css("display", "none");
+            reloadTien();
+            $('button[type="submit"]').prop('disabled', false);
+        }
+        else {
+            $('#transfer').css("display", "block");
+            $('button[type="submit"]').prop('disabled', false);
+        }
+    })
+
+    $(document).ready(function () {
+        loadGioHang();
+        var error = @Html.Raw(Json.Encode(ViewBag.error));
+        if (error != null) {
+            $.notify(error, 'danger');
+        }
+
+    })
+
+    function ReloadTongTien(masp) {
+        var a = parseInt($('#' + masp).val());
+        var b = parseInt($('#' + masp).attr('max'));
+
+        if (a > b) {
+            a = b;
+            $('#' + masp).val(a);
+        }
+        var para = {
+            maSP: masp,
+            soLuong: a,
+        };
+        $.ajax({
+            url: "/DatHang/reloadTongTien",
+            type: "POST",
+            data: JSON.stringify(para),
+            contentType: "application/json; charset = utf-8",
+            dataType: "json",
+            cache: false,
+            success: function (result) {
+                if (result.kq) {
+                    loadGioHang();
+                }
+                else {
+                    $('#' + masp).val(1);
+                }
+            },
+            error: function (e) {
+                alert(e.responseText);
+            }
+        })
+    }
+
+    function loadGioHang() {
+        $.ajax({
+            url: "/DatHang/LoadGioHang",
+            type: "GET",
+            contentType: "application/json; charset = utf-8",
+            dataType: "json",
+            success: function (result) {
+                var the = '';
+                the += '<table class="table table-bordered" style="max-width:100%">';
+                the += '<tr style = "text-align: center; color: white; background: #04a4b2; text-transform: uppercase; font-size: 18px" >';
+                the += '<th>STT</th>';
+                the += '<th>Mã sản phẩm</th>';
+                the += '<th>Tên sản phẩm</th>';
+                the += '<th>Hình</th>'
+                the += '<th>Đơn giá (VNĐ)</th>';
+                the += '<th>Số lượng</th>';
+                the += '<th>Khuyến mãi</th>';
+                the += '<th>Thành tiền (VNĐ)</th>';
+                the += '<th>Tổng tiền (VNĐ)</th>';
+                the += '<th>Thao tác</th>';
+                the += '</tr>';
+                var a = Intl.NumberFormat('en-US');
+                var dem = 1;
+                $.each(result.data, function (key, sp) {
+                    the += '<tr style="font-size: 18px">';
+                    the += '<td style="text-align: right">' + dem + '</td>';
+                    the += '<td>' + sp.maSP + '</td>';
+                    the += '<td>Đồng hồ ' + sp.tenSP + ' - ' + sp.kichThuoc + ' - ' + sp.loaiDay + '</td>';
+                    the += '<td>';
+                    the += '<img src="../Content/Images/SanPham/' + sp.hinh + '" width = "50" height = "50" />';
+                    the += '</td>';
+                    the += '<td style="text-align: right">' + a.format(sp.donGia) + '</td >';
+                    the += '<td style="text-align: right">';
+                    the += '<input type = "number" value = "' + sp.soLuong + '" id = "' + sp.maSP + '" min = "1" max = "' + sp.soLuongHienCo + '" onchange = "ReloadTongTien(\'' + sp.maSP + '\')" style = "transition: 0.4s ease; border: none; text-align: right; font-size: 18px" class="form-control-sm" />';
+                    the += '</td>';
+                    the += '<td style="text-align: right" id="km_' + sp.maSP + '" >' + a.format(sp.khuyenMai) + '</td >';
+                    the += '<td style = "text-align: right" id = "tt_' + sp.maSP + '" >' + a.format(sp.thanhTien) + '</td >';
+                    the += '<td style = "text-align: right" id = "total_' + sp.maSP + '" >' + a.format(sp.tongTien) + '</td >';
+                    the += '<td style = "text-align: center">';
+                    the += '<a class="btn btn-danger" class="xoaGioHang"  onclick="XoaGioHangOrder(\'' + sp.maSP + '\')" > <i class="fas fa-trash mr-2"></i>Xóa</a>';
+                    the += '</td>';
+                    the += '</tr>';
+                    dem++;
+                });
+                the += '<tr style="font-size: 18px">';
+                the += '<td colspan = "6" style = "text-align: right; font-weight: bold; text-transform: uppercase">Tổng cộng</td>';
+                the += '<td style="text-align: right; font-weight: 800" id="TongThanhTien">' + a.format(result.tongTien) + '</td>';
+                the += '<td></td>';
+                the += '</tr>';
+                the += '</table>';
+                $('#tblGioHang').html(the);
+            },
+            error: function (e) {
+                alert(e.responseText);
+            }
+        });
+    }
+
+    function XoaGioHangOrder(maSP) {
+        $.ajax({
+            url: "/DatHang/XoaMatHangOrder?MASP=" + maSP,
+            type: "GET",
+            contentType: "application/json; charset = utf-8",
+            dataType: "json",
+            success: function (result) {
+                if (result.status) {
+                    loadGioHang();
+                    var tongtien = result.tongTien;
+                    var thanhtien = result.thanhTien;
+                    var km = result.km;
+                    $('#cost').val(thanhtien);
+                    $('#total').val(tongtien);
+                    $('#discount').val(km);
+                    reloadTien();
+                }
+            },
+            error: function (e) {
+                alert(e.responseText);
+            },
+        });
+    }
+
+    $('#order').click(function (e) {
+        e.preventDefault();
+        var selectoption = $('#hinhthucDropdown :selected').val();
+        if (selectoption != 0) {
+            $('#form_edit').trigger('submit');
+        }
+        else {
+            alert('Vui lòng chọn hình thức thanh toán');
+        }
+    })
+</script>

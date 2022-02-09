@@ -1,0 +1,53 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    Layout = null;
+    TAIKHOAN tk = (TAIKHOAN)Session["User"];
+}
+
+@model  List<BinhLuanSanPham>
+
+<style>
+    .btn:hover{
+        background: #e7e0e0;
+    }
+</style>
+
+<div class="row mt-3">
+    <div class="col-md-1"></div>
+    <div class="col-md-10" id="showBinhLuan">
+        @foreach (var item in Model)
+        {
+            <hr />
+            <div style="background: #e0d9d9; border-radius: 10px">
+                <span class="mt-2 ml-2"><b>@item.tenNguoiBL</b></span>
+                <span class="ml-2">@string.Format("{0: dd/MM/yyyy hh:mm:ss tt}", item.ngayTao)</span>
+                <div class="mt-2 ml-2">@item.noiDung</div>
+                @if (tk != null && tk.TENDN == item.tenDN)
+                {
+                    <span class="ml-2"><button class="btn" style="color: gray" id="@item.idBinhLuan" onclick="ChinhSuaBL(this)" type="submit">Chỉnh sửa</button></span>
+                    <span class="ml-2"><button class="btn" style="color: gray" id="@item.idBinhLuan" onclick="XoaBinhLuan(this)" type="submit">Xóa</button></span>
+                }
+            </div>
+
+        }
+    </div>
+    <div class="col-md-1"></div>
+</div>
+<div class="row mt-2">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+        <hr />
+        <div class="form-group" id="divBinhLuan">
+            <textarea class="form-control" type="text" id="txtBLSP" style="min-width: 100%; min-height: 200px; border-radius: 10px; resize: none" rows="5" placeholder="Hãy viết gì đó..."></textarea>
+            <span id="txtBLSPVL" class="text-danger"></span><br />
+            <button class="btn btn-primary mt-2" style="text-transform: uppercase; font-weight: bold;" id="btnBLSP">
+                <i class="fas fa-edit"></i>
+                Đăng
+            </button>
+        </div>
+    </div>
+    <div class="col-md-1"></div>
+</div>
+
+
+

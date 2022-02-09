@@ -1,0 +1,143 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "QuanLyPhanQuyen";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model GROUPNAME
+
+<h2 style="color: brown; font-weight: 800">Quản lý phân quyền</h2>
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-5">
+            <h4 style="font-weight: bold">Danh sách tài khoản chưa phân quyền</h4>
+            <table class="table table-bordered">
+                <tr class="tr-Title">
+                    <th>Tên đăng nhập</th>
+                    <th>Thao tác</th>
+                </tr>
+                @foreach (var item in ViewBag.dsTK)
+                {
+                    <tr>
+                        <td>@item.TENDN</td>
+                        <td style="text-align: center">
+                            <button class="btn btn-success" id="@item.TENDN" onclick="GetPhanQuyenThemNND(this)"><i class="fas fa-plus-square"></i></button>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+        <div class="col-md-2">
+
+        </div>
+        <div class="col-md-5">
+            <h4 style="font-weight: bold">Danh sách tài khoản đã phân quyền</h4>
+            <table class="table table-bordered">
+                <tr class="tr-Title">
+                    <th>Tên đăng nhập</th>
+                    <th>Tên nhóm người dùng</th>
+                    <th>Thao tác</th>
+                </tr>
+                @foreach (var item in ViewBag.dsTKDaPQ)
+                {
+                    <tr>
+                        <td>@item.tenDN</td>
+                        <td>@item.tenNhomNguoiDung</td>
+                        <td style="text-align: center">
+                            <button class="btn btn-success" id="@item.tenDN" onclick="GetPhanQuyenSuaNND(this)"><i class="fas fa-edit"></i></button>
+                        </td>
+                    </tr>
+                }
+            </table>
+            <a class="btn btn-XanhLuc mt-2" style="text-transform: uppercase; font-weight: bold;" href="/PhanQuyen/PhanQuyen">
+                <i class="fas fa-cog"></i>
+                Phân quyền
+            </a>
+            <button class="btn btn-XanhLuc mt-2" style="text-transform: uppercase; font-weight: bold;" data-bs-toggle="modal" data-bs-target="#myModalAddNNDMoi">
+                <i class="fas fa-plus"></i>
+                Thêm nhóm người dùng
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Modal thêm vào nhóm người dùng-->
+<div class="modal fade" id="myModalAddTKNND" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Thêm tài khoản vào nhóm người dùng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Tên đăng nhập</label>
+                    <input type="text" id="tenDNNNDThem" class="form-control" disabled="disabled" />
+                    <span id="tenDNNNDThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Nhóm người dùng</label>
+                    @Html.DropDownListFor(model => model.NAME, new SelectList(ViewBag.dsGroupName, "IDGROUP", "NAME"), new { @class = "form-control", @id = "tenNNDThem" })
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnThemNND">Thêm</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal thêm vào nhóm người dùng-->
+<!-- Modal cập nhật nhóm người dùng-->
+<div class="modal fade" id="myModalEditTKNND" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Cập nhật tài khoản vào nhóm người dùng</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Tên đăng nhập</label>
+                    <input type="text" id="tenDNNNDSua" class="form-control" disabled="disabled" />
+                    <span id="tenDNNNDSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Nhóm người dùng</label>
+                    @Html.DropDownListFor(model => model.NAME, new SelectList(ViewBag.dsGroupName, "IDGROUP", "NAME"), new { @class = "form-control", @id = "tenNNDSua" })
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnSuaNND">Cập nhật</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal cập nhật nhóm người dùng-->
+<!-- Modal thêm nhóm người dùng mới-->
+<div class="modal fade" id="myModalAddNNDMoi" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Thêm nhóm người dùng mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Tên nhóm người dùng</label>
+                    <input type="text" id="tenNNDMoi" class="form-control" />
+                    <span id="tenNNDMoiVL" class="text-danger"></span>
+                </div>               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnThemNNDMoi">Thêm</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal thêm nhóm người dùng mới-->

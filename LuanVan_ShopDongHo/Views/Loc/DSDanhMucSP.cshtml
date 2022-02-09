@@ -1,0 +1,15 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@model List<DANHMUCSP>
+
+<div class="container">
+    <br />
+    <label style="text-transform: uppercase; font-weight: bold">Giới tính</label><br />
+    <hr />
+    <div style="overflow: scroll; height: 150px">
+        @foreach (DANHMUCSP a in Model)
+        {
+            <input type="radio" value="@a.TENDM" /><span>&nbsp; @a.TENDM</span><br /><br />
+        }
+    </div>
+    <hr />
+</div>

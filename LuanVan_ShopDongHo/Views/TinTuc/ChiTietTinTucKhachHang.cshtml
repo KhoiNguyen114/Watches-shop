@@ -1,0 +1,29 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    ViewBag.Title = "ChiTietTinTucKhachHang";
+    Layout = "~/Views/Shared/_LayoutChiTiet.cshtml";
+}
+@model TINTUC
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-12">
+            <h2 style="font-weight: 800; text-transform: uppercase">@Model.TIEUDE</h2>
+            <br />
+            <p style="color: gray">@string.Format("{0: dd/MM/yyyy}", Model.NGAYDANG)</p>
+            <input type="text" value="@Model.NOIDUNG" hidden="hidden" id="textNoiDungTTKhachHang" />
+            <div id="txtChiTietTinTucKhachHang">
+
+            </div>
+        </div>
+    </div>
+    <input type="text" value="@Model.IDTINTUC" id="idTinTucBinhLuan" hidden="hidden" />
+    @{
+        Html.RenderAction("LoadBinhLuanTinTuc", "BinhLuan");
+    }
+</div>
+
+<script>
+    var htmlObject = document.getElementById('txtChiTietTinTucKhachHang');
+    htmlObject.innerHTML = $('#textNoiDungTTKhachHang').val();
+</script>

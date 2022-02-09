@@ -1,0 +1,237 @@
+﻿*{
+    font-family : 'Times New Roman', Times, serif;
+}
+
+body {
+   /* min-height : 100vh;*/
+    position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#shopName {
+    text-align: center;
+    color: black;
+    text-decoration: none;
+}
+
+#shopName:hover {
+    text-decoration: none;
+}
+
+.bars {
+    font-size: 2em;
+    cursor: pointer;
+    position: absolute;
+    top: 10%;
+    left: 10px;
+    transform: translateY(-50%);
+    transition: 0.5s linear;
+}
+
+.bars.rotate {
+    transform : translateY(-50%) rotate(-180deg);
+}
+
+div#navigate {  
+    background-color: #f8f9fa;
+    position : relative;
+    text-align:center;
+}
+
+header h5 {
+    text-align: center;
+    font-size: 15px;
+}
+
+#logo {
+    width: 460px;
+    height: 270px;
+    padding-left: 50px;
+}
+
+#navbar {
+    width: 100%;
+    z-index:999;
+}
+
+#navbar > li {
+        display: inline-block;
+        float: left;
+        align-content:center;
+        line-height:50px;
+}
+
+.FirstNavItems {
+    color: black;
+    padding: 2px;
+    height: auto;
+    font-size: 25px;
+    margin: 15px;
+    border: none;
+    text-transform:uppercase;
+    text-decoration:none;
+}
+
+.FirstNavItems:hover {
+        animation-name: border_hover;
+        animation-duration: 0.3s;
+        color: black;
+        text-decoration: none;
+        animation-iteration-count: 1;
+        border-bottom: 3px solid rgba(0,0,0,1);
+}
+
+.dropdown-icon {
+    color: black;
+    transition-duration : 0.4s;
+    display : inline-block;
+    transform : rotate(90deg);
+}
+
+.FirstNavItems:hover .dropdown-icon {
+    color:black;
+    transform : rotate(-90deg);
+}
+
+
+@keyframes border_hover {
+    0% {
+        border-bottom: 3px solid rgba(0,0,0,0);
+    }
+    25% {
+        border-bottom: 3px solid rgba(0,0,0,0.1);
+    }
+    75% {
+        border-bottom: 3px solid rgba(0,0,0,0.75);
+    }
+    100% {
+        border-bottom: 3px solid rgba(0,0,0,1);
+    }
+}
+
+.dropdown-menu {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background-color: whitesmoke;
+    text-transform: uppercase;
+    display: block;
+    justify-content: space-around;
+    visibility : hidden;
+}
+
+.menu-item-font {
+    color: black;
+    text-transform: uppercase;
+}
+
+.dropdown-menu ul {
+    list-style: none;
+    display: inline-block;
+    float: left;
+    flex: 1;
+}
+
+.dropdown-menu > li{
+    left : 0;
+}
+
+@media screen and (max-width: 800px) {
+    #navbar{
+        margin-right:0px;
+        position:relative;
+    }
+    #navbar > li{
+        position:relative;
+        display:block;
+    }
+    .dropdown-menu{
+        display:none;
+    }
+    .dropdown-icon{
+        display:none;
+    }
+}
+
+/*Thêm 3 đoạn code css từ khúc này trở xuống*/
+#shopName h3 {
+    margin-top: 30px;
+}
+
+#formSearch {
+    margin-top: 30px;
+}
+
+
+#footer p {
+    color: white;
+    padding-left: 50px;
+}
+/**/
+
+/*Thêm đoạn code css marquee (vòng lặp tự chạy trên footer)*/
+#logo_Hang img {
+    width: 180px;
+    height: 150px;
+}
+/**/
+
+/*Thêm đoạn code edit icon giỏ hàng*/
+#logo_GioHang {
+    width: 50px;
+    height: 50px;
+}
+
+.slmh {
+    height: 25px;
+    width: 25px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    display: inline-block;
+    text-align: center;
+}
+
+#icon_DangNhap {
+    width: 50px;
+    height: 50px;
+}
+/**/
+
+/*Thêm đoạn code trên footer*/ 
+.btn-facebook {
+    color: #fff !important;
+    background-color: #3b5998 !important;
+}
+
+.btn-youtube {
+    color: #fff !important;
+    background-color: #b00 !important;
+}
+.btn-twitter {
+    color: #fff !important;
+    background-color: #00aced !important;
+}
+/**/
+
+/*Thêm đoạn code custom giỏ hàng với icon đăng nhập*/
+.fa-user-circle {
+    color: #343a40;
+}
+.fa-cart-plus {
+    color: #343a40;
+}
+/**/
+h4.indexer {
+    text-align: center;
+}
+/**/
+span.indexer_text  {
+    font-size : 30px;
+    font-style:italic;
+    font-weight : bold;
+    display:inline-block;
+}
+
+

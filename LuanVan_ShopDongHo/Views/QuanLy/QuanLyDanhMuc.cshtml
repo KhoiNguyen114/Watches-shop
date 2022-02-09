@@ -1,0 +1,159 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@using PagedList.Mvc;
+@{ ViewBag.Title = "QuanLyDanhMuc";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml"; }
+@model DANHMUCSP
+
+<h2 style="color: brown; font-weight: 800">Quản lý danh mục sản phẩm</h2>
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <a class="btn btn-XanhLuc mt-4" data-bs-toggle="modal" data-bs-target="#myModalAddDM" style="text-transform: uppercase; font-weight: bold;">
+                <i class="fas fa-plus"></i>
+                Thêm danh mục sản phẩm mới
+            </a>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>Trạng thái</label>
+                @Html.DropDownListFor(model => model.TRANGTHAI, new SelectList(ViewBag.dsTT, "Value", "Text", ViewBag.trangThai), new { @class = "form-control", @id = "trangThaiDMSPFilter", @style = "border-radius: 10px;" })
+            </div>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-XanhLuc mt-4" style="text-transform: uppercase; font-weight: bold;" id="btnFilterDMSP">
+                <i class="fas fa-search"></i>
+                Tìm kiếm
+            </button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <table class="table table-bordered table-hover">
+            <tr class="tr-Title">
+                <th>STT</th>
+                <th>Mã danh mục</th>
+                <th>Tên danh mục</th>
+                <th style="width: 150px">Thao tác</th>
+            </tr>
+            @{ int dem = 0;
+                int pageNum = ViewBag.pageNum;
+                int pageSize = ViewBag.pageSize;
+                dem = (pageNum - 1) * pageSize; }
+            @foreach (var item in ViewBag.dsDM)
+            {
+                dem++;
+                <tr>
+                    <td>@dem</td>
+                    <td>@item.MADM</td>
+                    <td>@item.TENDM</td>
+                    <td>
+                        @if (item.TRANGTHAI == false)
+                        {
+                            <button class="btn btn-success" id="@item.MADM" onclick="GetDanhMuc(this)"><i class="fas fa-edit"></i></button><span>&nbsp;</span>
+                            <button class="btn btn-danger" id="@item.MADM" onclick="GetIDDanhMucDelete(this)" data-bs-toggle="modal" data-bs-target="#myModalDeleteDanhMuc"><i class="fas fa-trash"></i></button> }
+                        else
+                        {
+                            <button class="btn btn-primary" id="@item.MADM" onclick="KhoiPhucDanhMuc(this)"><i class="fas fa-trash-restore"></i></button>}
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>
+
+<div class="spacer20">
+    <center>
+        <div class="pagination">
+            @Html.PagedListPager((PagedList.IPagedList)ViewBag.dsDM, page => Url.Action("QuanLyDanhMuc", new { page, @class = "active" , trangThai = ViewBag.trangThai }))
+        </div>
+    </center>
+</div>
+
+<!-- Modal thêm danh mục-->
+<div class="modal fade" id="myModalAddDM" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Thêm danh mục mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mã danh mục</label>
+                    <input type="text" id="maDMThem" class="form-control" />
+                    <span id="maDMThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Tên danh mục</label>
+                    <input type="text" id="tenDMThem" class="form-control" />
+                    <span id="tenDMThemVL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnThemDM">Thêm</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal thêm danh mục-->
+<!-- Modal cập nhật danh mục-->
+<div class="modal fade" id="myModalEditDM" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Cập nhật danh mục</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mã danh mục</label>
+                    <input type="text" id="maDMSua" class="form-control" disabled="disabled" />
+                    <span id="maDMSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Tên danh mục</label>
+                    <input type="text" id="tenDMSua" class="form-control" />
+                    <span id="tenDMSuaVL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnCapNhatDM">Cập nhật</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal cập nhật danh mục-->
+<!-- Modal xóa danh mục -->
+<div class="modal fade" id="myModalDeleteDanhMuc" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Xóa danh mục </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" hidden="hidden" id="idDanhMucDelete" value="" />
+                    <p>Bạn có chắc chắn muốn xóa danh mục  này không</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-Do" id="btnXoaDanhMuc">Xóa</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal xóa danh mục -->
+
+<script type="text/javascript">
+    $('#btnFilterDMSP').click(function (e) {
+        e.preventDefault();
+        var url = window.location.origin + "/QuanLy/QuanLyDanhMuc?trangThai=" + $('#trangThaiDMSPFilter').val();
+        window.location = url;
+    })
+</script>

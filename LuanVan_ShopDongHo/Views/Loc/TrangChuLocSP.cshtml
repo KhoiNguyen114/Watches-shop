@@ -1,0 +1,74 @@
+﻿@using PagedList.Mvc;
+@using PagedList;
+@using LuanVan_ShopDongHo.Models;
+@{
+    ViewBag.Title = "TrangChuLocSP";
+    Layout = "~/Views/Shared/_LayoutFilter.cshtml";
+}
+@model IPagedList<LuanVan_ShopDongHo.Models.SANPHAM>
+
+<style>
+    .ul.pagination {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul.pagination li {
+        display: inline;
+    }
+
+        ul.pagination li a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+        }
+
+            ul.pagination li a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            ul.pagination li a:hover:not(.active) {
+                background-color: #ddd;
+            }
+</style>
+
+
+
+<div class="container">
+    @if (Session["loc"] != null)
+    {
+        <center class="container">
+            <p class="text-center mt-5" style="font-size: 30px;">@Session["loc"].ToString()</p>
+        </center>
+    }
+    <br /><br />
+    <div class="row">
+        @foreach (var sp in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <a href="/SanPham/ChiTietSanPham/?MASP=@sp.MASP">
+                        <img class="card-img-top" src="~/Content/Images/SanPham/@sp.HINHANH" alt="Card image cap" width="250" height="300">
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title text-center">Đồng hồ @sp.TENSP - @sp.KICHTHUOC - @sp.LOAIDAY</h4>
+                        <p class="card-text text-center" style="color:red">@string.Format("{0: #,##}", sp.DONGIA) &nbsp;VNĐ</p>
+                    </div>                    
+                </div>                
+            </div>
+            <br /><br />
+        }
+    </div>
+    <br />
+</div>
+<div class="row">
+    <div style="background: #fff; text-align: right; padding: 4px; display: block" class="pagination col-xl-12">
+        @Html.PagedListPager(Model, page => Url.Action("TrangChuLocSP", new { page }))
+    </div>
+</div>
+
+

@@ -1,0 +1,59 @@
+﻿@using PagedList.Mvc;
+@using LuanVan_ShopDongHo.Models;
+@{
+    ViewBag.Title = "TrangChuLocSP";
+    Layout = "~/Views/Shared/_LayoutFilter.cshtml";
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.2.1.min.js"></script>
+}
+@model PagedList.IPagedList<Product>
+
+<link href="~/Content/PagedList.css" rel="stylesheet" />
+<div class="container">
+    @if (Session["loc"] != null)
+    {
+        <center class="container">
+            <p class="text-center mt-5" style="font-size: 30px;">@Session["loc"].ToString()</p>
+        </center>
+    }
+    <br /><br />
+    <div class="row">
+        @foreach (var sp in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card h-100">
+                    <a href="/SanPham/ChiTietSanPham/?MASP=@sp.MASP">
+                        <img class="card-img-top" src="~/Content/Images/SanPham/@sp.HINHANH" alt="Card image cap" width="250" height="300">
+                    </a>
+                    <div class="card-body">
+                        <h4 class="card-title text-center">Đồng hồ @sp.TENSP - @sp.KICHTHUOC - @sp.LOAIDAY</h4>
+                        @{
+                            List<HienThiKhuyenMai> ds = (List<HienThiKhuyenMai>)ViewBag.dsKM;
+                            if (ds != null)
+                            {
+                                HienThiKhuyenMai htkm = ds.Where(t => t.maSP == sp.MASP).FirstOrDefault();
+                                if (htkm != null)
+                                {
+                                    <p class="card-text text-center" style="color:black; text-decoration: line-through">@string.Format("{0: #,##}", sp.DONGIA)&nbsp;VNĐ</p>
+                                    <p class="card-text text-center" style="color:red">@string.Format("{0: #,##}", htkm.donGiaKM)&nbsp;VNĐ</p>
+                                }
+
+                                else
+                                {
+                                    <p class="card-text text-center" style="color:red">@string.Format("{0: #,##}", sp.DONGIA)&nbsp;VNĐ</p>
+                                }
+                            }
+                        }
+
+                    </div>
+                </div>
+            </div>
+            <br /><br />
+        }
+    </div>
+    <br />
+</div>
+<div class="spacer20" style="text-align:center;">
+    <div class="pagination" style="text-align:center">
+        @Html.PagedListPager(Model, page => Url.Action("MainFilter", new { page, @class = "active" }))
+    </div>
+</div>

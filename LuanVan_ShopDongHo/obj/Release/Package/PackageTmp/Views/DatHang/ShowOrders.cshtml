@@ -1,0 +1,92 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "ShowOrders";
+    Layout = null;
+    Dictionary<int, string> trangThai = ViewBag.TrangThai;
+    <link href="~/Content/_style.css" rel="stylesheet" />
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+}
+@model PagedList.IPagedList<LuanVan_ShopDongHo.Models.customerLinkOrder>
+<h2>Đơn hàng của bạn</h2>
+<div class="container-fluid" id="parent" style="background-color:#F9F9F9">
+    @{
+        foreach (var item in Model)
+        {
+            <a href="@Url.Action("OrderDetail","DatHang",new { IDHoaDon = item.IDHoaDon })" class="order-link">
+                <br />
+                <div class="order" style="margin-left:5px;">
+                    <div class="row order-item">
+                        <div class="col-2">
+                            <p style="height:100%;padding-top:10px;padding-left:10px;font-size:20px; margin-left:5px;">@item.MAHD</p>
+                        </div>
+                        <div class="col-2">
+                            <p style="height:100%;padding-top:10px;padding-left:10px;font-size:20px; margin-left:5px;">@String.Format("{0:dd/MM/yyyy}",item.NGAYLAP)</p>
+                        </div>
+                        <div class="col-7" style="text-align:right;">
+                            <p style="padding-top: 10px; height: 100%; font-size: 20px;">Tình Trạng : <span style="border: none; display: inline-block; background-color: #b8c9ce;border-radius:10px;padding:5px;">@trangThai[item.TINHTRANG]</span></p>
+
+                        </div>
+                    </div>
+                    @{
+                        foreach (var chitiet in item.chitiets)
+                        {
+
+                            <div class="card" style="width:100%;border-left:none;border-right:none;border-bottom:none;">
+                                <div class="row order-item no-gutters">
+                                    <div class="col-5">
+                                        <div class="card-body">
+                                            <img class="card-img" src="~/Content/Images/SanPham/@chitiet.HINHANH" style="height:200px;width:200px;display:inline" alt="Suresh Dasari Card" />
+                                            <p class="card-text" style="padding-top:30px;display:inline">@chitiet.TENSP</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-2">
+                                        <div class="card-body">
+                                            <p class="card-text" style="padding-top:85px;height:200px;">QTY : @chitiet.SOLUONG</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br />
+                        }
+                    }
+                </div>
+            </a>
+        }
+    }
+    <br />
+    <div class="pagination" style="text-align:center">
+        @Html.PagedListPager(Model, page => Url.Action("ShowOrders", new { page, @class = "active", trangthai = ViewBag.TrangThai }))
+    </div>
+</div>
+<style>
+    .order-link {
+        margin-top: 5px;
+        color: black;
+    }
+    #parent{
+        width:100%;
+    }
+    .order {
+        margin-top: 5px;
+        background-color: white;
+    }
+
+    .order-link {
+        padding-left: 10px;
+        padding-top: 10px;
+        color: black;
+    }
+
+        .order-link:hover {
+            text-decoration: none;
+            color: black;
+        }
+    @@media only screen and (max-width:1024px)
+    {
+        #parent{
+            width:max-content
+        }
+    }
+</style>

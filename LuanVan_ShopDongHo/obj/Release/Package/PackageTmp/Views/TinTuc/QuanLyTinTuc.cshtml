@@ -1,0 +1,127 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "QuanLyTinTuc";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model TINTUC
+
+<h2 style="color: brown; font-weight: 800">Quản lý tin tức</h2>
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <a class="btn btn-XanhLuc mt-4" style="text-transform: uppercase; font-weight: bold;" href="/TinTuc/ThemTinTuc">
+                <i class="fas fa-plus"></i>
+                Thêm tin tức mới
+            </a>
+        </div>
+        <div class="col-md-4">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Trạng thái</label>
+                        @Html.DropDownListFor(model => model.TRANGTHAI, new SelectList(ViewBag.dsTrangThai, "Value", "Text", ViewBag.trangThai), new { @class = "form-control", @id = "trangThai", @style = "border-radius: 10px;" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Ngày lập</label>
+                        <input type="date" id="ngayTao" class="form-control" value="@ViewBag.ngayTao" style="border-radius: 10px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-XanhLuc mt-4" style="text-transform: uppercase; font-weight: bold;" id="btnFilterTinTuc">
+                <i class="fas fa-search"></i>
+                Tìm kiếm
+            </button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <table class="table table-bordered">
+            <tr class="tr-Title">
+                <th>STT</th>
+                <th>Tiêu đề</th>
+                <th>Tóm tắt</th>
+                <th>Hình đại diện</th>
+                <th>Ngày đăng</th>
+                <th>Người đăng</th>
+                <th style="width: 150px">Thao tác</th>
+            </tr>
+            @{
+                int dem = 0;
+                int pageNum = ViewBag.pageNum;
+                int pageSize = ViewBag.pageSize;
+                dem = (pageNum - 1) * pageSize;
+            }
+            @foreach (var item in ViewBag.dsTTLoad)
+            {
+                dem++;
+                <tr>
+                    <td>@dem</td>
+                    <td><a href="/TinTuc/ChiTietTinTucAdmin/?idTinTuc=@item.maTinTuc">@item.tieuDe</a></td>
+                    <td>@item.tomTat</td>
+                    <td>
+                        <img src="~/Content/Images/TinTuc/HinhDaiDienTinTuc/@item.hinhDaiDien" width="250" height="200" />
+                    </td>
+                    <td>@string.Format("{0: dd/MM/yyyy}", item.ngayDang) </td>
+                    <td>@item.tenNV</td>
+                    <td>
+
+                        @if (item.trangThai == false)
+                        {
+                            <a class="btn btn-success" id="@item.maTinTuc" href="/TinTuc/CapNhatTinTuc/?idTinTuc=@item.maTinTuc"><i class="fas fa-edit"></i></a><span>&nbsp;</span>
+                            <button class="btn btn-danger" id="@item.maTinTuc" onclick="GetIDTinTucDelete(this)" data-bs-toggle="modal" data-bs-target="#myModalDeleteTinTuc"><i class="fas fa-trash"></i></button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary" id="@item.maTinTuc" onclick="KhoiPhucTinTuc(this)"><i class="fas fa-trash-restore"></i></button>
+                        }
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div class="spacer20">
+    <center>
+        <div class="pagination">
+            @Html.PagedListPager((PagedList.IPagedList)ViewBag.dsTTLoad, page => Url.Action("QuanLyTinTuc", new { page, @class = "active", ngayTao = ViewBag.ngayTao, trangThai = ViewBag.trangThai }))
+        </div>
+    </center>
+</div>
+
+<!-- Modal xóa tin tức-->
+<div class="modal fade" id="myModalDeleteTinTuc" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Xóa tin tức</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" hidden="hidden" id="idTinTucDelete" value="" />
+                    <p>Bạn có chắc chắn muốn xóa tin tức này không</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-Do" id="btnXoaTinTuc">Xóa</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal xóa tin tức-->
+
+<script type="text/javascript">
+    $('#btnFilterTinTuc').click(function (e) {
+        e.preventDefault();
+        var url = window.location.origin + "/TinTuc/QuanLyTinTuc?ngayTao=" + $('#ngayTao').val() + "&trangThai=" + $('#trangThai').val();
+        window.location = url;
+    })
+</script>

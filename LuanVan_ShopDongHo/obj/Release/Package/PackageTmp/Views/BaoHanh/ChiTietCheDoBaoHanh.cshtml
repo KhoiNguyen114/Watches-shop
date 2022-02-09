@@ -1,0 +1,45 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    ViewBag.Title = "ChiTietCheDoBaoHanh";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model NOIDUNGBH
+
+<h2 style="color: brown; font-weight: 800">Chi tiết chế độ bảo hành</h2>
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-2">
+            Mã chế độ bảo hành
+        </div>
+        <div class="col-md-10">
+            @Model.MANOIDUNG
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-2">
+            Nội dung chế độ bảo hành
+        </div>
+        <div class="col-md-10">
+            <input type="text" value="@Model.NOIDUNG" id="textNoiDungBaoHanhSummernote" hidden="hidden"/>
+            <div id="txtNoiDungBaoHanhSummernote">
+
+            </div>
+        </div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-md-2">
+            Số năm bảo hành
+        </div>
+        <div class="col-md-10">
+            @Model.SONAMBH
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var htmlObject = document.getElementById('txtNoiDungBaoHanhSummernote');
+    htmlObject.innerHTML = $('#textNoiDungBaoHanhSummernote').val();
+</script>

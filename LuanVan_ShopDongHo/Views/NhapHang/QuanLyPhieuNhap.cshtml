@@ -1,0 +1,101 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "QuanLyPhieuNhap";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model PHIEUNHAP
+
+<h2 style="color: brown; font-weight: 800">Quản lý phiếu nhập</h2>
+<br />
+
+<div class="container-fluid">
+    <a class="btn btn-XanhLuc" href="/NhapHang/TaoPhieuNhap" style="text-transform: uppercase; font-weight: bold;">
+        <i class="fas fa-plus mr-2"></i>
+        Tạo phiếu nhập
+    </a>
+    <div class="row mt-2">
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>Tình trạng</label>
+                @Html.DropDownList("DropdownTinhTrang", new SelectList(ViewBag.dsTinhTrang, "Value", "Text", ViewBag.tinhTrang), new { @class = "form-control", @id = "filterTinhTrangPN", @onchange = "", @style = "border-radius: 10px;" })
+            </div>
+        </div>
+        <div class="col-md-2">
+            <div class="form-group">
+                <label>Ngày lập</label>
+                <input type="date" id="filterNgayLapPN" class="form-control" value="@ViewBag.ngayTao" style="border-radius: 10px"/>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <label>Nhà cung cấp</label>
+            @Html.DropDownList("DropdownNhaCungCap", new SelectList(ViewBag.dsHang, "Value", "Text",ViewBag.nhaCC), new { @class = "form-control", @id = "filterHangPN", @style = "border-radius: 10px;" })
+        </div>
+        <div class="col-md-2">
+            <label>Nhân viên</label>
+            @Html.DropDownList("DropdownNhanVien", new SelectList(ViewBag.dsNV, "Value", "Text", ViewBag.idNV), new { @class = "form-control", @id = "filterNhanVienPN", @style = "border-radius: 10px;" })
+        </div>
+        <div class="col-md-4">
+            <button class="btn btn-XanhLuc mt-4" style="text-transform: uppercase; font-weight: bold;" id="btnFilterPN">
+                <i class="fas fa-search"></i>
+                Tìm kiếm
+            </button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <table class="table table-bordered table-hover">
+            <tr class="tr-Title" style="font-size: 18px">
+                <th style="width: 10px">STT</th>
+                <th style="width: 150px">Mã phiếu nhập</th>
+                <th>Nhân viên</th>
+                <th>Nhà cung cấp</th>
+                <th>Ngày lập</th>
+                <th>Tổng tiền</th>
+                <th>Tình trạng</th>
+            </tr>
+            @{
+                int dem = 0;
+                int pageNum = ViewBag.pageNum;
+                int pageSize = ViewBag.pageSize;
+                dem = (pageNum - 1) * pageSize;
+            }
+            @foreach (var item in ViewBag.dsPN)
+            {
+                dem++;
+                <tr>
+                    <td>@dem</td>
+                    <td><a href="/NhapHang/XemChiTietPhieuNhap/?idPN=@item.IDPhieuNhap">@item.maPN</a></td>
+                    <td>@item.tenNV</td>
+                    <td>@item.tenHang</td>
+                    <td>@string.Format("{0: dd/MM/yyyy}", item.ngayLap)</td>
+                    <td>@string.Format("{0:#,##}", item.tongTien)</td>
+                    @{
+                        if (item.tinhTrang == true)
+                        {
+                            <td>Đã xử lý</td>
+                        }
+                        else
+                        {
+                            <td>Chưa xử lý</td>
+                        }
+                    }
+                </tr>
+            }
+        </table>
+    </div>
+</div>
+
+<div class="spacer20">
+    <center>
+        <div class="pagination">
+            @Html.PagedListPager((PagedList.IPagedList)ViewBag.dsPN, page => Url.Action("QuanLyPhieuNhap", new { page, @class = "active", idNV = ViewBag.idNV, ngayTao = ViewBag.ngayTao, idHang = ViewBag.nhaCC, tinhTrang = ViewBag.tinhTrang }))
+        </div>
+    </center>
+</div>
+<script type="text/javascript">
+    $('#btnFilterPN').click(function (e) {
+        e.preventDefault();
+        var url = window.location.origin + "/NhapHang/QuanLyPhieuNhap?&tinhTrang=" + $('#filterTinhTrangPN').val() + "&ngayTao=" + $('#filterNgayLapPN').val() + "&idHang=" + $('#filterHangPN').val() + "&idNV=" + $('#filterNhanVienPN').val();
+        window.location = url;
+    })
+</script>

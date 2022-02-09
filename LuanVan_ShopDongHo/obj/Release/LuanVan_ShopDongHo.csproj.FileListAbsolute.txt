@@ -1,0 +1,484 @@
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\LuanVan_ShopDongHo.dll.config
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\LuanVan_ShopDongHo.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\LuanVan_ShopDongHo.pdb
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\csc.exe
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\csc.exe.config
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\csc.rsp
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\csi.exe
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\csi.exe.config
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\csi.rsp
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.AppContext.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Collections.Immutable.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Console.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Globalization.Calendars.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.IO.Compression.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.IO.FileSystem.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Net.Http.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Net.Sockets.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Reflection.Metadata.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.ValueTuple.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Xml.XPath.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\vbc.exe
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\vbc.exe.config
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\vbc.rsp
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\VBCSCompiler.exe
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\roslyn\VBCSCompiler.exe.config
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Antlr3.Runtime.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\BouncyCastle.Crypto.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\EPPlus.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Google.Authenticator.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Bcl.AsyncInterfaces.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.DependencyInjection.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Identity.Core.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Logging.Abstractions.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Logging.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Options.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Primitives.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.Logging.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.Tokens.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.IO.RecyclableMemoryStream.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.Jwt.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Web.Infrastructure.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Newtonsoft.Json.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Owin.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\PagedList.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\PagedList.Mvc.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\QRCoder.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Rotativa.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Buffers.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Collections.Immutable.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.ComponentModel.Annotations.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Data.Linq.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Diagnostics.DiagnosticSource.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.IdentityModel.Tokens.Jwt.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Memory.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Net.Http.Formatting.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Numerics.Vectors.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Runtime.CompilerServices.Unsafe.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Threading.Tasks.Extensions.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.ValueTuple.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Helpers.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Http.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Http.Owin.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Http.WebHost.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Mvc.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Optimization.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Razor.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.WebPages.Deployment.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.WebPages.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.WebPages.Razor.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\WebGrease.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\BouncyCastle.Crypto.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\EPPlus.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Google.Authenticator.pdb
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.AspNetCore.Cryptography.Internal.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.AspNetCore.Cryptography.KeyDerivation.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Bcl.AsyncInterfaces.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.DependencyInjection.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Identity.Core.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Logging.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Logging.Abstractions.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Options.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Primitives.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.Logging.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.Tokens.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.IO.RecyclableMemoryStream.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.Jwt.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Newtonsoft.Json.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\PagedList.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\PagedList.Mvc.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Buffers.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Collections.Immutable.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Diagnostics.DiagnosticSource.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.IdentityModel.Tokens.Jwt.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Memory.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Numerics.Vectors.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Runtime.CompilerServices.Unsafe.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Threading.Tasks.Extensions.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.ValueTuple.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Http.Owin.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Helpers.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Mvc.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Optimization.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Razor.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.WebPages.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.WebPages.Deployment.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.WebPages.Razor.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Antlr3.Runtime.pdb
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Net.Http.Formatting.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Http.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Http.WebHost.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\obj\Release\LuanVan_ShopDongHo.csproj.AssemblyReference.cache
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\obj\Release\LuanVan_ShopDongHo.csproj.CoreCompileInputs.cache
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\obj\Release\LuanVan_ShopDongHo.csproj.CopyComplete
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\obj\Release\LuanVan_ShopDongHo.dll
+E:\Khoa luan tot nghiep Git\LuanVan\LuanVan_ShopDongHo\obj\Release\LuanVan_ShopDongHo.pdb
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\LuanVan_ShopDongHo.dll.config
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\LuanVan_ShopDongHo.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\LuanVan_ShopDongHo.pdb
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\csc.exe
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\csc.exe.config
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\csc.rsp
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\csi.exe
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\csi.exe.config
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\csi.rsp
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.AppContext.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Collections.Immutable.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Console.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Globalization.Calendars.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.IO.Compression.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.IO.Compression.ZipFile.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.IO.FileSystem.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Net.Http.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Net.Sockets.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Reflection.Metadata.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.ValueTuple.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Xml.XPath.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\vbc.exe
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\vbc.exe.config
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\vbc.rsp
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\VBCSCompiler.exe
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\roslyn\VBCSCompiler.exe.config
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Antlr3.Runtime.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\BouncyCastle.Crypto.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\EPPlus.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Google.Authenticator.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.AspNet.Identity.Core.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.AspNetCore.Cryptography.Internal.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.DependencyInjection.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Identity.Core.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Logging.Abstractions.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Logging.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Options.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Primitives.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.Logging.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.Tokens.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.IO.RecyclableMemoryStream.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.Jwt.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.OAuth.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Web.Infrastructure.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Newtonsoft.Json.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Owin.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\PagedList.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\PagedList.Mvc.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\QRCoder.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Rotativa.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Buffers.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Collections.Immutable.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.ComponentModel.Annotations.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Data.Linq.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Diagnostics.DiagnosticSource.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.IdentityModel.Tokens.Jwt.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Memory.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Net.Http.Formatting.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Numerics.Vectors.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Threading.Tasks.Extensions.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.ValueTuple.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Helpers.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Http.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Http.Owin.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Http.WebHost.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Mvc.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Optimization.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Razor.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.WebPages.Deployment.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.WebPages.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.WebPages.Razor.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\WebGrease.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\BouncyCastle.Crypto.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\EPPlus.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Google.Authenticator.pdb
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.AspNet.Identity.Core.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.AspNetCore.Cryptography.Internal.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.AspNetCore.Cryptography.KeyDerivation.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.DependencyInjection.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Identity.Core.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Logging.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Logging.Abstractions.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Options.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Primitives.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.Logging.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.Tokens.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.IO.RecyclableMemoryStream.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.Jwt.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.OAuth.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Newtonsoft.Json.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\PagedList.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\PagedList.Mvc.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Buffers.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Collections.Immutable.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Diagnostics.DiagnosticSource.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.IdentityModel.Tokens.Jwt.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Memory.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Numerics.Vectors.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Threading.Tasks.Extensions.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.ValueTuple.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Http.Owin.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Helpers.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Mvc.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Optimization.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Razor.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.WebPages.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.WebPages.Deployment.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.WebPages.Razor.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Antlr3.Runtime.pdb
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Net.Http.Formatting.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Http.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\System.Web.Http.WebHost.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\obj\Release\LuanVan_ShopDongHo.csproj.CoreCompileInputs.cache
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\obj\Release\LuanVan_ShopDongHo.csproj.CopyComplete
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\obj\Release\LuanVan_ShopDongHo.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\obj\Release\LuanVan_ShopDongHo.pdb
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\obj\Release\LuanVan_ShopDongHo.csproj.AssemblyReference.cache
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Quartz.dll
+D:\Workplace\LuanVan\LuanVan_ShopDongHo\bin\Quartz.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\LuanVan_ShopDongHo.dll.config
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\LuanVan_ShopDongHo.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\LuanVan_ShopDongHo.pdb
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\csc.exe
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\csc.exe.config
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\csc.rsp
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\csi.exe
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\csi.exe.config
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\csi.rsp
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\Microsoft.Managed.Core.targets
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\Microsoft.Win32.Primitives.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.AppContext.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Collections.Immutable.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Console.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Diagnostics.StackTrace.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Globalization.Calendars.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.IO.Compression.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.IO.Compression.ZipFile.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.IO.FileSystem.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.IO.FileSystem.Primitives.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Net.Http.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Net.Sockets.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Reflection.Metadata.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Security.Cryptography.Encoding.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Security.Cryptography.Primitives.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Text.Encoding.CodePages.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Threading.Tasks.Extensions.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.ValueTuple.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Xml.ReaderWriter.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Xml.XmlDocument.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Xml.XPath.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\System.Xml.XPath.XDocument.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\vbc.exe
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\vbc.exe.config
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\vbc.rsp
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\VBCSCompiler.exe
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\roslyn\VBCSCompiler.exe.config
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Antlr3.Runtime.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\BouncyCastle.Crypto.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\EPPlus.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Google.Authenticator.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.AspNet.Identity.Core.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.AspNetCore.Cryptography.Internal.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Bcl.AsyncInterfaces.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Extensions.DependencyInjection.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Identity.Core.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Logging.Abstractions.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Logging.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Options.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Primitives.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.Logging.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.Tokens.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.IO.RecyclableMemoryStream.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Owin.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.Jwt.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.OAuth.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Web.Infrastructure.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Newtonsoft.Json.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Owin.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\PagedList.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\PagedList.Mvc.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\QRCoder.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Quartz.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Rotativa.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Buffers.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Collections.Immutable.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.ComponentModel.Annotations.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Data.Linq.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Diagnostics.DiagnosticSource.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.IdentityModel.Tokens.Jwt.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Memory.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Net.Http.Formatting.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Numerics.Vectors.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Runtime.CompilerServices.Unsafe.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Threading.Tasks.Extensions.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.ValueTuple.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.Helpers.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.Http.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.Http.Owin.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.Http.WebHost.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.Mvc.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.Optimization.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.Razor.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.WebPages.Deployment.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.WebPages.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.WebPages.Razor.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\WebGrease.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\BouncyCastle.Crypto.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\EPPlus.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Google.Authenticator.pdb
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.AspNet.Identity.Core.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.AspNetCore.Cryptography.Internal.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.AspNetCore.Cryptography.KeyDerivation.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Bcl.AsyncInterfaces.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Extensions.DependencyInjection.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Extensions.DependencyInjection.Abstractions.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Identity.Core.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Logging.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Logging.Abstractions.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Options.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Extensions.Primitives.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.JsonWebTokens.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.Logging.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.IdentityModel.Tokens.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.IO.RecyclableMemoryStream.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Owin.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.Jwt.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.Owin.Security.OAuth.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Newtonsoft.Json.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\PagedList.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\PagedList.Mvc.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Quartz.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Buffers.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Collections.Immutable.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Diagnostics.DiagnosticSource.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.IdentityModel.Tokens.Jwt.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Memory.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Numerics.Vectors.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Runtime.CompilerServices.Unsafe.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Threading.Tasks.Extensions.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.ValueTuple.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.Http.Owin.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.Helpers.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.Mvc.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.Optimization.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.Razor.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.WebPages.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.WebPages.Deployment.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.WebPages.Razor.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Antlr3.Runtime.pdb
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Net.Http.Formatting.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.Http.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\System.Web.Http.WebHost.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\obj\Release\LuanVan_ShopDongHo.csproj.CoreCompileInputs.cache
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\obj\Release\LuanVan_ShopDongHo.csproj.CopyComplete
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\obj\Release\LuanVan_ShopDongHo.dll
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\obj\Release\LuanVan_ShopDongHo.pdb
+E:\Khoa luan tot nghiep\LuanVan_ShopDongHo\obj\Release\LuanVan_ShopDongHo.csproj.AssemblyReference.cache

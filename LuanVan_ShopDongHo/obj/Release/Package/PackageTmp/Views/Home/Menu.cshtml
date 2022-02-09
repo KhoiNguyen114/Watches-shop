@@ -1,0 +1,230 @@
+﻿@{ 
+    Layout = null;
+}
+@{ 
+    int j = 0;
+} 
+<div class="container-fluid" id="navigate">
+    <div class="row">
+        <div>
+            <ul id="navbar" style="vertical-align:middle;">
+                <li>
+                    <a class="FirstNavItems dropdown_link" href="@Url.Action("MainFilter", "Loc", new { newFilter = true })" id="menu-one">Thương Hiệu<div class="dropdown-icon">&#11166</div></a>
+                    <div class="dropdown-menu" id="menu-one">
+                        <ul>
+                            <li>
+                                <h5>
+                                    Các hãng bán chạy
+                                </h5>
+                            </li>
+                            @foreach (var item in ViewBag.brands_notSwiss1)
+                            {
+                                <li>
+                                    <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { maHang = item.MAHANG, newFilter = true })">@item.TENHANG</a>
+                                </li>
+                            }
+                        </ul>
+                        <ul>
+                            <li>
+                                <h5>
+                                    Đồng hồ thụy sĩ
+                                </h5>
+                            </li>
+                            @foreach (var item in ViewBag.brands_swiss)
+                            {
+                                <li>
+                                    <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { maHang = item.MAHANG, newFilter = true })">@item.TENHANG</a>
+                                </li>
+                            }
+                        </ul>
+                        <ul>
+                            <li>
+                                <h5>
+                                    Khuyên dùng
+                                </h5>
+                            </li>
+                            @foreach (var item in ViewBag.brands_notSwiss2)
+                            {
+                                <li>
+                                    <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { maHang = item.MAHANG, newFilter = true })">@item.TENHANG</a>
+                                </li>
+                            }
+                        </ul>
+                        <ul>
+                            <li>
+                                <h5>
+                                    DÒNG SẢN PHẨM
+                                </h5>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true, dongSP = "limited" })">Limited</a>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true, dongSP = "kim cương" })">Mặt kim cương</a>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true, dongSP = "siêu mỏng" })">Siêu mỏng</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a class="FirstNavItems dropdown_link" href="@Url.Action("MainFilter", "Loc", new { maDM = "DM01",newFilter = true})" id="menu-two">Nam<div class="dropdown-icon">&#11166</div></a>
+                    <div class="dropdown-menu" id="menu-two">
+                        <ul>
+                            <li>
+                                <h5>
+                                    Khoảng giá
+                                </h5>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM01",donGIA = "Dưới 2000000" })">Dưới  @string.Format("{0:#,#}", 2000000)<span>&nbsp;VNĐ</span></a>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM01",donGIA = "2000000-5000000" })">@string.Format("{0:#,#}", 2000000)<span>&nbsp;VNĐ</span> - @string.Format("{0:#,#}", 5000000)<span>&nbsp;VNĐ</span></a>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM01",donGIA = "5000000-10000000" })">@string.Format("{0:#,#}", 5000000)<span>&nbsp;VNĐ</span> - @string.Format("{0:#,#}", 10000000)<span>&nbsp;VNĐ</span></a>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM01",donGIA = "10000000-25000000" })">@string.Format("{0:#,#}", 10000000)<span>&nbsp;VNĐ</span> - @string.Format("{0:#,#}", 25000000)<span>&nbsp;VNĐ</span></a>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM01",donGIA = "Trên 25000000" })">Trên @string.Format("{0:#,#}", 25000000)<span>&nbsp;VNĐ</span></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <h5>
+                                    ĐỒNG HỒ THỤY SĨ
+                                </h5>
+                            </li>
+                            @foreach (var item in ViewBag.brands_male_swiss)
+                            {
+                                <li>
+                                    <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM01",maHang = item.MAHANG })">@item.TENHANG</a>
+                                </li>
+                            }
+                        </ul>
+                        <ul>
+                            <li>
+                                <h5>
+                                    THƯƠNG HIỆU HOT
+                                </h5>
+                            </li>
+                            @foreach (var item in ViewBag.brands_male_hot)
+                            {
+                                <li>
+                                    <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM01",maHang = item.MAHANG })">@item.TENHANG</a>
+                                </li>
+                            }
+                        </ul>
+                        <ul>
+                            <li>
+                                <h5>
+                                    LOẠI DÂY
+                                </h5>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM01",loaiDay = "Dây kim loại" })">Dây Kim loại</a>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM01",loaiDay = "Dây da" })">Dây da</a>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM01",loaiDay = "Dây cao su" })">Dây cao su</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a class="FirstNavItems dropdown_link" href="@Url.Action("MainFilter", "Loc", new { maDM = "DM02",newFilter = true})" id="menu-three">Nữ<div class="dropdown-icon">&#11166</div></a>
+                    <div class="dropdown-menu" id="menu-three">
+                        <ul>
+                            <li>
+                                <h5>
+                                    Khoảng giá
+                                </h5>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM02",donGIA = "Dưới 2000000" })">Dưới  @string.Format("{0:#,#}", 2000000)<span>&nbsp;VNĐ</span></a>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM02",donGIA = "2000000-5000000" })">@string.Format("{0:#,#}", 2000000)<span>&nbsp;VNĐ</span> - @string.Format("{0:#,#}", 5000000)<span>&nbsp;VNĐ</span></a>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM02",donGIA = "5000000-10000000" })">@string.Format("{0:#,#}", 5000000)<span>&nbsp;VNĐ</span> - @string.Format("{0:#,#}", 10000000)<span>&nbsp;VNĐ</span></a>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM02",donGIA = "10000000-25000000" })">@string.Format("{0:#,#}", 10000000)<span>&nbsp;VNĐ</span> - @string.Format("{0:#,#}", 25000000)<span>&nbsp;VNĐ</span></a>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM02",donGIA = "Trên 25000000" })">Trên @string.Format("{0:#,#}", 25000000)<span>&nbsp;VNĐ</span></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li>
+                                <h5>
+                                    ĐỒNG HỒ THỤY SĨ
+                                </h5>
+                            </li>
+                            @foreach (var item in ViewBag.brands_female_swiss)
+                            {
+                                <li>
+                                    <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM02",maHang = item.MAHANG })">@item.TENHANG</a>
+                                </li>
+                            }
+                        </ul>
+                        <ul>
+                            <li>
+                                <h5>
+                                    THƯƠNG HIỆU HOT
+                                </h5>
+                            </li>
+                            @foreach (var item in ViewBag.brands_female_hot)
+                            {
+                                <li>
+                                    <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM02",maHang = item.MAHANG })">@item.TENHANG</a>
+                                </li>
+                            }
+                        </ul>
+                        <ul>
+                            <li>
+                                <h5>
+                                    LOẠI DÂY
+                                </h5>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM02",loaiDay = "Dây kim loại" })">Dây Kim loại</a>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM02",loaiDay = "Dây da" })">Dây da</a>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="@Url.Action("MainFilter", "Loc", new { newFilter = true,maDM = "DM02",loaiDay = "Dây cao su" })">Dây cao su</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a class="FirstNavItems dropdown_link" href="#" id="menu-five">LIÊN HỆ<div class="dropdown-icon">&#11166</div></a>
+                    <div class="dropdown-menu" id="menu-five">
+                        <ul>
+                            <li>
+                                <h5>
+                                    ABOUT US
+                                </h5>
+                            </li>
+                            <li>
+                                <a class="menu-item-font" href="https://www.facebook.com/C%E1%BB%ADa-h%C3%A0ng-%C4%91%E1%BB%93ng-h%E1%BB%93-NQN-103068492245889">FB</a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li>
+                    <a class="FirstNavItems" href="/TinTuc/LoadTinTucKhachHang">Tin tức</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1338 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{979B5C12-F46A-4CC9-A1E6-3C2ECD54C7A0}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LuanVan_ShopDongHo</RootNamespace>
+    <AssemblyName>LuanVan_ShopDongHo</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress>false</Use64BitIISExpress>
+    <IISExpressSSLPort>
+    </IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication>enabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>disabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode>false</IISExpressUseClassicPipelineMode>
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.3</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>0</WarningLevel>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptJSXEmit>React</TypeScriptJSXEmit>
+    <TypeScriptModuleKind />
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptRemoveComments>False</TypeScriptRemoveComments>
+    <TypeScriptOutFile />
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>True</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.10.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
+      <HintPath>packages\Portable.BouncyCastle.1.8.10\lib\net40\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=5.8.4.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>packages\EPPlus.5.8.4\lib\net45\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Authenticator, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\GoogleAuthenticator.2.2.0\lib\net45\Google.Authenticator.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Cryptography.Internal, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNetCore.Cryptography.Internal.6.0.0\lib\net461\Microsoft.AspNetCore.Cryptography.Internal.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNetCore.Cryptography.KeyDerivation, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNetCore.Cryptography.KeyDerivation.6.0.0\lib\net461\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.6.0.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.6.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.DependencyInjection.Abstractions.6.0.0\lib\net461\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Identity.Core, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Identity.Core.6.0.0\lib\net461\Microsoft.Extensions.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.6.0.0\lib\net461\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Options.6.0.0\lib\net461\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Extensions.Primitives.6.0.0\lib\net461\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.JsonWebTokens.5.5.0\lib\net461\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.14.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Logging.6.14.1\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Tokens.5.5.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IO.RecyclableMemoryStream, Version=1.4.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IO.RecyclableMemoryStream.1.4.1\lib\net46\Microsoft.IO.RecyclableMemoryStream.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Jwt, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.Jwt.4.0.1\lib\net45\Microsoft.Owin.Security.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="QRCoder, Version=1.4.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\QRCoder.1.4.1\lib\net40\QRCoder.dll</HintPath>
+    </Reference>
+    <Reference Include="Quartz, Version=3.3.3.0, Culture=neutral, PublicKeyToken=f6b8c98a402cc8a4, processorArchitecture=MSIL">
+      <HintPath>packages\Quartz.3.3.3\lib\net472\Quartz.dll</HintPath>
+    </Reference>
+    <Reference Include="Rotativa, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Rotativa.1.7.3\lib\net461\Rotativa.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Collections.Immutable.6.0.0\lib\net461\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.ComponentModel.Annotations.5.0.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=5.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.IdentityModel.Tokens.Jwt.5.5.0\lib\net461\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Threading.Tasks" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http.Owin, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Owin.5.2.3\lib\net45\System.Web.Http.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost">
+      <HintPath>packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\Api\HoaDonAPIController.cs" />
+    <Compile Include="Controllers\Api\ThongKeAPIController.cs" />
+    <Compile Include="Controllers\BaoHanhController.cs" />
+    <Compile Include="Controllers\AdminPageController.cs" />
+    <Compile Include="Controllers\BinhLuanController.cs" />
+    <Compile Include="Controllers\CommonApiController.cs" />
+    <Compile Include="Controllers\DatHangController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhachHangController.cs" />
+    <Compile Include="Controllers\KhuyenMaiController.cs" />
+    <Compile Include="Controllers\LocController.cs" />
+    <Compile Include="Controllers\NhanVienController.cs" />
+    <Compile Include="Controllers\NhapHangController.cs" />
+    <Compile Include="Controllers\PhanQuyenController.cs" />
+    <Compile Include="Controllers\QuanLyController.cs" />
+    <Compile Include="Controllers\QuanLyDonHangController.cs" />
+    <Compile Include="Controllers\API\SanPhamAPIController.cs" />
+    <Compile Include="Controllers\TaiKhoanController.cs" />
+    <Compile Include="Controllers\ThongKeController.cs" />
+    <Compile Include="Controllers\TimKiemController.cs" />
+    <Compile Include="Controllers\SanPhamController.cs" />
+    <Compile Include="Controllers\TinTucController.cs" />
+    <Compile Include="Controllers\VoucherController.cs" />
+    <Compile Include="Controllers\XuatFileController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BaoHanh.cs" />
+    <Compile Include="Models\BinhLuan.cs" />
+    <Compile Include="Models\CartItem.cs" />
+    <Compile Include="Models\customerLinkOrder.cs" />
+    <Compile Include="Models\GioHang.cs" />
+    <Compile Include="Models\HangThongKe.cs" />
+    <Compile Include="Models\JobScheduler.cs" />
+    <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\HangSP.cs" />
+    <Compile Include="Models\KhuyenMai.cs" />
+    <Compile Include="Models\LocSanPham.cs" />
+    <Compile Include="Models\Mail.cs" />
+    <Compile Include="Models\PhanQuyen.cs" />
+    <Compile Include="Models\order.cs" />
+    <Compile Include="Models\PhieuNhap.cs" />
+    <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\SanPham.cs" />
+    <Compile Include="Models\ShopDongHo.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ShopDongHo.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaiKhoan.cs" />
+    <Compile Include="Models\ThongKeCuaHang.cs" />
+    <Compile Include="Models\ThongKeCuaHangNam.cs" />
+    <Compile Include="Models\ThongKeCuaHangThang.cs" />
+    <Compile Include="Models\TinTuc.cs" />
+    <Compile Include="Models\UpdateBH.cs" />
+    <Compile Include="Models\UpdateKM.cs" />
+    <Compile Include="Models\updateVourcher.cs" />
+    <Compile Include="Models\Voucher.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\template\emailVerify.html" />
+    <Content Include="assets\template\mailVoucher.html" />
+    <Content Include="assets\template\notiDonHangDat.html" />
+    <Content Include="assets\template\notiDonHangThanhToan.html" />
+    <Content Include="assets\template\notiDonHangTrangThai.html" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Chart.css" />
+    <Content Include="Content\Chart.min.css" />
+    <Content Include="Content\Images\BannerHang\banner_babyG.jpg" />
+    <Content Include="Content\Images\BannerHang\banner_Bulova.jpg" />
+    <Content Include="Content\Images\BannerHang\banner_candino.jpg" />
+    <Content Include="Content\Images\BannerHang\banner_casio.jpg" />
+    <Content Include="Content\Images\BannerHang\banner_citizen.jpg" />
+    <Content Include="Content\Images\BannerHang\banner_CK.jpg" />
+    <Content Include="Content\Images\BannerHang\banner_GSHOCK.jpg" />
+    <Content Include="Content\Images\BannerHang\banner_LONGGINES.jpg" />
+    <Content Include="Content\Images\BannerHang\banner_olympianus.jpg" />
+    <Content Include="Content\Images\BannerHang\banner_orient.jpg" />
+    <Content Include="Content\Images\BannerHang\banner_PierreLannier.jpg" />
+    <Content Include="Content\Images\BannerHang\banner_Romanson.jpg" />
+    <Content Include="Content\Images\BannerHang\banner_skagen.jpg" />
+    <Content Include="Content\Images\BannerHang\banner_Tissot.jpg" />
+    <Content Include="Content\Images\BannerHang\banner_Titan.jpg" />
+    <Content Include="Content\Images\BannerImages\20141029hrxoyd.jpg" />
+    <Content Include="Content\Images\BannerImages\AAIA_wDGAAAAAQAAAAAAAAqgAAAAJDgwZWU5NWMwLTdjZTYtNDQyZi04MWU2LTFkZDZmOWE0NmU4NQ.png" />
+    <Content Include="Content\Images\BannerImages\astron-banner.jpg" />
+    <Content Include="Content\Images\BannerImages\banner-citizen-timepieces.jpg" />
+    <Content Include="Content\Images\BannerImages\banner-citizen.jpg" />
+    <Content Include="Content\Images\BannerImages\Banner-done635247912328321608.jpg" />
+    <Content Include="Content\Images\BannerImages\banner-donghoquandoi.jpg" />
+    <Content Include="Content\Images\BannerImages\banner.png" />
+    <Content Include="Content\Images\BannerImages\Banner_donghoonline_10.jpg" />
+    <Content Include="Content\Images\BannerImages\Banner_donghoonline_5 %281%29.jpg" />
+    <Content Include="Content\Images\BannerImages\Banner_donghoonline_5 %282%29.jpg" />
+    <Content Include="Content\Images\BannerImages\Banner_donghoonline_5.jpg" />
+    <Content Include="Content\Images\BannerImages\Banner_donghoonline_8.jpg" />
+    <Content Include="Content\Images\BannerImages\dong-ho-citizen-chinh-hang-nhap-my.png" />
+    <Content Include="Content\Images\BannerImages\dongholikenew.combanner-home-stuhrling.jpg" />
+    <Content Include="Content\Images\BannerImages\lich-su-dong-ho-hublot-banner.jpg" />
+    <Content Include="Content\Images\Brand_Logo\BaBy_G_Logo.png" />
+    <Content Include="Content\Images\Brand_Logo\Bulova_Logo.png" />
+    <Content Include="Content\Images\Brand_Logo\Calvin_Klein_Logo.png" />
+    <Content Include="Content\Images\Brand_Logo\Candino_Logo.png" />
+    <Content Include="Content\Images\Brand_Logo\CASIO.jpg" />
+    <Content Include="Content\Images\Brand_Logo\Citizen_Logo.png" />
+    <Content Include="Content\Images\Brand_Logo\G-SHOCK.jpg" />
+    <Content Include="Content\Images\Brand_Logo\Logo_PierreLannier.jpg" />
+    <Content Include="Content\Images\Brand_Logo\Logo_Romanson.png" />
+    <Content Include="Content\Images\Brand_Logo\Logo_Skagen.jpg" />
+    <Content Include="Content\Images\Brand_Logo\Logo_Tissot.jpg" />
+    <Content Include="Content\Images\Brand_Logo\Logo_Titan.png" />
+    <Content Include="Content\Images\Brand_Logo\LONGINES.jpg" />
+    <Content Include="Content\Images\Brand_Logo\OlymPianus.jpg" />
+    <Content Include="Content\Images\Brand_Logo\ORIENT.jpg" />
+    <Content Include="Content\Images\Icon\1-doi-12.png" />
+    <Content Include="Content\Images\Icon\30-nam-kinh-nghiem1.png" />
+    <Content Include="Content\Images\Icon\Avatar.jpg" />
+    <Content Include="Content\Images\Icon\backgroundDangNhap.jpg" />
+    <Content Include="Content\Images\Icon\backgroundDangNhap_1.jpg" />
+    <Content Include="Content\Images\Icon\bao-hanh-5-nam1.png" />
+    <Content Include="Content\Images\Icon\chungnhan.png" />
+    <Content Include="Content\Images\Icon\dockImage_info.jpg" />
+    <Content Include="Content\Images\Icon\giao-hang-2h.png" />
+    <Content Include="Content\Images\Icon\icon_GioHang.jpg" />
+    <Content Include="Content\Images\Icon\icon_Login.jpg" />
+    <Content Include="Content\Images\Icon\thay-pin-mien-phi1.png" />
+    <Content Include="Content\Images\NamNuFilter\NamFilter.jpg" />
+    <Content Include="Content\Images\NamNuFilter\NuFilter.png" />
+    <Content Include="Content\Images\SanPham\2462DLSK-V.jpg" />
+    <Content Include="Content\Images\SanPham\28006DLK-D.jpg" />
+    <Content Include="Content\Images\SanPham\28015DLK-T.jpg" />
+    <Content Include="Content\Images\SanPham\28019DLK-T.jpg" />
+    <Content Include="Content\Images\SanPham\55958DMK-T.jpg" />
+    <Content Include="Content\Images\SanPham\55958DMSK-D.jpg" />
+    <Content Include="Content\Images\SanPham\5695MSK-T.jpg" />
+    <Content Include="Content\Images\SanPham\58012DMK-GL-V-07.jpg" />
+    <Content Include="Content\Images\SanPham\58012DMK-T-DP-04.jpg" />
+    <Content Include="Content\Images\SanPham\58012DMK-V-07.jpg" />
+    <Content Include="Content\Images\SanPham\58012DMS-D-DP-04.jpg" />
+    <Content Include="Content\Images\SanPham\58012DMS-T-DP-04.jpg" />
+    <Content Include="Content\Images\SanPham\58012DMSK-T.jpg" />
+    <Content Include="Content\Images\SanPham\58012DMSK-T–58012DLSK-T.jpg" />
+    <Content Include="Content\Images\SanPham\58012DMSK-V-P.jpg" />
+    <Content Include="Content\Images\SanPham\58054TLS-D.jpg" />
+    <Content Include="Content\Images\SanPham\58067LK-T.jpg" />
+    <Content Include="Content\Images\SanPham\58071DMK-D.jpg" />
+    <Content Include="Content\Images\SanPham\58072MK-V–58072LK-V.jpg" />
+    <Content Include="Content\Images\SanPham\89322DMK-T-HD.jpg" />
+    <Content Include="Content\Images\SanPham\89322DMK-V-HD.jpg" />
+    <Content Include="Content\Images\SanPham\89322DMS-T-HX.jpg" />
+    <Content Include="Content\Images\SanPham\89322DMSK-V-HD.jpg" />
+    <Content Include="Content\Images\SanPham\990-14AMK-D-2L.jpg" />
+    <Content Include="Content\Images\SanPham\990-14AMSK-D-2L.jpg" />
+    <Content Include="Content\Images\SanPham\990-17AMK-T.jpg" />
+    <Content Include="Content\Images\SanPham\99008AMK-D.jpg" />
+    <Content Include="Content\Images\SanPham\99141AGK-T-71.jpg" />
+    <Content Include="Content\Images\SanPham\99141AGK-T-711.jpg" />
+    <Content Include="Content\Images\SanPham\99141AGS-X-711.jpg" />
+    <Content Include="Content\Images\SanPham\A700WG-9ADF.jpg" />
+    <Content Include="Content\Images\SanPham\AE-1300WH-1A2VDF.jpg" />
+    <Content Include="Content\Images\SanPham\AW-591-2ADR.jpg" />
+    <Content Include="Content\Images\SanPham\AW-81D-7AVDF.jpg" />
+    <Content Include="Content\Images\SanPham\BA-110CP-4ADR.jpg" />
+    <Content Include="Content\Images\SanPham\BA-110GA-1ADR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BA-110-7A3DR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BA-110BC-1ADR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BA-110NC-6ADR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BA-120-2BDR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BA-120LP-2ADR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BA-130-4ADR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BA-130-7A1DR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BG-6900SG-1DR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BGA-130-1BDR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BGA-130-4BDR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BGA-150CP-4BDR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BGA-150PG-2B2DR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BGA-160-7B1DR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BGA-170-2BDR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BGA-180-1BDR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BGA-190-1BDR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BGA-195-8ADR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BGA-195M-4ADR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BGA-195M-7ADR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BGA-230SA-4ADR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BGA-255-5ADR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BGD-560-4DR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BGD-560SK-7DR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BGD-560THB-7DR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BSA-B100-2ADR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BSA-B100-4A1DR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_BSA-B100-4A2DR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_MSG-400G-1A2DR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_MSG-C100G-7ADR.jpg" />
+    <Content Include="Content\Images\SanPham\BAB_MSG-S200G-7ADR.jpg" />
+    <Content Include="Content\Images\SanPham\BSA-B100MC-8ADR.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_96A188.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_96A208.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_96A233.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_96A234.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_96A235.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_96B295.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_96C143.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_96L257.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_96M145.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_96R105.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_96W205.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_97A123.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_97A143.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_97L139.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_97M116.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_97P123.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_97P136.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_97R102.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_98A225.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_98A233.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_98B321.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_98D151.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_98E117.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_98M130.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_98P161.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_98P162.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_98P172.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_98R273.jpg" />
+    <Content Include="Content\Images\SanPham\BUL_98R274.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4292.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4318_D.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4362_2.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4362_4.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4363.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4363_2.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4414_1.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4429_1.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4429_3.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4485_2.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4500_2.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4505_2.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4591_1.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4591_4.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4616_3.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4618_4.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4621_1.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4621_3.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4621_4.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4622_1.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4622_2.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4640_1.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4658_2.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4667_1.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4689_1.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4694_1.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4694_2.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4696_1.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4696_2.jpg" />
+    <Content Include="Content\Images\SanPham\CAN_C4733_1.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_AG8344-57B.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_AR1135-10E.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_AR3014-56A.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_AU1080-11L.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_AW1620-13X.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_BE9176-76L.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_BE9182-57E.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_BI1035-09A.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_BJ6520-82A.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_BM7466-81H.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_BM7466-81L.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_CA7020-58L.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_EG3044-67A.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_EG7070-14A.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_EM0588-81X.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_EM0796-59Y.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_EM0816-88Y.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_EM0853-14H.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_EW2546-87X.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_EW9822-83D.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_EX1498-87L.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_EZ7010-56L.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_NAM.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_NH7506-81A.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_NH8385-11E.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_NJ0120-81E.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_NJ0121-89L.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_NK0008-85L.jpg" />
+    <Content Include="Content\Images\SanPham\CIT_PC1008-11Y.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K3M11TFK.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K3M21BZ6.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K3M22T26.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K3M23V26.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K4N21146.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K5A371C6.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K5S34141.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K5S34146.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K5S3414X.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K5S3414Y.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K6K31146.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K7B231VN.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K7B236C6.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K7B236G3.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K7N236K2.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K8A23146.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K8E2M116.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K8M211CN.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K8M21421.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K8M216G6.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K8M2712N.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K8M276G6.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K8NX3UB1.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K8S27141.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K8Y236L6.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K9H216C6.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K9H2X1C1.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K9N115GH.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K9Q12131.jpg" />
+    <Content Include="Content\Images\SanPham\CK_K9Q125Z1.jpg" />
+    <Content Include="Content\Images\SanPham\CK_MQ-1000D-1A2DF.jpg" />
+    <Content Include="Content\Images\SanPham\DW-5600THB-7DR.jpg" />
+    <Content Include="Content\Images\SanPham\DW-5700TH-1DR.jpg" />
+    <Content Include="Content\Images\SanPham\DW-5900DN-1DR.jpg" />
+    <Content Include="Content\Images\SanPham\DW-6900AC-2DR.jpg" />
+    <Content Include="Content\Images\SanPham\DW-D5500BB-1DR.jpg" />
+    <Content Include="Content\Images\SanPham\EFR-546SG-7AVUDF.jpg" />
+    <Content Include="Content\Images\SanPham\FAC00003W0.jpg" />
+    <Content Include="Content\Images\SanPham\FAC00005W0.jpg" />
+    <Content Include="Content\Images\SanPham\FAC00007W0.jpg" />
+    <Content Include="Content\Images\SanPham\FAC00009W0.jpg" />
+    <Content Include="Content\Images\SanPham\FAC0000DD0.jpg" />
+    <Content Include="Content\Images\SanPham\FAC08003A0.jpg" />
+    <Content Include="Content\Images\SanPham\FAG00002W0.jpg" />
+    <Content Include="Content\Images\SanPham\FAG00003W0.jpg" />
+    <Content Include="Content\Images\SanPham\FAG02003W0.jpg" />
+    <Content Include="Content\Images\SanPham\FEM7R004B9.jpg" />
+    <Content Include="Content\Images\SanPham\FGW01001W0.jpg" />
+    <Content Include="Content\Images\SanPham\FGW01002W0.jpg" />
+    <Content Include="Content\Images\SanPham\FGW01004A0.jpg" />
+    <Content Include="Content\Images\SanPham\FGW01007W0.jpg" />
+    <Content Include="Content\Images\SanPham\FGW0100FW0.jpg" />
+    <Content Include="Content\Images\SanPham\FKU00003W0.jpg" />
+    <Content Include="Content\Images\SanPham\FQC0M002W0.jpg" />
+    <Content Include="Content\Images\SanPham\FUG1X005W9.jpg" />
+    <Content Include="Content\Images\SanPham\FUNG2001B0.jpg" />
+    <Content Include="Content\Images\SanPham\FUNG7002W0.jpg" />
+    <Content Include="Content\Images\SanPham\G-7900A-4DR.jpg" />
+    <Content Include="Content\Images\SanPham\GA-100B-7ADR.jpg" />
+    <Content Include="Content\Images\SanPham\GA-100CF-1A9DR.jpg" />
+    <Content Include="Content\Images\SanPham\GA-100CM-4ADR.jpg" />
+    <Content Include="Content\Images\SanPham\GA-100MM-5ADR.jpg" />
+    <Content Include="Content\Images\SanPham\GA-110DC-2ADR – BA-110DC-2A2DR.jpg" />
+    <Content Include="Content\Images\SanPham\GA-110HC-2ADR.jpg" />
+    <Content Include="Content\Images\SanPham\GA-110MC-1ADR.jpg" />
+    <Content Include="Content\Images\SanPham\GA-110RF-9ADR.jpg" />
+    <Content Include="Content\Images\SanPham\GA-2100-4ADR.jpg" />
+    <Content Include="Content\Images\SanPham\GA-2100TH-1ADR.jpg" />
+    <Content Include="Content\Images\SanPham\GA-300GD-9ADR.jpg" />
+    <Content Include="Content\Images\SanPham\GA-400CS-9ADR.jpg" />
+    <Content Include="Content\Images\SanPham\GA-400GB-1A9DR.jpg" />
+    <Content Include="Content\Images\SanPham\GA-710GB-1ADR.jpg" />
+    <Content Include="Content\Images\SanPham\GAX-100A-7ADR.jpg" />
+    <Content Include="Content\Images\SanPham\GBA-800-8ADR.jpg" />
+    <Content Include="Content\Images\SanPham\GBX-100-1DR.jpg" />
+    <Content Include="Content\Images\SanPham\GD-120TS-2DR.jpg" />
+    <Content Include="Content\Images\SanPham\GG-B100-1A3DR.jpg" />
+    <Content Include="Content\Images\SanPham\GN-1000-9ADR.jpg" />
+    <Content Include="Content\Images\SanPham\GN-1000RG-1ADR.jpg" />
+    <Content Include="Content\Images\SanPham\L2.128.5.37.7.jpg" />
+    <Content Include="Content\Images\SanPham\L2.628.4.77.6.jpg" />
+    <Content Include="Content\Images\SanPham\L2.628.5.19.7.jpg" />
+    <Content Include="Content\Images\SanPham\L2.673.4.78.6.jpg" />
+    <Content Include="Content\Images\SanPham\L2.819.4.93.2.jpg" />
+    <Content Include="Content\Images\SanPham\L4.209.2.11.2.jpg" />
+    <Content Include="Content\Images\SanPham\L4.209.2.32.2.jpg" />
+    <Content Include="Content\Images\SanPham\L4.209.2.87.7.jpg" />
+    <Content Include="Content\Images\SanPham\L4.321.2.11.7.jpg" />
+    <Content Include="Content\Images\SanPham\L4.360.2.12.7.jpg" />
+    <Content Include="Content\Images\SanPham\L4.709.2.11.7.jpg" />
+    <Content Include="Content\Images\SanPham\L4.709.2.11.8.jpg" />
+    <Content Include="Content\Images\SanPham\L4.709.2.21.7.jpg" />
+    <Content Include="Content\Images\SanPham\L4.755.1.91.7.jpg" />
+    <Content Include="Content\Images\SanPham\L4.759.4.11.2.jpg" />
+    <Content Include="Content\Images\SanPham\L4.774.3.21.7.jpg" />
+    <Content Include="Content\Images\SanPham\L4.774.3.27.7.jpg" />
+    <Content Include="Content\Images\SanPham\L4.774.3.37.7.jpg" />
+    <Content Include="Content\Images\SanPham\L4.774.4.27.6.jpg" />
+    <Content Include="Content\Images\SanPham\L4.774.4.57.6.jpg" />
+    <Content Include="Content\Images\SanPham\L4.790.1.59.7.jpg" />
+    <Content Include="Content\Images\SanPham\L4.805.4.11.6.jpg" />
+    <Content Include="Content\Images\SanPham\L4.821.2.32.7.jpg" />
+    <Content Include="Content\Images\SanPham\L4.821.4.11.2.jpg" />
+    <Content Include="Content\Images\SanPham\L4.821.4.11.6.jpg" />
+    <Content Include="Content\Images\SanPham\L4.821.4.12.6.jpg" />
+    <Content Include="Content\Images\SanPham\L4.821.4.52.6.jpg" />
+    <Content Include="Content\Images\SanPham\L4.821.4.72.6.jpg" />
+    <Content Include="Content\Images\SanPham\L4.860.2.32.7.jpg" />
+    <Content Include="Content\Images\SanPham\L4.910.4.72.6.jpg" />
+    <Content Include="Content\Images\SanPham\LTP-2088L-2AVDF.jpg" />
+    <Content Include="Content\Images\SanPham\LTP-V005GL-7BUDF.jpg" />
+    <Content Include="Content\Images\SanPham\LTP-V300L-4AUDF.jpg" />
+    <Content Include="Content\Images\SanPham\LX-500H-4E4VDF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-1129G-7BRDF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-1170N-7ARDF – LTP-1170N-7ARDF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-1183G-7ADF – LTP-1183G-7ADF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-1215A-7ADF – LTP-1215A-7ADF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-1300SG-7AVDF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-1346-7AVDF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-E119D-9AVDF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-E130L-2A2VDF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-E302D-1ADF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-E312D-1B1VDF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-SW320L-7AVDF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-TW100D-4AVDF – LTP-TW100D-4AVDF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-TW101D-1AVDF – LTP-TW101D-1AVDF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-V002G-1BUDF – LTP-V002G-1BUDF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-V004G-7B2UDF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-V004L-3BUDF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-V300G-1AUDF – LTP-V300G-1AUDF.jpg" />
+    <Content Include="Content\Images\SanPham\MTP-V300G-7AUDF – LTP-V300G-7AUDF.jpg" />
+    <Content Include="Content\Images\SanPham\RA-AA0B02R19B.jpg" />
+    <Content Include="Content\Images\SanPham\RA-AB0E04G19B.jpg" />
+    <Content Include="Content\Images\SanPham\RA-AK0305S10B.jpg" />
+    <Content Include="Content\Images\SanPham\RA-EL0002L00B.jpg" />
+    <Content Include="Content\Images\SanPham\RE-AU0406L00B.jpg" />
+    <Content Include="Content\Images\SanPham\RF-QD0002B10B.jpg" />
+    <Content Include="Content\Images\SanPham\SDE00001W0.jpg" />
+    <Content Include="Content\Images\SanPham\SDK05004K0.jpg" />
+    <Content Include="Content\Images\SanPham\SHE-4056PG-2AUDF.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_001.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_002.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_003.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_004.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_005.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_006.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_007.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_008.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_009.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_010.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_011.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_012.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_013.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_014.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_015.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_016.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_017.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_018.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_019.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_020.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_021.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_022.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_023.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_024.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_025.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_026.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_027.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_028.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_029.jpg" />
+    <Content Include="Content\Images\SanPham\SP_PIERRE LANNIER_030.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_001.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_002.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_003.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_004.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_005.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_006.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_007.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_008.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_009.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_010.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_011.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_012.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_013.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_014.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_015.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_016.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_017.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_018.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_019.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_020.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_021.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_022.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_023.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_024.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_025.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_026.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_027.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_028.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_029.jpg" />
+    <Content Include="Content\Images\SanPham\SP_ROMANSON_030.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_001.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_002.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_003.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_004.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_005.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_006.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_007.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_008.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_009.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_010.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_011.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_012.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_013.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_014.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_015.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_016.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_017.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_018.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_019.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_020.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_021.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_022.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_023.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_024.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_025.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_027.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_028.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_029.jpg" />
+    <Content Include="Content\Images\SanPham\SP_SKAGEN_030.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_001.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_002.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_003.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_004.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_005.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_006.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_007.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_008.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_009.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_010.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_011.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_012.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_013.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_014.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_015.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_016.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_017.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_018.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_019.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_020.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_021.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_022.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_023.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_024.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_025.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_026.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_027.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_028.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_029.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TISSOT_030.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_001.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_002.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_003.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_004.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_005.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_006.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_007.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_008.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_009.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_010.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_011.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_012.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_013.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_014.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_015.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_016.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_017.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_018.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_019.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_020.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_021.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_022.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_023.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_024.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_025.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_026.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_027.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_028.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_029.jpg" />
+    <Content Include="Content\Images\SanPham\SP_TITAN_030.jpg" />
+    <Content Include="Content\Images\SanPham\SSZ3W003B0.jpg" />
+    <Content Include="Content\Images\SanPham\SUND6001W0.jpg" />
+    <Content Include="Content\Images\SanPham\W-216H-1CVDF.jpg" />
+    <Content Include="Content\Images\Shop_Logo\logo.png" />
+    <Content Include="Content\Images\Shop_Logo\Logo_NQN.png" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\signup.css" />
+    <Content Include="Content\Summer note\lang\summernote-ar-AR.js" />
+    <Content Include="Content\Summer note\lang\summernote-ar-AR.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-ar-AR.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-az-AZ.js" />
+    <Content Include="Content\Summer note\lang\summernote-az-AZ.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-az-AZ.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-bg-BG.js" />
+    <Content Include="Content\Summer note\lang\summernote-bg-BG.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-bg-BG.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-ca-ES.js" />
+    <Content Include="Content\Summer note\lang\summernote-ca-ES.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-ca-ES.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-cs-CZ.js" />
+    <Content Include="Content\Summer note\lang\summernote-cs-CZ.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-cs-CZ.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-da-DK.js" />
+    <Content Include="Content\Summer note\lang\summernote-da-DK.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-da-DK.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-de-DE.js" />
+    <Content Include="Content\Summer note\lang\summernote-de-DE.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-de-DE.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-el-GR.js" />
+    <Content Include="Content\Summer note\lang\summernote-el-GR.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-el-GR.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-es-ES.js" />
+    <Content Include="Content\Summer note\lang\summernote-es-ES.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-es-ES.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-es-EU.js" />
+    <Content Include="Content\Summer note\lang\summernote-es-EU.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-es-EU.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-fa-IR.js" />
+    <Content Include="Content\Summer note\lang\summernote-fa-IR.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-fa-IR.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-fi-FI.js" />
+    <Content Include="Content\Summer note\lang\summernote-fi-FI.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-fi-FI.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-fr-FR.js" />
+    <Content Include="Content\Summer note\lang\summernote-fr-FR.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-fr-FR.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-gl-ES.js" />
+    <Content Include="Content\Summer note\lang\summernote-gl-ES.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-gl-ES.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-he-IL.js" />
+    <Content Include="Content\Summer note\lang\summernote-he-IL.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-he-IL.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-hr-HR.js" />
+    <Content Include="Content\Summer note\lang\summernote-hr-HR.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-hr-HR.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-hu-HU.js" />
+    <Content Include="Content\Summer note\lang\summernote-hu-HU.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-hu-HU.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-id-ID.js" />
+    <Content Include="Content\Summer note\lang\summernote-id-ID.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-id-ID.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-it-IT.js" />
+    <Content Include="Content\Summer note\lang\summernote-it-IT.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-it-IT.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-ja-JP.js" />
+    <Content Include="Content\Summer note\lang\summernote-ja-JP.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-ja-JP.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-ko-KR.js" />
+    <Content Include="Content\Summer note\lang\summernote-ko-KR.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-ko-KR.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-lt-LT.js" />
+    <Content Include="Content\Summer note\lang\summernote-lt-LT.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-lt-LT.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-lt-LV.js" />
+    <Content Include="Content\Summer note\lang\summernote-lt-LV.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-lt-LV.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-mn-MN.js" />
+    <Content Include="Content\Summer note\lang\summernote-mn-MN.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-mn-MN.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-nb-NO.js" />
+    <Content Include="Content\Summer note\lang\summernote-nb-NO.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-nb-NO.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-nl-NL.js" />
+    <Content Include="Content\Summer note\lang\summernote-nl-NL.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-nl-NL.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-pl-PL.js" />
+    <Content Include="Content\Summer note\lang\summernote-pl-PL.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-pl-PL.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-pt-BR.js" />
+    <Content Include="Content\Summer note\lang\summernote-pt-BR.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-pt-BR.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-pt-PT.js" />
+    <Content Include="Content\Summer note\lang\summernote-pt-PT.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-pt-PT.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-ro-RO.js" />
+    <Content Include="Content\Summer note\lang\summernote-ro-RO.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-ro-RO.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-ru-RU.js" />
+    <Content Include="Content\Summer note\lang\summernote-ru-RU.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-ru-RU.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-sk-SK.js" />
+    <Content Include="Content\Summer note\lang\summernote-sk-SK.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-sk-SK.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-sl-SI.js" />
+    <Content Include="Content\Summer note\lang\summernote-sl-SI.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-sl-SI.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-sr-RS-Latin.js" />
+    <Content Include="Content\Summer note\lang\summernote-sr-RS-Latin.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-sr-RS-Latin.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-sr-RS.js" />
+    <Content Include="Content\Summer note\lang\summernote-sr-RS.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-sr-RS.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-sv-SE.js" />
+    <Content Include="Content\Summer note\lang\summernote-sv-SE.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-sv-SE.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-ta-IN.js" />
+    <Content Include="Content\Summer note\lang\summernote-ta-IN.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-ta-IN.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-th-TH.js" />
+    <Content Include="Content\Summer note\lang\summernote-th-TH.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-th-TH.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-tr-TR.js" />
+    <Content Include="Content\Summer note\lang\summernote-tr-TR.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-tr-TR.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-uk-UA.js" />
+    <Content Include="Content\Summer note\lang\summernote-uk-UA.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-uk-UA.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-uz-UZ.js" />
+    <Content Include="Content\Summer note\lang\summernote-uz-UZ.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-uz-UZ.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-vi-VN.js" />
+    <Content Include="Content\Summer note\lang\summernote-vi-VN.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-vi-VN.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-zh-CN.js" />
+    <Content Include="Content\Summer note\lang\summernote-zh-CN.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-zh-CN.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\lang\summernote-zh-TW.js" />
+    <Content Include="Content\Summer note\lang\summernote-zh-TW.min.js" />
+    <Content Include="Content\Summer note\lang\summernote-zh-TW.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\plugin\databasic\summernote-ext-databasic.css" />
+    <Content Include="Content\Summer note\plugin\databasic\summernote-ext-databasic.js" />
+    <Content Include="Content\Summer note\plugin\hello\summernote-ext-hello.js" />
+    <Content Include="Content\Summer note\plugin\specialchars\summernote-ext-specialchars.js" />
+    <Content Include="Content\Summer note\summernote-bs4.css" />
+    <Content Include="Content\Summer note\summernote-bs4.js" />
+    <Content Include="Content\Summer note\summernote-bs4.min.css" />
+    <Content Include="Content\Summer note\summernote-bs4.min.js" />
+    <Content Include="Content\Summer note\summernote-bs4.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\summernote-lite.css" />
+    <Content Include="Content\Summer note\summernote-lite.js" />
+    <Content Include="Content\Summer note\summernote-lite.min.css" />
+    <Content Include="Content\Summer note\summernote-lite.min.js" />
+    <Content Include="Content\Summer note\summernote-lite.min.js.LICENSE.txt" />
+    <Content Include="Content\Summer note\summernote.css" />
+    <Content Include="Content\Summer note\summernote.js" />
+    <Content Include="Content\Summer note\summernote.min.css" />
+    <Content Include="Content\Summer note\summernote.min.js" />
+    <Content Include="Content\Summer note\summernote.min.js.LICENSE.txt" />
+    <Content Include="Content\TabPanel.css" />
+    <Content Include="Content\verifyForm.css" />
+    <Content Include="Content\_Admin.css" />
+    <Content Include="Content\_style.css" />
+    <Content Include="Content\_ThongTinDN.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Rotativa\help-wkhtmltoimage.txt" />
+    <Content Include="Rotativa\help-wkhtmltopdf.txt" />
+    <Content Include="Rotativa\wkhtmltoimage.exe" />
+    <Content Include="Rotativa\wkhtmltopdf.exe" />
+    <Content Include="Scripts\BinhLuanSanPham.js" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
+    <Content Include="Scripts\CheDoBaoHanh.js" />
+    <Content Include="Scripts\ChuongTrinhVoucher.js" />
+    <Content Include="Scripts\DanhMucSP.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\FontAweSome5_15.js" />
+    <Content Include="Scripts\GioHang.js" />
+    <Content Include="Scripts\Hang.js" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\Images\SanPham\MTP-TW100D-2AVDF – LTP-TW100D-2AVDF.pdf" />
+    <Content Include="Content\Summer note\font\summernote.eot" />
+    <Content Include="Content\Summer note\font\summernote.ttf" />
+    <Content Include="Content\Summer note\font\summernote.woff" />
+    <Content Include="Content\Summer note\font\summernote.woff2" />
+    <Content Include="Content\Summer note\summernote-bs4.js.map" />
+    <Content Include="Content\Summer note\summernote-bs4.min.js.map" />
+    <Content Include="Content\Summer note\summernote-lite.js.map" />
+    <Content Include="Content\Summer note\summernote-lite.min.js.map" />
+    <Content Include="Content\Summer note\summernote.js.map" />
+    <Content Include="Content\Summer note\summernote.min.js.map" />
+    <Content Include="App_Browsers\qt.browser" />
+    <Content Include="Models\ShopDongHo.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>ShopDongHo.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="Models\ShopDongHo.dbml.layout">
+      <DependentUpon>ShopDongHo.dbml</DependentUpon>
+    </None>
+    <None Include="Scripts\jquery-3.6.0.intellisense.js" />
+    <Content Include="Scripts\jquery-3.6.0.js" />
+    <Content Include="Scripts\jquery-3.6.0.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
+    <Content Include="Scripts\jquery-3.6.0.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\KhachHang.js" />
+    <Content Include="Scripts\KhuyenMai.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\NhanVien.js" />
+    <Content Include="Scripts\notify.js" />
+    <Content Include="Scripts\notify.min.js" />
+    <Content Include="Scripts\PhanQuyen.js" />
+    <Content Include="Scripts\PhieuNhap.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\SanPham.js" />
+    <Content Include="Scripts\SearchBar.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\TaiKhoan.js" />
+    <Content Include="Scripts\ThongTinBaoHanh.js" />
+    <Content Include="Scripts\TinTuc.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_MainLayout.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\DatHang\HienThiSLMH.cshtml" />
+    <Content Include="Views\KhachHang\DangNhap.cshtml" />
+    <Content Include="Views\KhachHang\DangKiThanhVien.cshtml" />
+    <Content Include="Views\Shared\_LayoutFilter.cshtml" />
+    <Content Include="Views\Home\Home.cshtml" />
+    <Content Include="Views\Home\Menu.cshtml" />
+    <Content Include="Views\Loc\HienThiSPTheoThuongHieu.cshtml" />
+    <Content Include="Views\Loc\DSThuongHieu.cshtml" />
+    <Content Include="Views\Loc\TrangChuLocSP.cshtml" />
+    <Content Include="Views\Loc\MainFilter.cshtml" />
+    <Content Include="Views\Loc\FilterMenu.cshtml" />
+    <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\QuanLy\QuanLySanPham.cshtml" />
+    <Content Include="Views\Shared\_LayoutGioHang.cshtml" />
+    <Content Include="Views\DatHang\XemGioHang.cshtml" />
+    <Content Include="Views\SanPham\ChiTietSanPham.cshtml" />
+    <Content Include="Views\Shared\_LayoutChiTiet.cshtml" />
+    <Content Include="Views\KhachHang\DangKiTaiKhoan.cshtml" />
+    <Content Include="Views\KhachHang\verifyAccount.cshtml" />
+    <Content Include="Views\NhapHang\QuanLyPhieuNhap.cshtml" />
+    <Content Include="Views\NhapHang\TaoPhieuNhap.cshtml" />
+    <Content Include="Views\NhapHang\XemChiTietPhieuNhap.cshtml" />
+    <Content Include="Views\QuanLy\QuanLyHang.cshtml" />
+    <Content Include="Views\KhachHang\updateThongTin.cshtml" />
+    <Content Include="Views\Shared\_LayoutOrder.cshtml" />
+    <Content Include="Views\QuanLy\QuanLyDanhMuc.cshtml" />
+    <Content Include="Views\KhuyenMai\QuanLyKhuyenMai.cshtml" />
+    <Content Include="Views\KhuyenMai\XemChiTietKhuyenMai.cshtml" />
+    <Content Include="Views\NhanVien\QuanLyNhanVien.cshtml" />
+    <Content Include="Views\TaiKhoan\QuanLyTaiKhoan.cshtml" />
+    <Content Include="Views\PhanQuyen\QuanLyPhanQuyen.cshtml" />
+    <Content Include="Views\PhanQuyen\PhanQuyen.cshtml" />
+    <Content Include="Views\DatHang\Order.cshtml" />
+    <Content Include="Views\TaiKhoan\ThongTinTaiKhoan.cshtml" />
+    <Content Include="Views\Home\MenuKhachHang.cshtml" />
+    <Content Include="Views\TinTuc\ThemTinTuc.cshtml" />
+    <Content Include="Views\TinTuc\QuanLyTinTuc.cshtml" />
+    <Content Include="Views\TinTuc\ChiTietTinTucAdmin.cshtml" />
+    <Content Include="Views\TinTuc\CapNhatTinTuc.cshtml" />
+    <Content Include="Views\TinTuc\LoadTinTucKhachHang.cshtml" />
+    <Content Include="Views\TinTuc\ChiTietTinTucKhachHang.cshtml" />
+    <Content Include="Views\BaoHanh\QuanLyCheDoBaoHanh.cshtml" />
+    <Content Include="Views\BaoHanh\ChiTietCheDoBaoHanh.cshtml" />
+    <Content Include="Views\BaoHanh\QuanLyThongTinBaoHanh.cshtml" />
+    <Content Include="Views\QuanLyDonHang\ChitietDH.cshtml" />
+    <Content Include="Views\KhachHang\QuanLyKhachHang.cshtml" />
+    <Content Include="Views\AdminPage\MenuAdmin.cshtml" />
+    <Content Include="Views\NhapHang\XuatFilePhieuNhap.cshtml" />
+    <Content Include="Views\BinhLuan\LoadBinhLuan.cshtml" />
+    <Content Include="Views\QuanLyDonHang\XuaHoaDon.cshtml" />
+    <Content Include="Views\ThongKe\DoanhSoCuaHang.cshtml" />
+    <Content Include="Views\ThongKe\DoanhSoHang.cshtml" />
+    <Content Include="Views\BinhLuan\LoadBinhLuanTinTuc.cshtml" />
+    <Content Include="Views\KhachHang\KhoiPhucMatKhau.cshtml" />
+    <Content Include="Views\KhuyenMai\ShowKhuyenMaiModal.cshtml" />
+    <Content Include="Views\KhuyenMai\LoadKhuyenMaiCarousel.cshtml" />
+    <Content Include="Views\Voucher\QuanLyChuongTrinhVoucher.cshtml" />
+    <Content Include="Views\Voucher\XemChiTietVoucher.cshtml" />
+    <Content Include="Views\BaoHanh\XuatFileBaoHanh.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\DatHang\ShowOrders.cshtml" />
+    <Content Include="Views\Shared\_LayoutKhachHang.cshtml" />
+    <Content Include="Views\DatHang\ShowCustomOrder.cshtml" />
+    <Content Include="Views\DatHang\OrderDetail.cshtml" />
+    <Content Include="Views\AdminPage\Index.cshtml" />
+    <Content Include="Views\QuanLyDonHang\Index.cshtml" />
+    <Content Include="Views\QuanLyDonHang\ThemDH.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\CheDoBaoHanh\" />
+    <Folder Include="Content\Images\KhuyenMai\" />
+    <Folder Include="Content\Images\SanPham\MoTaSanPham\" />
+    <Folder Include="Content\Images\TinTuc\HinhDaiDienTinTuc\" />
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Views\CommonApi\" />
+    <Folder Include="Views\ThongKeAPI\" />
+    <Folder Include="Views\TimKiem\" />
+    <Folder Include="Views\XuatFile\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>55542</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:44337/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets'))" />
+  </Target>
+  <Import Project="packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

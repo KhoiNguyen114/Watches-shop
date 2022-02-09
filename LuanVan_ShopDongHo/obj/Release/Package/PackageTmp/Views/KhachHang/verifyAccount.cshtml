@@ -1,0 +1,103 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <title>verifyAccount</title>
+
+    <script src="https://kit.fontawesome.com/2559e4b9c0.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <link href="/Content/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-image: url('../../Content/Images/Icon/backgroundDangNhap_1.jpg');
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <form method="post">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="main-verification-input-wrap">
+                        <h3>Nhập mã xác nhận kích hoạt</h3>
+                        <p>Bạn sẽ nhận được code trong email đã cung cấp cho chúng tôi, vui lòng kiểm tra email và nhập code tại đây</p>
+                        <p>Nếu bạn không nhận được code xác nhận của mình thì ấn vào link <a href="#" id="sendMailLink">để nhận mã xác nhận</a></p>
+                        <div class="fl-wrap">
+                            <div class="main-verification-input-item"> <input type="text" value="" name="code" id="verifyCode" placeholder="Enter the verification code"> </div>
+                            <div>
+                                <button class="btn btn-primary" type="submit" style="margin:10px;" id="btnSubmit">Verify Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display:none">
+                    <input id="tendn" name="username" value="@ViewBag.tenDN"/>
+                </div>
+            </div>
+        </div>
+    </form>
+
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <script src="~/Scripts/notify.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+</body>
+</html>
+<script type="text/javascript">
+    $('#sendMailLink').click(function () {
+        var user = $('#tendn').val();
+        $.ajax({
+            url: '/KhachHang/sendEmailCode',
+            type: 'GET',
+            dataType: 'Json',
+            data: {
+                username : user,
+            },
+            success: function (res) {
+                if (res.success == true) {
+                    $.notify(
+                        "Mã xác nhận đã được gửi tới địa chỉ email của bạn", "success"
+                    );
+                }
+                else {
+                    $.notify("Gửi mã xác nhận không thành công","error");
+                }
+            }
+        })
+    })
+
+    $('#btnSubmit').click(function (e) {
+        e.preventDefault();
+        var code = $('#verifyCode').val();
+        var user = $('#tendn').val();
+        $.ajax({
+            url: "/KhachHang/confirmCode",
+            data: {
+                username: user,
+                code : code,
+            },
+            dataType: 'Json',
+            type: 'Post',
+            success: function (res) {
+                if (res.success == true) {
+                    $.notify("Kích hoạt tài khoản thành công, tiến hành đăng nhập", "success");
+                    var timeout = window.setTimeout(function () {
+                        location.href = "/KhachHang/DangNhap";
+                    }, 2000);
+                }
+            }
+        })
+    })
+    $(document).ready(function () {
+    })
+</script>

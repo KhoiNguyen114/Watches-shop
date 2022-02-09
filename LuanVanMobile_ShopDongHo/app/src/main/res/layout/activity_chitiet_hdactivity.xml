@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.ChitietHDActivity"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/infoCus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="5sp"
+            android:textSize="20dp"
+            android:text="Ten KH"
+            android:id="@+id/tenKH"
+            >
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tenKH"
+            android:textSize="20dp"
+            android:text="So CMND"
+            android:id="@+id/SoCMND"
+            >
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/SoCMND"
+            android:textSize="20dp"
+            android:text="Dia chi"
+            android:id="@+id/diaChi"
+            >
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            app:layout_constraintStart_toEndOf="@id/tenKH"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:textSize="20dp"
+            android:text="Gioi tinh"
+            android:id="@+id/gioiTinh"
+            >
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5sp"
+            app:layout_constraintStart_toEndOf="@id/SoCMND"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gioiTinh"
+            android:textSize="20dp"
+            android:text="So DT"
+            android:id="@+id/SDT"
+            >
+        </TextView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/infoCus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:id="@+id/lstSP"
+        android:orientation="vertical">
+    </androidx.recyclerview.widget.RecyclerView>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/orderCus"
+        app:layout_constraintTop_toBottomOf="@+id/lstSP"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/orderCus"
+            android:text="Ma Hoa Don"
+            android:textSize="20dp"
+            android:layout_margin="5sp"
+            android:id="@+id/OrderId">
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toEndOf="@id/OrderId"
+            app:layout_constraintTop_toTopOf="@id/orderCus"
+            app:layout_constraintEnd_toEndOf="@id/orderCus"
+            android:text="ngayLap"
+            android:textSize="20dp"
+            android:layout_margin="5sp"
+            android:id="@+id/OrderNgayLap">
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/OrderId"
+            android:text="Hinh Thuc"
+            android:textSize="20dp"
+            android:layout_margin="5sp"
+            android:id="@+id/OrderHinhThuc">
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/OrderHinhThuc"
+
+            android:text="Tinh Trang"
+            android:textSize="20dp"
+            android:layout_margin="5sp"
+            android:id="@+id/OrderTinhTrang">
+        </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/OrderTinhTrang"
+            android:text="Tong tien"
+            android:textSize="20dp"
+            android:layout_margin="5sp"
+            android:id="@+id/OrderTongTien">
+        </TextView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        tools:ignore="MissingConstraints"
+        android:id="@+id/firstLine"
+        app:layout_constraintTop_toTopOf="@+id/lstSP"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        tools:ignore="MissingConstraints"
+        android:id="@+id/second_line"
+        app:layout_constraintTop_toBottomOf="@+id/lstSP"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

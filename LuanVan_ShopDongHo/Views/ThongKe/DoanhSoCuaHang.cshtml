@@ -1,0 +1,134 @@
+﻿
+@{
+    ViewBag.Title = "DoanhSoCuaHang";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    <script src="~/Scripts/Chart.js"></script>
+    <script src="~/Scripts/Chart.min.js"></script>
+    Dictionary<int, string> charts = new Dictionary<int, string>
+{
+            {0,"-Biểu đồ-" },
+            {1,"doughtnut" },
+            {2,"pie" },
+            {3,"bar" },
+            {4,"line" }
+        };
+}
+<h2 style="color: brown; font-weight: 800">Doanh số cửa hàng</h2>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2">
+            @Html.DropDownList("bd", new SelectList(ViewBag.dsBieuDo, "Value", "Text", ViewBag.selectedOption), new { @class = "form-control", @id = "selectOption" })
+        </div>
+        <div class="col-2">
+            @Html.DropDownList("hang", new SelectList(ViewBag.dsHang, "Value", "Text", ViewBag.selectedHang), new { @class = "form-control", @id = "selectHang", @style = "width:50%;height:100%" })
+        </div>
+        <div class="col-2">
+            @Html.DropDownList("date", new SelectList(ViewBag.calendar_year, "value", "text", ViewBag.selectedYear), new { @class = "form-control", @id = "selectYear" })
+        </div>
+        <div class="col-2">
+            <button class="btn btn-XanhLuc ml-auto" style="text-transform: uppercase; font-weight: bold;" id="btnSearch">
+                <i class="fas fa-filter"></i>
+                Thống kê
+            </button>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-3">
+
+        </div>
+        <div class="col-6" style="text-align:center;">
+            <div id="chart_container">
+                <canvas id="myChart" width="50" height="50"></canvas>
+            </div>
+        </div>
+        <div class="col-3"></div>
+    </div>
+</div>
+<script type="text/javascript">
+    var myChart = null;
+    $(document).ready(function () {
+        $('#selectHang').select2({ width: '100%', height: '50px' });
+        var repArray = @Html.Raw(Json.Encode(ViewBag.repArray));
+        var labelsArray = @Html.Raw(Json.Encode(ViewBag.month));
+        var type = @Html.Raw(Json.Encode(ViewBag.typeOption));
+        if (type == undefined)
+            type = 'bar';
+        var months = new Array();
+        for (var item of labelsArray) {
+            months.push("t "+item.Value);
+        }
+        console.log(months);
+        var brandName = @Html.Raw(Json.Encode(ViewBag.brandName));
+        if (repArray != undefined) {
+            const ctx = document.getElementById('myChart').getContext('2d');
+            myChart = new Chart(ctx, {
+                type: type,
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: brandName,
+                        data: repArray,
+                        backgroundColor: [
+                            'rgba(255, 189, 53, 0.2)',
+                            'rgba(130, 103, 190, 0.2)',
+                            'rgba(53, 88, 154, 0.2)',
+                            'rgba(241, 74, 22, 0.2)',
+                            'rgba(153, 102, 255, 0.2)',
+                            'rgba(255, 159, 64, 0.2)',
+                            'rgba(252, 153, 24, 0.2)',
+                            'rgba(255, 114, 114, 0.2)',
+                            'rgba(199, 177, 152, 1)',
+                            'rgba(255, 228, 0, 1)',
+                            'rgba(255, 228, 0, 0.2)',
+                            'rgba(6, 255, 0, 0.2)'
+                        ],
+                        borderColor: [
+                            'rgba(255, 189, 53, 1)',
+                            'rgba(130, 103, 190, 1)',
+                            'rgba(53, 88, 154, 1)',
+                            'rgba(241, 74, 22, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(252, 153, 24, 1)',
+                            'rgba(255, 114, 114, 1)',
+                            'rgba(199, 177, 152, 1)',
+                            'rgba(255, 228, 0, 1)',
+                            'rgba(255, 228, 0, 1)',
+                            'rgba(6, 255, 0, 1)'
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
+    })
+    $('#btnSearch').click(function (e) {
+        e.preventDefault();
+        var url = window.location.origin + "/ThongKe/DoanhSoCuaHang?maHang=" + $('#selectHang').val() + "&nam=" + $('#selectYear').val()
+            + "&option=" + $('#selectOption').val();
+        window.location = url;
+    })
+
+    
+
+</script>
+
+<style>
+    chart_container {
+        width: 900px;
+        height: 900px;
+    }
+
+    element.style {
+        width: 800px;
+        height: 800px;
+    }
+</style>

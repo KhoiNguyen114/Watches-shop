@@ -1,0 +1,28 @@
+package com.example.luanvan.API;
+
+import com.example.luanvan.Model.DanhMucSP;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.GET;
+
+public interface DanhMucSPService {
+    Gson gson = new GsonBuilder()
+            .setDateFormat("yyyy-MM-dd HH:mm:ss")
+            .create();
+
+    DanhMucSPService danhMucSpService = new Retrofit.Builder()
+            .baseUrl(LinkAPI.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create(gson))
+            .build()
+            .create(DanhMucSPService.class);
+
+    @GET("api/GetAllDanhMucSP")
+    Call<List<DanhMucSP>> getListDanhMucSP();
+
+}

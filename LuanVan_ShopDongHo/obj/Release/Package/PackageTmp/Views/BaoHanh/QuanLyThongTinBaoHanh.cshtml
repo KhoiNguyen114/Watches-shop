@@ -1,0 +1,287 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "QuanLyThongTinBaoHanh";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model BAOHANH
+
+<style>
+    .select2-container--open {
+        z-index: 9999999
+    }
+
+    .select2 {
+        width: 100% !important;
+    }
+</style>
+
+<h2 style="color: brown; font-weight: 800">Quản lý thông tin bảo hành</h2>
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-4">
+            <a class="btn btn-XanhLuc mt-4" data-bs-toggle="modal" data-bs-target="#myModalAddThongTinBaoHanh" style="text-transform: uppercase; font-weight: bold;">
+                <i class="fas fa-plus"></i>
+                Thêm thông tin bảo hành mới
+            </a>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Chọn phương thức lọc</label>
+                        @Html.DropDownList("listChooseFilter", new SelectList(ViewBag.dsFilterLuaChon, "Value", "Text", ViewBag.phuongThucFilter), new { @class = "form-control", @id = "phuongThucFilter", @style = "border-radius: 10px;" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Từ khóa</label>
+                        <input type="text" id="filterMaHDThongTinBH" class="form-control" value="@ViewBag.maHD" style="border-radius: 10px;" placeholder="Nhập từ khóa..." />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Tình trạng</label>
+                        @Html.DropDownListFor(model => model.TINHTRANG, new SelectList(ViewBag.dsTinhTrang, "Value", "Text", ViewBag.tinhTrang), new { @class = "form-control", @id = "tinhTrangThongTinBaoHanhFilter", @style = "border-radius: 10px;" })
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Ngày bắt đầu</label>
+                        <input type="date" id="filterNgayBDThongTinBH" class="form-control" value="@ViewBag.ngayBD" style="border-radius: 10px;" />
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label>Ngày kết thúc</label>
+                        <input type="date" id="filterNgayKTThongTinBH" class="form-control" value="@ViewBag.ngayKT" style="border-radius: 10px;" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <button class="btn btn-XanhLuc mt-4" style="text-transform: uppercase; font-weight: bold;" id="btnFilterThongTinBaoHanh">
+                <i class="fas fa-search"></i>
+                Tìm kiếm
+            </button>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <table class="table table-bordered table-hover">
+            <tr class="tr-Title">
+                <th>STT</th>
+                <th>Mã hóa đơn</th>
+                <th>Sản phẩm</th>
+                <th>Ngày bắt đầu</th>
+                <th>Ngày kết thúc</th>
+                <th>Ghi chú</th>
+                <th>Tình trạng</th>
+                <th>Thao tác</th>
+            </tr>
+            @{
+                int dem = 0;
+                int pageNum = ViewBag.pageNum;
+                int pageSize = ViewBag.pageSize;
+                dem = (pageNum - 1) * pageSize;
+            }
+            @foreach (var item in ViewBag.dsTTBH)
+            {
+                dem++;
+                <tr>
+                    <td>@dem</td>
+                    <td>@item.maHoaDon</td>
+                    <td>@item.tenSP</td>
+                    <td>@string.Format("{0: dd/MM/yyyy}", item.ngayBD)</td>
+                    <td>@string.Format("{0: dd/MM/yyyy}", item.ngayKT)</td>
+                    <td>@item.ghiChu</td>
+                    @{
+                        if (item.tinhTrang == false)
+                        {
+                            <td>
+                                <span style="background: #b8c9ce; border: none; border-radius: 10px; padding: 5px">Đang bảo hành</span>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <span style="background: #58ffb1; border: none; border-radius: 10px; padding: 5px">Hoàn thành</span>
+                            </td>
+                        }
+                    }
+                    <td>
+                        <button class="btn btn-success" id="@item.idBaoHanh" onclick="GetThongTinBaoHanh(this)"><i class="fas fa-edit mr-2"></i></button>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+    @*<div class="mt-2">
+        <a class="btn btn-secondary" id="btnXuatFileBaoHanh" href="/BaoHanh/XuatFilePdfBaoHanh/?idCTHD=1"><i class="fas fa-print"></i></a>
+    </div>*@
+</div>
+
+<!-- Modal thêm thông tin bảo hành-->
+<div class="modal fade" id="myModalAddThongTinBaoHanh" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Thêm thông tin bảo hành mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mã hóa đơn</label>
+                    <br />
+                    @Html.DropDownListFor(model => model.IDCHITIET, new SelectList(ViewBag.dsHD, "IDHoaDon", "MAHD"), new { @class = "form-control", @id = "maHDThongTinBHThem" })
+                    <span id="maHDThongTinBHThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Sản phẩm</label>
+                    <select class="form-control" id="maSPThongTinBHThem">
+                    </select>
+                    <span id="maSPThongTinBHThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Thời gian bắt đầu</label>
+                    <input type="date" disabled="disabled" id="ngayBDThongTinBHThem" class="form-control" value="@string.Format("{0:yyyy-MM-dd}",DateTime.Now)" />
+                    <span id="ngayBDThongTinBHThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Thời gian kết thúc</label>
+                    <input type="date" id="ngayKTThongTinBHThem" class="form-control" />
+                    <span id="ngayKTThongTinBHThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Ghi chú</label>
+                    <input type="text" id="ghiChuThongTinBHThem" class="form-control" />
+                    <span id="ghiChuThongTinBHThemVL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnThemThongTinBaoHanh">Thêm</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal thêm thông tin bảo hành-->
+<!-- Modal cập nhật thông tin bảo hành-->
+<div class="modal fade" id="myModalEditThongTinBaoHanh" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Cập nhật thông tin bảo hành</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" id="maBHThongTinBHSua" hidden="hidden"/>
+                    <label>Mã hóa đơn</label>
+                    <input type="text" id="maHDThongTinBHSua" class="form-control" disabled="disabled" />
+                    <span id="maHDThongTinBHSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Sản phẩm</label>
+                    <input type="text" id="maSPThongTinBHSua" class="form-control" disabled="disabled" />
+                    <span id="maSPThongTinBHSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Thời gian bắt đầu</label>
+                    <input type="date" id="ngayBDThongTinBHSua" class="form-control" disabled="disabled" />
+                    <span id="ngayBDThongTinBHSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Thời gian kết thúc</label>
+                    <input type="date" id="ngayKTThongTinBHSua" class="form-control" />
+                    <span id="ngayKTThongTinBHSuaVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Ghi chú</label>
+                    <input type="text" id="ghiChuThongTinBHSua" class="form-control" />
+                    <span id="ghiChuThongTinBHSuaVL" class="text-danger"></span>
+                </div>
+                @*<div class="form-group">
+                    <label>Tình trạng</label>
+                    @Html.DropDownListFor(model => model.TINHTRANG, new SelectList(ViewBag.dsTinhTrang, "Value", "Text"), new { @id = "ttThongTinBaoHanhSua", @class = "form-control" })
+                    <span id="tinhTrangThongTinBaoHanhSuaVL" class="text-danger"></span>
+                </div>*@
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnCapNhatThongTinBaoHanh">Cập nhật</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal cập nhật thông tin bảo hành-->
+<!-- Modal xóa thông tin bảo hành-->
+<!--<div class="modal fade" id="myModalDeleteThongTinBaoHanh" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Xóa thông tin bảo hành</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" hidden="hidden" id="idThongTinBaoHanhDelete" value="" />
+                    <p>Bạn có chắc chắn muốn xóa thông tin bảo hành này không</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-Do" id="btnXoaThongTinBaoHanh">Xóa</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>-->
+<!--End modal xóa thông tin bảo hành-->
+
+<div class="spacer20">
+    <center>
+        <div class="pagination">
+            @Html.PagedListPager((PagedList.IPagedList)ViewBag.dsTTBH, page => Url.Action("QuanLyThongTinBaoHanh", new { page, @class = "active" }))
+        </div>
+    </center>
+</div>
+<script type="text/javascript">
+    document.onload = loadSPTheoHD();
+    function loadSPTheoHD() {
+        var idHD = $('#maHDThongTinBHThem').val();
+        if (idHD != '') {
+            $.ajax({
+                url: "/BaoHanh/GetSanPhamTheoHD",
+                type: "GET",
+                data: { idHoaDon: idHD },
+                dataType: "Json",
+                contentType: "application/json; charset = utf-8",
+                success: function (result) {
+                    if (result.kq) {
+                        $('#maSPThongTinBHThem').html("");
+                        for (var i = 0; i < result.data.length; i++) {
+                            var sp = result.data[i];
+                            var item = document.createElement("option");
+                            item.text = sp.Text;
+                            item.value = sp.Value;
+                            $('#maSPThongTinBHThem').append(item);
+                        }
+                    }
+                    else {
+                        $.notify(result.message, "error");
+                    }
+                },
+                error: function (e) {
+                    $.notify("Có lỗi xảy ra trong quá trình xử lý", "error");
+                }
+            });
+        }
+    }
+    $('#btnFilterThongTinBaoHanh').click(function (e) {
+        var url = window.location.origin + "/BaoHanh/QuanLyThongTinBaoHanh?&tinhTrang=" + $('#tinhTrangThongTinBaoHanhFilter').val() + "&maHD=" + $('#filterMaHDThongTinBH').val() + "&ngayBD=" +
+            $('#filterNgayBDThongTinBH').val() + "&ngayKT=" + $('#filterNgayKTThongTinBH').val() + '&type=' + $('#phuongThucFilter').val();
+        window.location = url;
+    })
+</script>

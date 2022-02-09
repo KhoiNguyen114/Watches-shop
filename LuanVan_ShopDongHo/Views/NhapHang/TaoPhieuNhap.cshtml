@@ -1,0 +1,269 @@
+﻿@using LuanVan_ShopDongHo.Models;
+@{
+    ViewBag.Title = "TaoPhieuNhap";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@model NhapHangModel
+
+<h2 style="color: brown; font-weight: 800">Tạo phiếu nhập</h2>
+<br />
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-9" style="border: 1px solid blue; border-radius: 8px">
+            <table class="table table-borderless mt-2 mb-2">
+                <tr>
+                    <th style="width: 150px">Mã phiếu nhập</th>
+                    <td>
+                        <input type="text" id="maPN" class="form-control" disabled="disabled"/>
+                        <span id="maPNVL" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Nhân viên</th>
+                    <td>
+                        @*@Html.DropDownListFor(model => model.pn.tenNV, new SelectList(ViewBag.dsNV, "Value", "Text"), new { @class = "form-control", @id = "maNV" })*@
+                        <input type="text" id="maNV" class="form-control" value="@ViewBag.nhanVien" disabled="disabled" />
+                    </td>
+                </tr>
+                <tr>
+                    <th>Hãng</th>
+                    <td>
+                        @Html.DropDownListFor(model => model.pn.tenHang, new SelectList(ViewBag.dsHang, "Value", "Text"), new { @class = "form-control", @id = "maHang" })
+                    </td>
+                </tr>
+                <tr>
+                    <th>Ngày lập</th>
+                    <td>
+                        <input type="text" id="ngayLapPN" class="form-control" value="@string.Format("{0: dd/MM/yyyy}",DateTime.Now)" disabled="disabled" />
+                        <span id="ngayLapPNVL" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Tổng tiền</th>
+                    <td>
+                        <input type="text" id="tongTienPN" class="form-control" disabled="disabled" />
+                        <span id="tongTienPNVL" class="text-danger"></span>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-md-3">
+            <button class="btn btn-XanhLuc" style="text-transform: uppercase; font-weight: bold;" id="btnTaoPhieuNhap">
+                <i class="fas fa-plus-square"></i>
+                Tạo phiếu nhập
+            </button>
+            <br />
+            <button class="btn btn-XanhLuc mt-2" style="text-transform: uppercase; font-weight: bold;" id="btnLamMoi">
+                <i class="fas fa-redo"></i>
+                Làm mới
+            </button>
+        </div>
+    </div>
+    <hr />
+    <div class="row" id="listbtnCTPN" style="visibility: hidden">
+        <div class="col-md-3">
+            <a class="btn btn-XanhLuc" data-bs-toggle="modal" data-bs-target="#myModalAdd" style="text-transform: uppercase; font-weight: bold;">
+                <i class="fas fa-plus mr-2"></i>
+                Nhập sản phẩm mới
+            </a>
+        </div>
+        <div class="col-md-3">
+            <a class="btn btn-XanhLuc" data-bs-toggle="modal" data-bs-target="#myModalAddDaCo" style="text-transform: uppercase; font-weight: bold;">
+                <i class="fas fa-plus mr-2"></i>
+                Nhập sản phẩm hiện có
+            </a>
+        </div>
+    </div>
+    <div class="row mt-2" id="listTableCTPN" style="visibility: hidden">
+        <div class="col-md-9">
+            <table class="table table-borderless mt-2 mb-2" id="tableChiTietPN">
+                <tr style="border-bottom: 2px solid; font-size: 18px">
+                    <th>Sản phẩm</th>
+                    <th>Số lượng</th>
+                    <th>Đơn giá (VNĐ)</th>
+                    <th>Thành tiền (VNĐ)</th>
+                </tr>
+
+            </table>
+        </div>
+        <div class="col-md-3">
+
+        </div>
+    </div>
+    <br /><br />
+    @*<button class="btn btn-primary" style="text-transform: uppercase; font-weight: bold;" onclick="nhapTable()">
+            <i class="fas fa-save mr-2"></i>
+            Lưu phiếu nhập
+        </button>*@
+</div>
+
+
+
+<!-- Modal nhập sản phẩm mới-->
+<div class="modal fade" id="myModalAdd" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Thêm sản phẩm mới</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mã sản phẩm</label>
+                    <input type="text" id="maSPThem" class="form-control" name="spThem.maSP" />
+                    <span id="maSPThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Tên sản phẩm</label>
+                    <input type="text" id="tenSPThem" class="form-control" name="spThem.tenSP" />
+                    <span id="tenSPThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Chi tiết sản phẩm</label>
+                    <input type="text" id="chiTietSPThem" class="form-control" name="spThem.chiTietSP" />
+                    <span id="chiTietSPThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Đơn giá</label>
+                    <input type="number" id="donGiaSPThem" class="form-control" name="spThem.donGia" />
+                    <span id="donGiaSPThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Hình ảnh</label>
+                    <input type="file" id="hinhAnhSPThem" name="fuploadThem" onchange="LoadAnhFolderThemSP(this)" /><br /><br />
+                    <img src="" width="200" height="150" id="Image_SPThem" />
+                    <span id="hinhAnhSPThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Số lượng</label>
+                    <input type="number" id="soLuongSPThem" class="form-control" name="spThem.soLuong" />
+                    <span id="soLuongSPThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Mã hãng</label>
+                    @Html.DropDownListFor(model => model.sp.maHang, new SelectList(ViewBag.dsHangDB, "MAHANG", "TENHANG"), new { @class = "form-control", @id = "maHangSPThem" })
+                    <span id="HangSPThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Mã bảo hành</label>
+                    @Html.DropDownListFor(model => model.sp.maBaoHanh, new SelectList(ViewBag.dsBaoHanh, "MANOIDUNG", "MANOIDUNG"), new { @class = "form-control", @id = "maNoiDungSPThem" })
+                    <span id="BaoHanhSPThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Thời gian bảo hành (năm)</label>
+                    @Html.DropDownListFor(model => model.sp.thoiHanBaoHanh, new SelectList(ViewBag.dsThoiHanBaoHanh, "Value", "Text"), new { @class = "form-control", @id = "ThoiGianBHSPThem" })
+                    <span id="ThoiGianBHSPThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Mã danh mục</label>
+                    @Html.DropDownListFor(model => model.sp.maDanhmuc, new SelectList(ViewBag.dsDMSP, "MADM", "TENDM"), new { @class = "form-control", @id = "maDanhMucSPThem" })
+                    <span id="DanhMucSPThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Phiên bản sản phẩm</label>
+                    @Html.DropDownListFor(model => model.sp.dongSP, new SelectList(ViewBag.dsPhienBan, "Value", "Text"), new { @class = "form-control", @id = "phienBanSPThem" })
+                    <span id="phienBanSPThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Kích thước</label>
+                    <input type="number" id="kichThuocSPThem" class="form-control" name="spThem.kichThuoc" />
+                    <span id="kichThuocSPThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Năng lượng</label>
+                    @Html.DropDownListFor(model => model.sp.nangLuong, new SelectList(ViewBag.dsNangLuong, "Value", "Text"), new { @class = "form-control", @id = "nangLuongSPThem" })
+                    <span id="nangLuongSPThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Loại dây</label>
+                    @Html.DropDownListFor(model => model.sp.loaiDay, new SelectList(ViewBag.dsLoaiDay, "Value", "Text"), new { @class = "form-control", @id = "loaiDaySPThem" })
+                    <span id="loaiDaySPThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Xuất sứ</label>
+                    @Html.DropDownListFor(model => model.sp.xuatSu, new SelectList(ViewBag.dsQuocGia, "Value", "Text"), new { @class = "form-control", @id = "xuatSuSPThem" })
+                </div>
+                <div class="form-group">
+                    <label>Mô tả sản phẩm</label>
+                    <textarea id="txtMoTaSPThem"></textarea>
+                    <span id="txtMoTaSPThemVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Chiết khấu</label>
+                    <input type="number" id="chietKhauSPThemMoiCTPN" class="form-control" />
+                    <span id="chietKhauSPThemMoiCTPNVL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnThem">Thêm</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal nhập sản phẩm mới-->
+<!-- Modal nhập sản phẩm đã có-->
+<div class="modal fade" id="myModalAddDaCo" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Nhập sản phẩm đã có</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mã sản phẩm</label>
+                    <input type="text" id="maSPThemCTPN" class="form-control" disabled="disabled" />
+                    <span id="maSPThemCTPNVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Tên sản phẩm</label>
+                    @Html.DropDownListFor(model => model.sp.maSP, new SelectList(ViewBag.dsSP, "MASP", "TENSP"), new { @class = "form-control", @id = "tenSPCTPN", @onchange = "getSPPhieuNhap()" })
+                </div>
+                <div class="form-group">
+                    <label>Đơn giá</label>
+                    <input type="number" id="donGiaSPThemCTPN" class="form-control" disabled="disabled" />
+                    <span id="donGiaSPThemCTPNVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Số lượng</label>
+                    <input type="number" id="soLuongSPThemCTPN" class="form-control" />
+                    <span id="soLuongSPThemCTPNVL" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label>Chiết khấu</label>
+                    <input type="number" id="chietKhauSPThemCTPN" class="form-control" />
+                    <span id="chietKhauSPThemCTPNVL" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-XanhLuc" id="btnNhapSPDaCo">Thêm</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal nhập sản phẩm đã có-->
+<!-- Modal xóa sản phẩm nhập-->
+<div class="modal fade" id="myModalDeleteSanPhamNhap" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel" style="font-weight: bold; text-transform: uppercase">Xóa sản phẩm</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <input type="text" hidden="hidden" id="idSanPhamNhapDelete" value="" />
+                    <p>Bạn có chắc chắn muốn xóa sản phẩm này không</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-Do" id="btnXoaSanPhamNhap">Xóa</button>
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End modal xóa sản phẩm nhập-->

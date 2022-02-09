@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity.ChiTietSanPhamActivity">
+
+    <ImageView
+        android:id="@+id/imageViewSanPham"
+        android:layout_width="170dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/textViewMaSP"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Mã sản phẩm: "
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewSanPham"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewTenSP_ChiTietSP"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Tên sản phẩm: "
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewSanPham"
+        app:layout_constraintTop_toBottomOf="@+id/textViewMaSP" />
+
+    <TextView
+        android:id="@+id/textViewGiaSP_ChiTietSP"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="2,500,000"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageViewSanPham"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTenSP_ChiTietSP" />
+
+    <TextView
+        android:id="@+id/textViewHangSP_ChiTietSP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Hãng: "
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewSanPham" />
+
+    <TextView
+        android:id="@+id/textViewXuatSuSP"
+        android:layout_width="198dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Xuất sứ: "
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewSanPham"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGiaSP_ChiTietSP" />
+
+    <TextView
+        android:id="@+id/textViewLD_NL_KTSP"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
+        android:text="Loại dây - năng lượng - kích thước "
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewSanPham"
+        app:layout_constraintTop_toBottomOf="@+id/textViewXuatSuSP" />
+
+    <TextView
+        android:id="@+id/textViewDMSP_ChiTietSP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:text="Loại: "
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHangSP_ChiTietSP" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="144dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDMSP_ChiTietSP">
+
+        <TextView
+            android:id="@+id/textViewThongTinSP"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="ABCXYZ"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.047"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageViewSanPham" />
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/textViewThoiHanBaoHanh"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="20dp"
+        android:text="Thời hạn bảo hành: "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.952"
+        app:layout_constraintStart_toEndOf="@+id/imageViewSanPham"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLD_NL_KTSP" />
+
+    <TextView
+        android:id="@+id/textViewSoLuongSP"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginStart="20dp"
+        android:text="Số lượng: "
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintStart_toEndOf="@+id/imageViewSanPham"
+        app:layout_constraintTop_toBottomOf="@+id/textViewThoiHanBaoHanh" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
